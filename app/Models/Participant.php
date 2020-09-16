@@ -21,4 +21,9 @@ class Participant extends Model
     {
         return $this->belongsToMany(Guardian::class);
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
 }
