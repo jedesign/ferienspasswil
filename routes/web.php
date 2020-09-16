@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    dd(\App\Models\User::find(1)->role->participants->first()->firstname);
     return view('welcome');
 });
