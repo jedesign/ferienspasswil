@@ -12,6 +12,11 @@ class Allergy extends Model
 {
     use HasFactory;
 
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
+
     public function participants()
     {
         return $this->belongsToMany(Participant::class);

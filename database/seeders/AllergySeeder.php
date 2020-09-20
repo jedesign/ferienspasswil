@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Allergy;
 use Illuminate\Database\Seeder;
 
 class AllergySeeder extends Seeder
@@ -13,6 +14,24 @@ class AllergySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $allergies = [
+            'Glutenhaltiges Getreide',
+            'Krebstiere',
+            'Eier',
+            'Fisch',
+            'Erdnüsse',
+            'Soja',
+            'Milch / Laktose',
+            'Schalenfrüchte',
+            'Sellerie',
+            'Senf',
+            'Sesamsamen',
+            'Schwefeldioxid / Sulfite',
+            'Lupine',
+            'Weichtiere',
+        ];
+        foreach ($allergies as $allergy) {
+            Allergy::create(['title' => $allergy]);
+        }
     }
 }

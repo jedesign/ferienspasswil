@@ -23,7 +23,7 @@ class AllergyFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->sentence(3)
         ];
     }
 }

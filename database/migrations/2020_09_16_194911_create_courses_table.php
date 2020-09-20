@@ -16,7 +16,9 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('title_short');
             $table->text('description');
+            // TODO[mr,rw]: maybe better remove active and add canceled_due_min_participants (bool) and canceled_due_other_reason (string) (20.09.20 mr)
             $table->boolean('active')->default(true);
             $table->dateTime('beginning');
             $table->dateTime('end');
