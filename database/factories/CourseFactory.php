@@ -25,7 +25,6 @@ class CourseFactory extends Factory
         $weatherSensitive = $this->faker->boolean;
         return [
             'title' => $this->faker->sentence(4),
-            'title_short' => $this->faker->sentence(2),
             'description' => $this->faker->paragraph(),
             'active' => $this->faker->boolean,
             'beginning' => $this->faker->dateTimeThisMonth->format('Y-m-d H:i:s'),
