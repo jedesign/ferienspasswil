@@ -50,6 +50,8 @@ class User extends Authenticatable
     public function getGuardianAttribute()
     {
         if (!$this->isGuardian()) {
+            // TODO[mr]: maybe use optional instead of null (23.09.20 mr)
+            // return optional();
             return null;
         }
         return $this->role;
@@ -63,6 +65,8 @@ class User extends Authenticatable
     public function getEmployeeAttribute()
     {
         if (!$this->isEmployee()) {
+            // TODO[mr]: maybe use optional instead of null (23.09.20 mr)
+            // return optional();
             return null;
         }
         return $this->role;
@@ -76,6 +80,8 @@ class User extends Authenticatable
     public function guardian()
     {
         if (!$this->isGuardian()) {
+            // TODO[mr]: maybe use optional instead of null (23.09.20 mr)
+            // return optional();
             return null;
         }
         return $this->role();
@@ -89,6 +95,8 @@ class User extends Authenticatable
     public function employee()
     {
         if (!$this->isEmployee()) {
+            // TODO[mr]: maybe use optional instead of null (23.09.20 mr)
+            // return optional();
             return null;
         }
         return $this->role();
