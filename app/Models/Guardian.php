@@ -12,6 +12,10 @@ class Guardian extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'sja' => 'boolean'
+    ];
+
     protected $guarded = [];
 
     public function user()

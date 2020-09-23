@@ -42,9 +42,30 @@ class User extends Authenticatable
 
     protected $with = ['role'];
 
+    public function fullname(): string
+    {
+        return $this->firstname . ' ' . $this->lastname;
+    }
+
+    public function getGuardianAttribute()
+    {
+        if (!$this->isGuardian()) {
+            return null;
+        }
+        return $this->role;
+    }
+
     public function isGuardian()
     {
         return $this->role_type === Guardian::class;
+    }
+
+    public function getEmployeeAttribute()
+    {
+        if (!$this->isEmployee()) {
+            return null;
+        }
+        return $this->role;
     }
 
     public function isEmployee()
@@ -52,13 +73,24 @@ class User extends Authenticatable
         return $this->role_type === Employee::class;
     }
 
-    public function fullname(): string
+    public function guardian()
     {
-        return $this->firstname . ' ' . $this->lastname;
+        if (!$this->isGuardian()) {
+            return null;
+        }
+        return $this->role();
     }
 
     public function role()
     {
         return $this->morphTo();
+    }
+
+    public function employee()
+    {
+        if (!$this->isEmployee()) {
+            return null;
+        }
+        return $this->role();
     }
 }
