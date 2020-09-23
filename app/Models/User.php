@@ -42,6 +42,21 @@ class User extends Authenticatable
 
     protected $with = ['role'];
 
+    public function isGuardian()
+    {
+        return $this->role_type === Guardian::class;
+    }
+
+    public function isEmployee()
+    {
+        return $this->role_type === Employee::class;
+    }
+
+    public function fullname(): string
+    {
+        return $this->firstname . ' ' . $this->lastname;
+    }
+
     public function role()
     {
         return $this->morphTo();

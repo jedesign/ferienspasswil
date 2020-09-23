@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Guardian;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class GuardianFactory extends Factory
 {
@@ -23,7 +22,11 @@ class GuardianFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'street' => $this->faker->streetName,
+            'street_number' => $this->faker->buildingNumber,
+            'zip' => $this->faker->postcode,
+            'place' => $this->faker->city,
+            'sja' => $this->faker->boolean,
         ];
     }
 }

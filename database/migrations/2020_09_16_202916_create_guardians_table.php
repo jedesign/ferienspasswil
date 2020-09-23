@@ -19,6 +19,7 @@ class CreateGuardiansTable extends Migration
             $table->string('street_number')->nullable();
             $table->unsignedInteger('zip');
             $table->string('place');
+            $table->boolean('sja')->default(false);
             $table->timestamps();
         });
     }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Allergy;
+use App\Models\Participant;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,8 +16,8 @@ class CreateAllergyParticipant extends Migration
     public function up()
     {
         Schema::create('allergy_participant', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Allergy::class)->constrained();
-            $table->foreignIdFor(\App\Models\Participant::class)->constrained();
+            $table->foreignIdFor(Allergy::class)->constrained();
+            $table->foreignIdFor(Participant::class)->constrained();
         });
     }
 

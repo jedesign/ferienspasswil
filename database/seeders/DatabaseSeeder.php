@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Employee;
+use App\Models\Participant;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AllergySeeder::class,
             CourseSeeder::class,
-            ParticipantSeeder::class,
+            GuardianParticipantSeeder::class,
         ]);
+        Employee::factory()->times(20)->create();
     }
 }
