@@ -28,7 +28,7 @@ class Guardian extends Model
         return $this->belongsToMany(Participant::class);
     }
 
-    public function address()
+    public function getAddressAttribute()
     {
         return $this->street . ' ' . $this->street_number . ', ' . $this->zip . ' ' . $this->place;
     }

@@ -20,7 +20,7 @@ class GuardianParticipantSeeder extends Seeder
         $guardian = Guardian::create([
             'street' => 'Erlenbachstrasse',
             'street_number' => '12',
-            'zip' => '955',
+            'zip' => '9500',
             'place' => 'Wil',
             'sja' => false
         ]);

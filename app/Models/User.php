@@ -42,7 +42,7 @@ class User extends Authenticatable
 
     protected $with = ['role'];
 
-    public function fullname(): string
+    public function getFullnameAttribute()
     {
         return $this->firstname . ' ' . $this->lastname;
     }

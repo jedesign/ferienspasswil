@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AllergySeeder::class,
             CourseSeeder::class,
+            EmployeeSeeder::class,
             GuardianParticipantSeeder::class,
         ]);
-        Employee::factory()->times(20)->create();
     }
 }
