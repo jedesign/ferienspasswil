@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -42,14 +43,14 @@ class User extends Authenticatable
 
     protected $with = ['role'];
 
-    public function getFullnameAttribute()
+    public function getFullnameAttribute(): string
     {
         return $this->firstname . ' ' . $this->lastname;
     }
 
-    public function getGuardianAttribute()
+    public function getGuardianAttribute(): ?Guardian
     {
-        if (!$this->isGuardian()) {
+        if (!$this->is_guardian) {
             // TODO[mr]: maybe use optional instead of null (23.09.20 mr)
             // return optional();
             return null;
@@ -57,14 +58,14 @@ class User extends Authenticatable
         return $this->role;
     }
 
-    public function isGuardian()
+    public function getIsGuardianAttribute(): bool
     {
         return $this->role_type === Guardian::class;
     }
 
-    public function getEmployeeAttribute()
+    public function getEmployeeAttribute(): ?Employee
     {
-        if (!$this->isEmployee()) {
+        if (!$this->is_employee) {
             // TODO[mr]: maybe use optional instead of null (23.09.20 mr)
             // return optional();
             return null;
@@ -72,14 +73,14 @@ class User extends Authenticatable
         return $this->role;
     }
 
-    public function isEmployee()
+    public function getIsEmployeeAttribute(): bool
     {
         return $this->role_type === Employee::class;
     }
 
-    public function guardian()
+    public function guardian(): ?MorphTo
     {
-        if (!$this->isGuardian()) {
+        if (!$this->is_guardian) {
             // TODO[mr]: maybe use optional instead of null (23.09.20 mr)
             // return optional();
             return null;
@@ -87,14 +88,14 @@ class User extends Authenticatable
         return $this->role();
     }
 
-    public function role()
+    public function role(): MorphTo
     {
         return $this->morphTo();
     }
 
-    public function employee()
+    public function employee(): ?MorphTo
     {
-        if (!$this->isEmployee()) {
+        if (!$this->is_employee) {
             // TODO[mr]: maybe use optional instead of null (23.09.20 mr)
             // return optional();
             return null;
