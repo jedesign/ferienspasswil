@@ -33,9 +33,9 @@ class CreateCoursesTable extends Migration
             $table->string('bring_alongs')->nullable();
             $table->float('price');
             $table->timestamps();
-            // TODO[mr]: include pdf path (16.09.20 mr)
-            // TODO[mr]: include pdf description (16.09.20 mr)
-            // TODO[mr]: include image (16.09.20 mr)
+            // TODO[mr,rw]: include pdf path (16.09.20 mr)
+            // TODO[mr,rw]: include pdf description (16.09.20 mr)
+            // TODO[mr,rw]: include image (16.09.20 mr)
         });
     }
 

@@ -51,7 +51,7 @@ class User extends Authenticatable
     public function getGuardianAttribute(): ?Guardian
     {
         if (!$this->is_guardian) {
-            // TODO[mr]: maybe use optional instead of null (23.09.20 mr)
+            // TODO[mr,rw]: maybe use optional instead of null (23.09.20 mr)
             // return optional();
             return null;
         }
@@ -66,7 +66,7 @@ class User extends Authenticatable
     public function getEmployeeAttribute(): ?Employee
     {
         if (!$this->is_employee) {
-            // TODO[mr]: maybe use optional instead of null (23.09.20 mr)
+            // TODO[mr,rw]: maybe use optional instead of null (23.09.20 mr)
             // return optional();
             return null;
         }
@@ -81,7 +81,7 @@ class User extends Authenticatable
     public function guardian(): ?MorphTo
     {
         if (!$this->is_guardian) {
-            // TODO[mr]: maybe use optional instead of null (23.09.20 mr)
+            // TODO[mr,rw]: maybe use optional instead of null (23.09.20 mr)
             // return optional();
             return null;
         }
@@ -96,7 +96,7 @@ class User extends Authenticatable
     public function employee(): ?MorphTo
     {
         if (!$this->is_employee) {
-            // TODO[mr]: maybe use optional instead of null (23.09.20 mr)
+            // TODO[mr,rw]: maybe use optional instead of null (23.09.20 mr)
             // return optional();
             return null;
         }
