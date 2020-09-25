@@ -13,6 +13,8 @@ class Course extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title'];
+
     public function allergies(): BelongsToMany
     {
         return $this->belongsToMany(Allergy::class);
