@@ -39,5 +39,27 @@ class GuardianParticipantSeeder extends Seeder
             Participant::factory()->raw(['lastname' => $guardian->user->lastname]),
             Participant::factory()->raw(['lastname' => $guardian->user->lastname]),
         ]);
+        $guardian = Guardian::create([
+            'street' => 'Bünzlistrasse',
+            'street_number' => '123',
+            'zip' => '9552',
+            'place' => 'Bronschhofen',
+            'sja' => true
+        ]);
+        $guardian->user()->create([
+            'firstname' => 'Ron',
+            'lastname' => 'Weasley',
+            'email' => 'ron.weasley@test.ch',
+            'email_verified_at' => now(),
+            'password' => Hash::make('12345678'),
+            'remember_token' => Str::random(10),
+            'phone' => '071 123 45 69'
+        ]);
+        $guardian->participants()->createMany([
+            Participant::factory()->raw(),
+            Participant::factory()->raw(),
+            Participant::factory()->raw(),
+            Participant::factory()->raw(),
+        ]);
     }
 }

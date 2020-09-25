@@ -17,14 +17,14 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            // TODO[mr,rw]: maybe better remove active and add canceled_due_min_participants (bool) and canceled_due_other_reason (string) (20.09.20 mr)
-            $table->boolean('active')->default(true);
+            $table->boolean('canceled_due_to_weather')->default(false);
+            $table->boolean('canceled_due_to_min_participants')->default(false);
+            $table->string('canceled_due_to_other_reason')->nullable();
             $table->dateTime('beginning');
             $table->dateTime('end');
             $table->unsignedInteger('min_participants')->default(5);
             $table->unsignedInteger('max_participants');
             $table->boolean('weather_sensitive')->default(false);
-            $table->boolean('canceled_due_to_weather')->default(false);
             $table->enum('grade_group', ['all', 'lower', 'intermediate'])
                 ->default('all')
                 ->comment('lower => 1. – 3. grade, intermediate => 4. – 6. grade, all => no limitation');
