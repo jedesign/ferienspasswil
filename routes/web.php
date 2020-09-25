@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Allergy;
-use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $allergy = Allergy::factory()->create();
-    $course = Course::factory()->create();
-    $allergy->courses()->save($course);
-    dd($allergy->courses);
 //    $user =     \App\Models\User::first();
 //    dd($user->guardian()->toSql());
 //    dd($user->employee()->toSql());
