@@ -41,8 +41,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $with = ['role'];
-
     public function getFullnameAttribute(): string
     {
         return $this->firstname . ' ' . $this->lastname;
