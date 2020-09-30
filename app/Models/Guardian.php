@@ -14,7 +14,10 @@ class Guardian extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $casts = [
+        'zip' => 'integer',
+        'sja' => 'boolean'
+    ];
 
     public function user(): MorphOne
     {
