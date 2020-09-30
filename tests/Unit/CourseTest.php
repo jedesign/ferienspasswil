@@ -3,7 +3,9 @@
 namespace Tests\Unit;
 
 use App\Enums\GradeGroup;
+use App\Models\Allergy;
 use App\Models\Course;
+use App\Models\Participant;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
@@ -154,5 +156,29 @@ class CourseTest extends TestCase
         /** @var Course $course */
         $course = Course::factory()->create();
         $this->assertIsFloat($course->price);
+    }
+
+    /** @test */
+    public function it_belongs_to_allergies()
+    {
+        /** @var Course $course */
+        $course = Course::factory()->create();
+        $this->assertCount(0, $course->allergies);
+
+        $course->allergies()->save(Allergy::factory()->create());
+        $course->load('allergies');
+        $this->assertCount(1, $course->allergies);
+    }
+
+    /** @test */
+    public function it_belongs_to_participants()
+    {
+        /** @var Course $course */
+        $course = Course::factory()->create();
+        $this->assertCount(0, $course->participants);
+
+        $course->participants()->save(Participant::factory()->create());
+        $course->load('participants');
+        $this->assertCount(1, $course->participants);
     }
 }
