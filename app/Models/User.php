@@ -51,7 +51,10 @@ class User extends Authenticatable
         if (!$this->is_guardian) {
             return null;
         }
-        return $this->role;
+
+        /** @var Guardian $role */
+        $role = $this->role;
+        return $role;
     }
 
     public function getIsGuardianAttribute(): bool
@@ -64,7 +67,9 @@ class User extends Authenticatable
         if (!$this->is_employee) {
             return null;
         }
-        return $this->role;
+        /** @var Employee $role */
+        $role = $this->role;
+        return $role;
     }
 
     public function getIsEmployeeAttribute(): bool
@@ -72,24 +77,8 @@ class User extends Authenticatable
         return $this->role_type === Employee::class;
     }
 
-    public function guardian(): ?MorphTo
-    {
-        if (!$this->is_guardian) {
-            return null;
-        }
-        return $this->role();
-    }
-
     public function role(): MorphTo
     {
         return $this->morphTo();
-    }
-
-    public function employee(): ?MorphTo
-    {
-        if (!$this->is_employee) {
-            return null;
-        }
-        return $this->role();
     }
 }
