@@ -15,19 +15,17 @@ class AllergyTest extends TestCase
     /** @test */
     public function it_has_a_title()
     {
-        $this->assertNotNull(Allergy::factory()->create()->title);
-
-        $title = 'Hundehaare';
         /** @var Allergy $allergy */
-        $allergy = Allergy::factory(['title' => $title])->create();
+        $allergy = Allergy::factory()->create();
         $this->assertIsString($allergy->title);
-        $this->assertEquals($title, $allergy->title);
     }
 
     /** @test */
     public function it_has_an_id()
     {
-        $this->assertNotNull(Allergy::factory()->create()->id);
+        /** @var Allergy $allergy */
+        $allergy = Allergy::factory()->create();
+        $this->assertIsInt($allergy->id);
     }
 
     /** @test */
