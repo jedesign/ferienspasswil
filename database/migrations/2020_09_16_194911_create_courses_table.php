@@ -25,7 +25,7 @@ class CreateCoursesTable extends Migration
             $table->unsignedInteger('min_participants')->default(5);
             $table->unsignedInteger('max_participants');
             $table->boolean('weather_sensitive')->default(false);
-            $table->enum('grade_group', ['all', 'lower', 'intermediate'])
+            $table->enum('grade_group', \App\Enums\GradeGroup::getConstants())
                 ->default('all')
                 ->comment('lower => 1. – 3. grade, intermediate => 4. – 6. grade, all => no limitation');
             $table->string('meeting_point');

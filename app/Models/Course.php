@@ -15,6 +15,11 @@ class Course extends Model
 
     protected $fillable = ['title'];
 
+    protected $casts = [
+        'beginning' => 'datetime',
+        'end' => 'datetime',
+    ];
+
     public function allergies(): BelongsToMany
     {
         return $this->belongsToMany(Allergy::class);

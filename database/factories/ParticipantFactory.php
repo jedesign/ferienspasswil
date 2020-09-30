@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Gender;
 use App\Models\Participant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,7 +22,7 @@ class ParticipantFactory extends Factory
      */
     public function definition()
     {
-        $gender = $this->faker->randomElement(['m', 'f']);
+        $gender = $this->faker->randomElement(Gender::getConstants());
         return [
             'firstname' => $gender === 'm' ? $this->faker->firstNameMale : $this->faker->firstNameFemale,
             'lastname' => $this->faker->lastName,

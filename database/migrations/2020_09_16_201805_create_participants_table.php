@@ -18,7 +18,7 @@ class CreateParticipantsTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->date('birthdate');
-            $table->enum('gender', ['m', 'f']);
+            $table->enum('gender', \App\Enums\Gender::getConstants());
             $table->unsignedInteger('school_grade');
             $table->boolean('photos_allowed')->default(false);
             $table->text('note')->nullable();

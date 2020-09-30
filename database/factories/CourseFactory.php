@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\GradeGroup;
 use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -34,7 +35,7 @@ class CourseFactory extends Factory
             'min_participants' => $minParticipants,
             'max_participants' => $this->faker->numberBetween($minParticipants + 1, 15),
             'weather_sensitive' => $weatherSensitive,
-            'grade_group' => $this->faker->randomElement(['all', 'lower', 'intermediate']),
+            'grade_group' => $this->faker->randomElement(GradeGroup::getConstants()),
             'meeting_point' => $this->faker->address,
             'clothes' => $this->faker->boolean ? $this->faker->words(3, true) : null,
             'bring_alongs' => $this->faker->boolean ? $this->faker->words(3, true) : null,
