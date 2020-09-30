@@ -113,11 +113,15 @@ class CourseTest extends TestCase
         $course = Course::factory()->create();
         $this->assertTrue(in_array($course->grade_group, GradeGroup::getConstants()));
 
+        $exceptionThrown = false;
+
         try {
             Course::factory(['grade_group' => 'non-existing-value'])->create();
         } catch (QueryException $exception) {
+            $exceptionThrown = true;
             $this->assertStringContainsString('Integrity constraint violation', $exception->getMessage());
         }
+        $this->assertTrue($exceptionThrown);
     }
 
     /** @test */

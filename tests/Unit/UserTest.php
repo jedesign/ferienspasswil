@@ -16,6 +16,14 @@ class UserTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function it_has_an_id()
+    {
+        /** @var User $user */
+        $user = User::factory()->create();
+        $this->assertIsInt($user->id);
+    }
+
+    /** @test */
     public function it_has_a_firstname()
     {
         /** @var User $user */
@@ -39,14 +47,15 @@ class UserTest extends TestCase
         $user = User::factory(['email' => $email])->create();
         $this->assertIsString($user->email);
 
+        $exceptionThrown = false;
+
         try {
             User::factory(['email' => $email])->create();
         } catch (QueryException $exception) {
-            $this->assertStringContainsString(
-                'UNIQUE constraint failed: users.email',
-                $exception->getMessage());
+            $exceptionThrown = true;
+            $this->assertStringContainsString('UNIQUE constraint failed: users.email', $exception->getMessage());
         }
-
+        $this->assertTrue($exceptionThrown);
     }
 
     /** @test */
@@ -94,16 +103,20 @@ class UserTest extends TestCase
     /** @test */
     public function it_has_a_role()
     {
+        $exceptionsThrown = 0;
         try {
             User::factory(['role_type' => null])->create();
         } catch (QueryException $exception) {
+            $exceptionsThrown++;
             $this->assertStringContainsString('constraint failed: users.role_type', $exception->getMessage());
         }
         try {
             User::factory(['role_id' => null])->create();
         } catch (QueryException $exception) {
+            $exceptionsThrown++;
             $this->assertStringContainsString('constraint failed: users.role_id', $exception->getMessage());
         }
+        $this->assertSame(2, $exceptionsThrown);
     }
 
     /** @test */

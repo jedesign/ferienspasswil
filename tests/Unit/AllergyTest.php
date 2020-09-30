@@ -51,5 +51,4 @@ class AllergyTest extends TestCase
         $allergy->load('participants');
         $this->assertCount(1, $allergy->participants);
     }
-
 }

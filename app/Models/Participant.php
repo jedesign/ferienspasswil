@@ -13,6 +13,10 @@ class Participant extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'birthdate' => 'date'
+    ];
+
     public function allergies(): BelongsToMany
     {
         return $this->belongsToMany(Allergy::class);
