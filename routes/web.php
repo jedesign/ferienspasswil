@@ -14,10 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-//    $user =     \App\Models\User::first();
-//    dd($user->guardian()->toSql());
-//    dd($user->employee()->toSql());
-//    dd($user->fullname.', '.$user->guardian->address);
-//    dd(\App\Models\User::find(1)->guardian->participants->first()->firstname);
     return view('welcome');
 });
