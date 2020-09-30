@@ -109,14 +109,8 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_be_of_role_employee()
     {
-        /** @var Employee $employee */
-        $employee = Employee::factory()->create();
-
         /** @var User $user */
-        $user = User::factory([
-            'role_type' => Employee::class,
-            'role_id' => $employee->id
-        ])->create();
+        $user = User::factory()->for(Employee::factory(), 'role')->create();
 
         $this->assertTrue($user->is_employee);
         $this->assertFalse($user->is_guardian);
@@ -128,14 +122,8 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_be_of_role_guardian()
     {
-        /** @var Guardian $guardian */
-        $guardian = Guardian::factory()->create();
-
         /** @var User $user */
-        $user = User::factory([
-            'role_type' => Guardian::class,
-            'role_id' => $guardian->id
-        ])->create();
+        $user = User::factory()->for(Guardian::factory(), 'role')->create();
 
         $this->assertTrue($user->is_guardian);
         $this->assertFalse($user->is_employee);
