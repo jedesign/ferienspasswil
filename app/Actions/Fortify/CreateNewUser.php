@@ -2,7 +2,7 @@
 
 namespace App\Actions\Fortify;
 
-use App\Models\Employee;
+use App\Models\Guardian;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -28,7 +28,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        return Employee::create()->user()->create([
+        return Guardian::create()->user()->create([
             'firstname' => $input['firstname'],
             'lastname' => $input['lastname'],
             'phone' => $input['phone'],

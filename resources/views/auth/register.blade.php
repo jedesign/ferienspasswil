@@ -35,6 +35,30 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="street" value="{{ __('Street') }}"/>
+                <x-jet-input id="street" class="block mt-1 w-full" type="text" name="street"
+                             :value="old('street')" required autocomplete="street"/>
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="street_number" value="{{ __('Street Number') }}"/>
+                <x-jet-input id="street_number" class="block mt-1 w-full" type="text" name="street_number"
+                             :value="old('street_number')" autocomplete="street_number"/>
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="zip" value="{{ __('ZIP') }}"/>
+                <x-jet-input id="zip" class="block mt-1 w-full" type="text" name="zip"
+                             :value="old('zip')" required autocomplete="zip"/>
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="place" value="{{ __('Place') }}"/>
+                <x-jet-input id="place" class="block mt-1 w-full" type="text" name="place"
+                             :value="old('place')" required autocomplete="place"/>
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}"/>
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required
                              autocomplete="new-password"/>
