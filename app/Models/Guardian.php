@@ -14,6 +14,10 @@ class Guardian extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'street','street_number','zip','place'
+    ];
+
     protected $casts = [
         'zip' => 'integer',
         'sja' => 'boolean'

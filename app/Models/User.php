@@ -64,6 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
     public function getFullnameAttribute(): string
     {
         return $this->firstname . ' ' . $this->lastname;

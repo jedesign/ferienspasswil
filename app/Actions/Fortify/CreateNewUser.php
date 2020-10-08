@@ -23,12 +23,21 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
+            'street' => ['required', 'string', 'max:255'],
+            'street_number' => ['nullable', 'string', 'max:255'],
+            'zip' => ['required', 'numeric'],
+            'place' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
         ])->validate();
 
-        return Guardian::create()->user()->create([
+        return Guardian::create([
+            'street' => $input['street'],
+            'street_number' => $input['street_number'],
+            'zip' => $input['zip'],
+            'place' => $input['place'],
+        ])->user()->create([
             'firstname' => $input['firstname'],
             'lastname' => $input['lastname'],
             'phone' => $input['phone'],
