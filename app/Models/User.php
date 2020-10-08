@@ -105,4 +105,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->morphTo();
     }
+
+    protected function defaultProfilePhotoUrl()
+    {
+        return 'https://ui-avatars.com/api/?name=' . urlencode($this->fullname) . '&color=7F9CF5&background=EBF4FF';
+    }
+
 }
