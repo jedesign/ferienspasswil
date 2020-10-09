@@ -23,8 +23,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->string('phone');
             $table->morphs('role');
-            $table->foreignId('current_team_id')->nullable();
-            $table->text('profile_photo_path')->nullable();
             $table->timestamps();
         });
     }
