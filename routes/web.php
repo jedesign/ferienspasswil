@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome');
-
+// TODO[mr]: check if middlewares are needed (09.10.20 mr)
+// TODO[mr]: maybe refactor auth to livewire instead of pure blade (09.10.20 mr)
 // --- Auth Routes --- //
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
