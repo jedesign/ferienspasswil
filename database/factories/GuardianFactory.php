@@ -24,8 +24,8 @@ class GuardianFactory extends Factory
         return [
             'street' => $this->faker->streetName,
             'street_number' => $this->faker->buildingNumber,
-            'zip' => $this->faker->postcode,
-            'place' => $this->faker->city,
+            'postcode' => $this->faker->postcode,
+            'city' => $this->faker->city,
             'sja' => $this->faker->boolean,
         ];
     }

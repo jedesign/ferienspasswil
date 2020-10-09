@@ -20,8 +20,8 @@ class GuardianParticipantSeeder extends Seeder
         $guardian = Guardian::create([
             'street' => 'Erlenbachstrasse',
             'street_number' => '12',
-            'zip' => '9500',
-            'place' => 'Wil',
+            'postcode' => '9500',
+            'city' => 'Wil',
             'sja' => false
         ]);
         $guardian->user()->create([
@@ -42,8 +42,8 @@ class GuardianParticipantSeeder extends Seeder
         $guardian = Guardian::create([
             'street' => 'Bünzlistrasse',
             'street_number' => '123',
-            'zip' => '9552',
-            'place' => 'Bronschhofen',
+            'postcode' => '9552',
+            'city' => 'Bronschhofen',
             'sja' => true
         ]);
         $guardian->user()->create([

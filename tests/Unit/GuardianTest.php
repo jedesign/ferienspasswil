@@ -39,19 +39,19 @@ class GuardianTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_zip()
+    public function it_has_a_postcode()
     {
         /** @var Guardian $guardian */
         $guardian = Guardian::factory()->create();
-        $this->assertIsInt($guardian->zip);
+        $this->assertIsInt($guardian->postcode);
     }
 
     /** @test */
-    public function it_has_a_place()
+    public function it_has_a_city()
     {
         /** @var Guardian $guardian */
         $guardian = Guardian::factory()->create();
-        $this->assertIsString($guardian->place);
+        $this->assertIsString($guardian->city);
     }
 
     /** @test */

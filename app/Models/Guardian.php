@@ -15,11 +15,11 @@ class Guardian extends Model
     use HasFactory;
 
     protected $fillable = [
-        'street','street_number','zip','place'
+        'street','street_number','postcode','city'
     ];
 
     protected $casts = [
-        'zip' => 'integer',
+        'postcode' => 'integer',
         'sja' => 'boolean'
     ];
 
@@ -35,6 +35,6 @@ class Guardian extends Model
 
     public function getAddressAttribute(): string
     {
-        return $this->street . ' ' . $this->street_number . ', ' . $this->zip . ' ' . $this->place;
+        return $this->street . ' ' . $this->street_number . ', ' . $this->postcode . ' ' . $this->city;
     }
 }
