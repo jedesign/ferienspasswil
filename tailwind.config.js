@@ -14,11 +14,10 @@ module.exports = {
         },
     },
 
-    variants: {
-        opacity: ['responsive', 'hover', 'focus', 'disabled'],
-    },
+    variants: {},
 
-    plugins: [require('@tailwindcss/ui')({
-        layout: 'sidebar',
-    })],
+    plugins: [
+        require('@tailwindcss/ui'),
+        require('@tailwindcss/typography'),
+    ],
 };
