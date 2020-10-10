@@ -1,5 +1,6 @@
 <?php
 // TODO[mr]: check pull request https://github.com/laravel-frontend-presets/tall/pull/17 (10.10.20 mr)
+// TODO[mr]: check pull request https://github.com/laravel-frontend-presets/tall/pull/31 (10.10.20 mr)
 return [
 
     /*
