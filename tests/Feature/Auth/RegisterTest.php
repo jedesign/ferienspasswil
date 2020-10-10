@@ -51,7 +51,7 @@ class RegisterTest extends TestCase
             ->set('password', 'password')
             ->set('password_confirmation', 'password')
             ->call('register')
-            ->assertRedirect(route('dashboard'));
+            ->assertRedirect(route('verification.notice'));
 
         $this->assertTrue(User::whereEmail('tallstack@example.com')->exists());
         $this->assertEquals('tallstack@example.com', Auth::user()->email);
