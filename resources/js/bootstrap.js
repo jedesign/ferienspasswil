@@ -1,3 +1,6 @@
+import 'alpinejs';
+
+// TODO[mr]: check if lodash is needed (10.10.20 mr)
 window._ = require('lodash');
 
 /**
@@ -5,7 +8,7 @@ window._ = require('lodash');
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
-
+// TODO[mr]: check if axios is needed (10.10.20 mr)
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

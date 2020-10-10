@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\Auth\ConfirmPasswordController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Livewire\Auth\Login;
+use App\Http\Livewire\Auth\Passwords\Confirm;
+use App\Http\Livewire\Auth\Passwords\Email;
+use App\Http\Livewire\Auth\Passwords\Reset;
+use App\Http\Livewire\Auth\Register;
+use App\Http\Livewire\Auth\Verify;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,35 +20,37 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// TODO[mr]: ensure that registrations must validate mails (10.10.20 mr)
+Route::view('/', 'welcome')->name('home');
 
-// TODO[mr]: check if middlewares are needed (09.10.20 mr)
-// TODO[mr]: maybe refactor auth to livewire instead of pure blade (09.10.20 mr)
-// --- Auth Routes --- //
 Route::middleware('guest')->group(function () {
-    Route::view('/', 'home')->name('home');
-    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
-    Route::post('login', [LoginController::class, 'login']);
+    Route::get('login', Login::class)
+        ->name('login');
 
-    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-    Route::post('register', [RegisterController::class, 'register']);
+    Route::get('register', Register::class)
+        ->name('register');
 });
 
-Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+Route::get('password/reset', Email::class)
+    ->name('password.request');
+
+Route::get('password/reset/{token}', Reset::class)
+    ->name('password.reset');
 
 Route::middleware('auth')->group(function () {
-    Route::get('password/confirm', [ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
-    Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
+    Route::get('email/verify', Verify::class)
+        ->middleware('throttle:6,1')
+        ->name('verification.notice');
 
-    Route::get('email/verify', [VerificationController::class, 'show'])->middleware('throttle:6,1')->name('verification.notice');
-    Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
-    Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
-
-    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('password/confirm', Confirm::class)
+        ->name('password.confirm');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/dashboard', 'dashboard')->name('dashboard');
+Route::middleware('auth')->group(function () {
+    Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
+        ->middleware('signed')
+        ->name('verification.verify');
+
+    Route::post('logout', LogoutController::class)
+        ->name('logout');
 });
