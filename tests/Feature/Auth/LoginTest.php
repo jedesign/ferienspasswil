@@ -29,7 +29,7 @@ class LoginTest extends TestCase
         $this->be($user);
 
         $this->get(route('login'))
-            ->assertRedirect(route('home'));
+            ->assertRedirect(route('dashboard'));
     }
 
     /** @test */
@@ -46,7 +46,7 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function is_redirected_to_the_home_page_after_login()
+    public function is_redirected_to_the_dashboard_after_login()
     {
         $user = User::factory()->create(['password' => Hash::make('password')]);
 
@@ -54,7 +54,7 @@ class LoginTest extends TestCase
             ->set('email', $user->email)
             ->set('password', 'password')
             ->call('authenticate')
-            ->assertRedirect(route('home'));
+            ->assertRedirect(route('dashboard'));
     }
 
     /** @test */

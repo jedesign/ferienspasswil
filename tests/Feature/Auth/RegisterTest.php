@@ -2,15 +2,14 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\Guardian;
 use App\Models\User;
-use Tests\TestCase;
-use Livewire\Livewire;
-use Illuminate\Support\Facades\Hash;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
+use Livewire\Livewire;
+use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {
@@ -32,7 +31,7 @@ class RegisterTest extends TestCase
         $this->be($user);
 
         $this->get(route('register'))
-            ->assertRedirect(route('home'));
+            ->assertRedirect(route('dashboard'));
     }
 
     /** @test */
@@ -41,26 +40,106 @@ class RegisterTest extends TestCase
         Event::fake();
 
         Livewire::test('auth.register')
-            ->set('name', 'Tall Stack')
+            ->set('firstname', 'Tall')
+            ->set('lastname', 'Stack')
+            ->set('street', 'Stackstreet')
+            ->set('street_number', 'Street Number')
+            ->set('postcode', '1000')
+            ->set('city', 'Stacksonville')
+            ->set('phone', '0123456789')
             ->set('email', 'tallstack@example.com')
             ->set('password', 'password')
-            ->set('passwordConfirmation', 'password')
+            ->set('password_confirmation', 'password')
             ->call('register')
-            ->assertRedirect(route('home'));
+            ->assertRedirect(route('dashboard'));
 
         $this->assertTrue(User::whereEmail('tallstack@example.com')->exists());
         $this->assertEquals('tallstack@example.com', Auth::user()->email);
+        $this->assertInstanceOf(Guardian::class, Auth::user()->role);
 
         Event::assertDispatched(Registered::class);
     }
 
     /** @test */
-    function name_is_required()
+    function firstname_is_required()
     {
         Livewire::test('auth.register')
-            ->set('name', '')
+            ->set('firstname', '')
             ->call('register')
-            ->assertHasErrors(['name' => 'required']);
+            ->assertHasErrors(['firstname' => 'required']);
+    }
+
+    /** @test */
+    function lastname_is_required()
+    {
+        Livewire::test('auth.register')
+            ->set('lastname', '')
+            ->call('register')
+            ->assertHasErrors(['lastname' => 'required']);
+    }
+
+    /** @test */
+    function street_is_required()
+    {
+        Livewire::test('auth.register')
+            ->set('street', '')
+            ->call('register')
+            ->assertHasErrors(['street' => 'required']);
+    }
+
+    /** @test */
+    function street_number_is_optional()
+    {
+        Livewire::test('auth.register')
+            ->set('street_number', '')
+            ->call('register')
+            ->assertHasNoErrors(['street_number' => 'required']);
+    }
+
+    /** @test */
+    function postcode_is_required()
+    {
+        Livewire::test('auth.register')
+            ->set('postcode', '')
+            ->call('register')
+            ->assertHasErrors(['postcode' => 'required']);
+    }
+
+    /** @test */
+    function postcode_is_4_digits()
+    {
+        Livewire::test('auth.register')
+            ->set('postcode', '123')
+            ->call('register')
+            ->assertHasErrors(['postcode' => 'digits']);
+
+        Livewire::test('auth.register')
+            ->set('postcode', '12345')
+            ->call('register')
+            ->assertHasErrors(['postcode' => 'digits']);
+
+        Livewire::test('auth.register')
+            ->set('postcode', '1234')
+            ->call('register')
+            ->assertHasNoErrors(['postcode' => 'digits']);
+    }
+
+    /** @test */
+    function city_is_required()
+    {
+        Livewire::test('auth.register')
+            ->set('city', '')
+            ->call('register')
+            ->assertHasErrors(['city' => 'required']);
+    }
+
+    /** @test */
+    function phone_is_required()
+    {
+        Livewire::test('auth.register')
+            ->set('phone', '')
+            ->call('register')
+            ->assertHasErrors(['phone' => 'required']);
     }
 
     /** @test */
@@ -110,7 +189,7 @@ class RegisterTest extends TestCase
     {
         Livewire::test('auth.register')
             ->set('password', '')
-            ->set('passwordConfirmation', 'password')
+            ->set('password_confirmation', 'password')
             ->call('register')
             ->assertHasErrors(['password' => 'required']);
     }
@@ -120,7 +199,7 @@ class RegisterTest extends TestCase
     {
         Livewire::test('auth.register')
             ->set('password', 'secret')
-            ->set('passwordConfirmation', 'secret')
+            ->set('password_confirmation', 'secret')
             ->call('register')
             ->assertHasErrors(['password' => 'min']);
     }
@@ -131,8 +210,8 @@ class RegisterTest extends TestCase
         Livewire::test('auth.register')
             ->set('email', 'tallstack@example.com')
             ->set('password', 'password')
-            ->set('passwordConfirmation', 'not-password')
+            ->set('password_confirmation', 'not-password')
             ->call('register')
-            ->assertHasErrors(['password' => 'same']);
+            ->assertHasErrors(['password' => 'confirmed']);
     }
 }
