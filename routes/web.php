@@ -21,9 +21,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // TODO[mr]: ensure that registrations must validate mails (10.10.20 mr)
-Route::view('/', 'welcome')->name('home');
+Route::view('/', 'home')
+    ->name('home');
 
 Route::middleware('guest')->group(function () {
+
     Route::get('login', Login::class)
         ->name('login');
 
@@ -42,15 +44,19 @@ Route::middleware('auth')->group(function () {
         ->middleware('throttle:6,1')
         ->name('verification.notice');
 
-    Route::get('password/confirm', Confirm::class)
-        ->name('password.confirm');
-});
-
-Route::middleware('auth')->group(function () {
     Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
         ->middleware('signed')
         ->name('verification.verify');
 
+    Route::get('password/confirm', Confirm::class)
+        ->name('password.confirm');
+
+
     Route::post('logout', LogoutController::class)
         ->name('logout');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/dashboard', 'dashboard')
+        ->name('dashboard');
 });
