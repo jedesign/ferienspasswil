@@ -19,202 +19,204 @@
         </p>
     </div>
 
-    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-xl">
         <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
             <form wire:submit.prevent="register">
-                <div>
-                    <label for="firstname" class="block text-sm font-medium text-gray-700 leading-5">
-                        {{ __('Firstname') }}
-                    </label>
+                <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="firstname" class="block text-sm font-medium text-gray-700 leading-5">
+                            {{ __('Firstname') }}
+                        </label>
 
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input autocomplete="given-name"
-                               autofocus
-                               class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('firstname') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
-                               id="firstname"
-                               required
-                               type="text"
-                               wire:model.lazy="firstname"/>
+                        <div class="mt-1 rounded-md shadow-sm">
+                            <input autocomplete="given-name"
+                                   autofocus
+                                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('firstname') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
+                                   id="firstname"
+                                   required
+                                   type="text"
+                                   wire:model.lazy="firstname"/>
+                        </div>
+
+                        @error('firstname')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    @error('firstname')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="lastname" class="block text-sm font-medium text-gray-700 leading-5">
+                            {{ __('Lastname') }}
+                        </label>
 
-                <div class="mt-6">
-                    <label for="lastname" class="block text-sm font-medium text-gray-700 leading-5">
-                        {{ __('Lastname') }}
-                    </label>
+                        <div class="mt-1 rounded-md shadow-sm">
+                            <input autocomplete="family-name"
+                                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('lastname') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
+                                   id="lastname"
+                                   required
+                                   type="text"
+                                   wire:model.lazy="lastname"/>
+                        </div>
 
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input autocomplete="family-name"
-                               class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('lastname') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
-                               id="lastname"
-                               required
-                               type="text"
-                               wire:model.lazy="lastname"/>
+                        @error('lastname')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    @error('lastname')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <div class="col-span-6 sm:col-span-4">
+                        <label for="street" class="block text-sm font-medium text-gray-700 leading-5">
+                            {{ __('Street') }}
+                        </label>
 
-                <div class="mt-6">
-                    <label for="street" class="block text-sm font-medium text-gray-700 leading-5">
-                        {{ __('Street') }}
-                    </label>
+                        <div class="mt-1 rounded-md shadow-sm">
+                            <input
+                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('street') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
+                                id="street"
+                                required
+                                type="text"
+                                wire:model.lazy="street"/>
+                        </div>
 
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input
-                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('street') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
-                            id="street"
-                            required
-                            type="text"
-                            wire:model.lazy="street"/>
+                        @error('street')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    @error('street')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <div class="col-span-6 sm:col-span-2">
+                        <label for="street_number" class="block text-sm font-medium text-gray-700 leading-5">
+                            {{ __('Street Number') }}
+                        </label>
 
-                <div class="mt-6">
-                    <label for="street_number" class="block text-sm font-medium text-gray-700 leading-5">
-                        {{ __('Street Number') }}
-                    </label>
+                        <div class="mt-1 rounded-md shadow-sm">
+                            <input
+                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('street_number') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
+                                id="street_number"
+                                type="text"
+                                wire:model.lazy="street_number"/>
+                        </div>
 
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input
-                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('street_number') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
-                            id="street_number"
-                            type="text"
-                            wire:model.lazy="street_number"/>
+                        @error('street_number')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    @error('street_number')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <div class="col-span-6 sm:col-span-2">
+                        <label for="postcode" class="block text-sm font-medium text-gray-700 leading-5">
+                            {{ __('Postcode') }}
+                        </label>
 
-                <div class="mt-6">
-                    <label for="postcode" class="block text-sm font-medium text-gray-700 leading-5">
-                        {{ __('Postcode') }}
-                    </label>
+                        <div class="mt-1 rounded-md shadow-sm">
+                            <input
+                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('postcode') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
+                                id="postcode"
+                                required
+                                type="text"
+                                wire:model.lazy="postcode"/>
+                        </div>
 
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input
-                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('postcode') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
-                            id="postcode"
-                            required
-                            type="text"
-                            wire:model.lazy="postcode"/>
+                        @error('postcode')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    @error('postcode')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <div class="col-span-6 sm:col-span-4">
+                        <label for="city" class="block text-sm font-medium text-gray-700 leading-5">
+                            {{ __('City') }}
+                        </label>
 
-                <div class="mt-6">
-                    <label for="city" class="block text-sm font-medium text-gray-700 leading-5">
-                        {{ __('City') }}
-                    </label>
+                        <div class="mt-1 rounded-md shadow-sm">
+                            <input
+                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('city') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
+                                id="city"
+                                required
+                                type="text"
+                                wire:model.lazy="city"/>
+                        </div>
 
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input
-                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('city') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
-                            id="city"
-                            required
-                            type="text"
-                            wire:model.lazy="city"/>
+                        @error('city')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    @error('city')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
+                            {{ __('Email address') }}
+                        </label>
 
-                <div class="mt-6">
-                    <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
-                        {{ __('Email address') }}
-                    </label>
+                        <div class="mt-1 rounded-md shadow-sm">
+                            <input autocomplete="email"
+                                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('email') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
+                                   id="email"
+                                   required
+                                   type="email"
+                                   wire:model.lazy="email"/>
+                        </div>
 
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input autocomplete="email"
-                               class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('email') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
-                               id="email"
-                               required
-                               type="email"
-                               wire:model.lazy="email"/>
+                        @error('email')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    @error('email')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="phone" class="block text-sm font-medium text-gray-700 leading-5">
+                            {{ __('Phone') }}
+                        </label>
 
-                <div class="mt-6">
-                    <label for="phone" class="block text-sm font-medium text-gray-700 leading-5">
-                        {{ __('Phone') }}
-                    </label>
+                        <div class="mt-1 rounded-md shadow-sm">
+                            <input
+                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('phone') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
+                                id="phone"
+                                required
+                                type="text"
+                                wire:model.lazy="phone"/>
+                        </div>
 
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input
-                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('phone') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
-                            id="phone"
-                            required
-                            type="text"
-                            wire:model.lazy="phone"/>
+                        @error('phone')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    @error('phone')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="password" class="block text-sm font-medium text-gray-700 leading-5">
+                            {{ __('Password') }}
+                        </label>
 
-                <div class="mt-6">
-                    <label for="password" class="block text-sm font-medium text-gray-700 leading-5">
-                        {{ __('Password') }}
-                    </label>
+                        <div class="mt-1 rounded-md shadow-sm">
+                            <input autocomplete="new-password"
+                                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
+                                   id="password"
+                                   required
+                                   type="password"
+                                   wire:model.lazy="password"/>
+                        </div>
 
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input autocomplete="new-password"
-                               class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
-                               id="password"
-                               required
-                               type="password"
-                               wire:model.lazy="password"/>
+                        @error('password')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    @error('password')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700 leading-5">
+                            {{ __('Confirm Password') }}
+                        </label>
 
-                <div class="mt-6">
-                    <label for="password_confirmation" class="block text-sm font-medium text-gray-700 leading-5">
-                        {{ __('Confirm Password') }}
-                    </label>
-
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input autocomplete="new-password"
-                               class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 appearance-none rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                               id="password_confirmation"
-                               required
-                               type="password"
-                               wire:model.lazy="password_confirmation"/>
+                        <div class="mt-1 rounded-md shadow-sm">
+                            <input autocomplete="new-password"
+                                   class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 appearance-none rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                                   id="password_confirmation"
+                                   required
+                                   type="password"
+                                   wire:model.lazy="password_confirmation"/>
+                        </div>
                     </div>
-                </div>
 
-                <div class="mt-6">
+                    <div class="col-span-6">
                     <span class="block w-full rounded-md shadow-sm">
                         <button type="submit"
                                 class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
                             {{ __('Register') }}
                         </button>
                     </span>
+                    </div>
                 </div>
             </form>
         </div>
