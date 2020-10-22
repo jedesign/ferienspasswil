@@ -1,43 +1,84 @@
-@extends('layouts.app')
+@extends('layouts.dashboard.layout')
+
+@section('heading')
+    Dashboard
+@endsection
 
 @section('content')
-    <div class="flex flex-col justify-center min-h-screen py-12 bg-gray-50 sm:px-6 lg:px-8">
-        <div class="absolute top-0 right-0 mt-4 mr-4">
-            @if (Route::has('login'))
-                <div class="space-x-4">
-                    @auth
-                        <a
-                            href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                            class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
-                        >
-                            {{ __('Log out') }}
+    @php
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
+
+        /** @var \App\Models\Guardian $guardian */
+        $guardian = $user->guardian;
+    @endphp
+
+    <div class="col-span-6 lg:col-span-4">
+        <h2 class="text-2xl font-bold leading-tight text-gray-700 mb-6">{{__('Your Children')}}</h2>
+        <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:grid-cols-4">
+            @foreach($user->guardian->participants as $participant)
+                @php /** @var App\Models\Participant $participant */ @endphp
+                <li class="col-span-2 flex flex-col text-center bg-{{Arr::random(['pink-200','pink-300','teal-200','teal-300'])}} rounded-lg shadow hover:shadow-md">
+                    <div class="flex-1 flex flex-col p-8 relative">
+                        @php
+                        // https://www.flaticon.com/packs/kindergarden
+                        // TODO[mr]: attribute authors (22.10.20 mr)
+                        @endphp
+                        <img class="w-28 h-28 flex-shrink-0 mx-auto bg-gray-200 rounded-full"
+                             src="{{asset('img/avatar-'.$participant->gender.'.svg')}}"
+                             alt="">
+                        <h3 class="mt-5 text-gray-900 text-lg leading-5 font-medium">{{$participant->firstname}} {{$participant->lastname}}</h3>
+                        <dl class="mt-1 flex-grow flex flex-col justify-between">
+                            <dt class="sr-only">Attributes</dt>
+                            <dd class="mt-3">
+                                <span
+                                    class="px-2 py-1 text-teal-800 text-xs leading-4 font-medium bg-teal-100 rounded-full">{{$participant->birthdate->age}} Jahre</span>
+                                <span
+                                    class="px-2 py-1 text-teal-800 text-xs leading-4 font-medium bg-purple-100 rounded-full">{{$participant->school_grade}}. Klasse</span>
+                                <span
+                                    class="px-2 py-1 text-teal-800 text-xs leading-4 font-medium bg-red-100 rounded-full">{{!$participant->photos_allowed?'':'keine '}}Fotos erlaubt</span>
+                            </dd>
+                        </dl>
+                        <a href=""
+                           class="absolute top-0 right-0 w-8 h-8 mt-3 mr-3 text-gray-900 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors duration-150">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path
+                                    d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                            </svg>
                         </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    @else
-                        <a href="{{ route('login') }}"
-                           class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">{{__('Log in')}}</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}"
-                               class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">{{__('Register')}}</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-        </div>
-
-        <div class="flex items-center justify-center">
-            <div class="flex flex-col justify-around">
-                <div class="space-y-6">
-                    <h1 class="text-5xl font-extrabold tracking-wider text-center text-gray-600">
-                        {{__('Good to see you again,')}}<br>{{auth()->user()->fullname}}
-                    </h1>
-                </div>
-            </div>
-        </div>
+                    </div>
+                </li>
+            @endforeach
+            @php $newColor = Arr::random(['pink-200','pink-300','teal-200','teal-300']) @endphp
+            <li class="col-span-2 flex flex-col text-center rounded-lg border-8 border-{{$newColor}} shadow group hover:bg-{{$newColor}} hover:border-white hover:shadow-md">
+                <a href="" class="flex-1 flex flex-col relative items-center justify-center p-16">
+                    <span class="w-24 h-24 center text-{{$newColor}} group-hover:text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                  d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                  clip-rule="evenodd"/>
+                        </svg>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-span-6 lg:col-span-2">
+        <h2 class="text-2xl font-bold leading-tight text-gray-700 mb-6">{{__('Your Data')}}</h2>
+        <address
+            class="col-span-2 flex flex-col bg-yellow-100 rounded-lg shadow p-8 not-italic relative hover:shadow-md">
+            <h3 class="text-gray-900 text-lg leading-5 font-medium mb-3">{{$user->firstname}} {{$user->lastname}}</h3>
+            {{$guardian->street}} {{$guardian->street_number}} <br>
+            {{$guardian->postcode}} {{$guardian->city}} <br>
+            {{$user->phone}} <br>
+            {{$user->email}}
+            <a href=""
+               class="absolute top-0 right-0 w-8 h-8 mt-3 mr-3 text-gray-900 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors duration-150">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                </svg>
+            </a>
+        </address>
     </div>
 @endsection
