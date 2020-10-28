@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Guardian;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,9 @@ class DashboardTest extends TestCase
     /** @test */
     public function can_view_dashboard()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->for(
+            Guardian::factory(), 'role'
+        )->create();
 
         Auth::login($user);
         $response = $this->get(route('dashboard'));
