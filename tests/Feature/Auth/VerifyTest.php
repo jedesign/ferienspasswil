@@ -37,7 +37,7 @@ class VerifyTest extends TestCase
         Auth::login($user);
 
         $this->get(route('verification.notice'))
-            ->assertRedirect(route('dashboard'));
+            ->assertRedirect(route('dashboard.index'));
     }
 
     /** @test */
@@ -69,7 +69,7 @@ class VerifyTest extends TestCase
         ]);
 
         $this->get($url)
-            ->assertRedirect(route('dashboard'));
+            ->assertRedirect(route('dashboard.index'));
 
         $this->assertTrue($user->hasVerifiedEmail());
     }

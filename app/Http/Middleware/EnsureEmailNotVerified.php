@@ -23,7 +23,7 @@ class EnsureEmailNotVerified
             $request->user()->hasVerifiedEmail())) {
             return $request->expectsJson()
                     ? abort(403, 'Your email address is already verified.')
-                    : Redirect::route($redirectToRoute ?: 'dashboard');
+                    : Redirect::route($redirectToRoute ?: 'dashboard.index');
         }
 
         return $next($request);

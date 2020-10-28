@@ -20,7 +20,7 @@ class DashboardTest extends TestCase
         )->create();
 
         Auth::login($user);
-        $response = $this->get(route('dashboard'));
+        $response = $this->get(route('dashboard.index'));
 
         $response->assertSuccessful();
     }
@@ -28,7 +28,7 @@ class DashboardTest extends TestCase
     /** @test */
     public function must_be_authenticated()
     {
-        $response = $this->get(route('dashboard'));
+        $response = $this->get(route('dashboard.index'));
 
         $response->assertRedirect(route('login'));
     }
@@ -42,7 +42,7 @@ class DashboardTest extends TestCase
 
         Auth::login($user);
 
-        $response = $this->get(route('dashboard'));
+        $response = $this->get(route('dashboard.index'));
 
         $response->assertRedirect(route('verification.notice'));
     }

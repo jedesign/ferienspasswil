@@ -10,7 +10,7 @@ class Verify extends Component
     public function resend()
     {
         if (Auth::user()->hasVerifiedEmail()) {
-            return redirect(route('dashboard'));
+            return redirect(route('dashboard.index'));
         }
 
         Auth::user()->sendEmailVerificationNotification();

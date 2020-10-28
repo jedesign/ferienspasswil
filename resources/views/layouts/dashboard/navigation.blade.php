@@ -11,7 +11,7 @@
 
 
                     <div class="flex space-x-8">
-                        <a href="{{route('dashboard')}}"
+                        <a href="{{route('dashboard.index')}}"
                            class="inline-flex items-center px-1 pt-1 border-b-4 border-transparent text-sm font-medium leading-5 text-gray-900 focus:outline-none hover:border-yellow-300 focus:border-yellow-300 transition duration-150 ease-in-out">
                             {{__('Dashboard')}}
                         </a>
@@ -51,7 +51,7 @@
         <div class="py-3 border-t border-gray-200">
             <div role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
 
-                <a href="{{route('dashboard')}}"
+                <a href="{{route('dashboard.index')}}"
                    class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out"
                    role="menuitem">
                     {{__('Dashboard')}}
