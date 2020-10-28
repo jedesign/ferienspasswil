@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('body')
-    <div class="min-h-screen bg-blue-100">
+    <div class="min-h-screen bg-gradient-to-br from-cool-gray-100 to-blue-100">
         @include('layouts.dashboard.navigation')
         <div class="py-10">
             <header>
