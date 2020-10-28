@@ -18,11 +18,13 @@
         <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:grid-cols-4">
             @foreach($user->guardian->participants as $participant)
                 @php /** @var App\Models\Participant $participant */ @endphp
-                <li class="col-span-2 flex flex-col text-center bg-{{Arr::random(['pink-200','pink-300','teal-200','teal-300'])}} rounded-lg shadow hover:shadow-md">
+                @php $color =  Arr::random(['pink','teal']) @endphp
+                @php $shade =  Arr::random([200,300]) @endphp
+                <li class="col-span-2 flex flex-col text-center bg-gradient-to-br from-{{$color}}-{{$shade}} to-{{$color}}-{{$shade +100}} rounded-lg shadow hover:shadow-md">
                     <div class="flex-1 flex flex-col p-8 relative">
                         @php
-                        // https://www.flaticon.com/packs/kindergarden
-                        // TODO[mr]: attribute authors (22.10.20 mr)
+                            // https://www.flaticon.com/packs/kindergarden
+                            // TODO[mr]: attribute authors (22.10.20 mr)
                         @endphp
                         <img class="w-28 h-28 flex-shrink-0 mx-auto bg-gray-200 rounded-full"
                              src="{{asset('img/avatar-'.$participant->gender.'.svg')}}"
@@ -49,10 +51,10 @@
                     </div>
                 </li>
             @endforeach
-            @php $newColor = Arr::random(['pink-200','pink-300','teal-200','teal-300']) @endphp
-            <li class="col-span-2 flex flex-col text-center rounded-lg border-8 border-{{$newColor}} shadow group hover:bg-{{$newColor}} hover:border-white hover:shadow-md">
+            @php $color = Arr::random(['pink-200','pink-300','teal-200','teal-300']) @endphp
+            <li class="col-span-2 flex flex-col text-center rounded-lg border-8 border-{{$color}} shadow group hover:bg-{{$color}} hover:border-white hover:shadow-md">
                 <a href="" class="flex-1 flex flex-col relative items-center justify-center p-16">
-                    <span class="w-24 h-24 center text-{{$newColor}} group-hover:text-white">
+                    <span class="w-24 h-24 center text-{{$color}} group-hover:text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                                   d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
@@ -66,7 +68,7 @@
     <div class="col-span-6 lg:col-span-2">
         <h2 class="text-2xl font-bold leading-tight text-gray-700 mb-6">{{__('Your Data')}}</h2>
         <address
-            class="col-span-2 flex flex-col bg-yellow-100 rounded-lg shadow p-8 not-italic relative hover:shadow-md">
+            class="col-span-2 flex flex-col bg-gradient-to-br from-yellow-100 to-yellow-300 rounded-lg shadow p-8 not-italic relative hover:shadow-md">
             <h3 class="text-gray-900 text-lg leading-5 font-medium mb-3">{{$user->firstname}} {{$user->lastname}}</h3>
             {{$guardian->street}} {{$guardian->street_number}} <br>
             {{$guardian->postcode}} {{$guardian->city}} <br>
