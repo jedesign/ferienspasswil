@@ -7,4 +7,7 @@ Route::name('dashboard.')->prefix('dashboard')->middleware(['auth', 'verified'])
         ->name('index');
     Route::get('/profil', ['App\Http\Controllers\GuardianController', 'edit'])
         ->name('profile');
+
+    Route::get('/sja', ['App\Http\Controllers\GuardianController', 'editSja'])
+        ->name('sja');
 });

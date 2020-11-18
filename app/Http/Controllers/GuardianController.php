@@ -12,4 +12,11 @@ class GuardianController extends Controller
             'guardian' => auth()->user()->guardian,
         ]);
     }
+
+    public function editSja()
+    {
+        return view('dashboard.sja', [
+            'guardian' => auth()->user()->guardian,
+        ]);
+    }
 }
