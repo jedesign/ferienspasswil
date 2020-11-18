@@ -43,7 +43,7 @@ class Edit extends Component
             'postcode' => ['required', 'numeric', 'digits:4'],
             'city' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . auth()->user()->id . ',id'],
         ]);
         $user = auth()->user();
         $guardian = $user->guardian;
