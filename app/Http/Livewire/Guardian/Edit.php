@@ -62,6 +62,8 @@ class Edit extends Component
             'postcode' => $this->postcode,
             'city' => $this->city,
         ]);
+
+        $this->redirect(route('dashboard.index'));
     }
 
     public function render()
