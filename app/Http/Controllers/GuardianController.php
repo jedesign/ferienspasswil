@@ -8,7 +8,9 @@ class GuardianController extends Controller
 {
     public function edit()
     {
-        //
+        return view('profile', [
+            'guardian' => auth()->user()->guardian,
+        ]);
     }
 
     /**
