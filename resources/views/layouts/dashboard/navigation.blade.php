@@ -4,7 +4,7 @@
             <div class="flex sm:flex-1">
                 <div class="flex-shrink-0 flex items-center">
                     <img class="block h-8 w-auto"
-                         src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg" alt="{{config('app.name')}}">
+                         src="https://tailwindui.com/img/logos/v1/workflow-logo-on-white.svg" alt="{{config('app.name')}}">
 
                 </div>
                 <div class="hidden sm:-my-px sm:ml-6 space-x-8 sm:flex sm:justify-between sm:flex-1">
