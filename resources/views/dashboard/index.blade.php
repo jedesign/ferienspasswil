@@ -35,10 +35,10 @@
                                 <span
                                     class="px-2 py-1 text-teal-800 text-xs leading-4 font-medium bg-purple-100 rounded-full">{{$participant->school_grade}}. Klasse</span>
                                 <span
-                                    class="px-2 py-1 text-teal-800 text-xs leading-4 font-medium bg-red-100 rounded-full">{{!$participant->photos_allowed?'':'keine '}}Fotos erlaubt</span>
+                                    class="px-2 py-1 text-teal-800 text-xs leading-4 font-medium bg-red-100 rounded-full">{{$participant->photos_allowed?'':'keine '}}Fotos erlaubt</span>
                             </dd>
                         </dl>
-                        <a href=""
+                        <a href="{{route('dashboard.participant', compact('participant'))}}"
                            class="absolute top-0 right-0 w-8 h-8 mt-3 mr-3 text-gray-900 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors duration-150">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path

@@ -13,6 +13,9 @@ class Participant extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'firstname', 'lastname', 'birthdate', 'gender', 'school_grade', 'photos_allowed', 'note'
+    ];
     protected $casts = [
         'birthdate' => 'date'
     ];
