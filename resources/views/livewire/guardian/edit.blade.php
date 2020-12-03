@@ -95,7 +95,7 @@
             <span class="inline-flex rounded-md shadow-sm">
                   <a href="{{route('dashboard.sja')}}"
                       class="bg-gray-800 border border-transparent rounded-md py-2 px-4 inline-flex justify-center text-sm leading-5 font-medium text-white hover:bg-gray-700 focus:outline-none focus:border-gray-900 focus:ring-gray active:bg-gray-900 transition duration-150 ease-in-out">
-                    Antrag auf SJA
+                    Antrag auf SJA-Status
                   </a>
                 </span>
             {{-- TODO[mr]: do it right -> do you get it? -> make, that it is right on the right side, right? (18.11.20 rw) --}}
