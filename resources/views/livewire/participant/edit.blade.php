@@ -9,7 +9,7 @@
                 <div class="col-span-4 sm:col-span-2">
                     <label for="firstname" class="block text-sm font-medium leading-5 text-gray-700">Firstname</label>
                     <input autofocus
-                           class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                           class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                            id="firstname"
                            required
                            type="text"
@@ -20,7 +20,7 @@
                 <div class="col-span-4 sm:col-span-2">
                     <label for="lastname" class="block text-sm font-medium leading-5 text-gray-700">Lastname</label>
                     <input
-                        class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                         id="lastname"
                         required
                         type="text"
@@ -31,7 +31,7 @@
                 <div class="col-span-4 sm:col-span-2">
                     <label for="birthdate" class="block text-sm font-medium leading-5 text-gray-700">Birthdate</label>
                     <input
-                        class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                         id="birthdate"
                         required
                         type="date"
@@ -42,7 +42,7 @@
                 <div class="col-span-4 sm:col-span-2">
                     <label for="gender" class="block text-sm font-medium leading-5 text-gray-700">Gender</label>
                     <select id="gender"
-                            class="mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                            class="mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                             wire:model="gender"
                     >
                         <option value="m">männlich</option>
@@ -52,7 +52,7 @@
                 <div class="col-span-4 sm:col-span-2">
                     <label for="school_grade" class="block text-sm font-medium leading-5 text-gray-700">School grade</label>
                     <input
-                        class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                         id="school_grade"
                         required
                         type="number"
@@ -91,7 +91,7 @@
         <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <span class="inline-flex rounded-md shadow-sm">
                   <button type="submit"
-                          class="bg-gray-800 border border-transparent rounded-md py-2 px-4 inline-flex justify-center text-sm leading-5 font-medium text-white hover:bg-gray-700 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray active:bg-gray-900 transition duration-150 ease-in-out">
+                          class="bg-gray-800 border border-transparent rounded-md py-2 px-4 inline-flex justify-center text-sm leading-5 font-medium text-white hover:bg-gray-700 focus:outline-none focus:border-gray-900 focus:ring-gray active:bg-gray-900 transition duration-150 ease-in-out">
                     Save
                   </button>
                 </span>
