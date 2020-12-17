@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\Participant;
 
+use App\Models\Allergy;
 use App\Models\Participant;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -14,7 +16,9 @@ class Edit extends Component
     public string $gender;
     public int $school_grade;
     public bool $photos_allowed;
-    public ?string $note;
+    public ?string $note = null;
+    public array $allergies;
+    public Collection $availableAllergies;
 
     public Participant $participant;
 
@@ -27,6 +31,8 @@ class Edit extends Component
         $this->school_grade = $this->participant->school_grade;
         $this->photos_allowed = $this->participant->photos_allowed;
         $this->note = $this->participant->note;
+        $this->allergies = array_fill_keys($this->participant->allergies()->pluck('id')->toArray(), true);
+        $this->availableAllergies = Allergy::orderBy('title', 'asc')->get();
     }
 
     public function update()
@@ -38,7 +44,8 @@ class Edit extends Component
             'gender' => ['required', Rule::in(\App\Enums\Gender::getConstants())],
             'school_grade' => ['required', 'integer', 'min:1', 'max:6'],
             'photos_allowed' => ['boolean'],
-            'note' => ['string'],
+            'note' => ['nullable', 'string'],
+            'allergies' => ['array']
         ]);
 
         $this->participant->update([
@@ -50,6 +57,13 @@ class Edit extends Component
             'photos_allowed' => $this->photos_allowed,
             'note' => $this->note,
         ]);
+        foreach ($this->allergies as $id => $value) {
+            if (!$value) {
+                $this->participant->allergies()->detach($id);
+                continue;
+            }
+            $this->participant->allergies()->attach($id);
+        }
 
         $this->redirect(route('dashboard.index'));
     }

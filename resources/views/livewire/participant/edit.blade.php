@@ -1,8 +1,6 @@
 <form wire:submit.prevent="update">
     {{-- TODO[mr]: make responsive (18.11.20 mr) --}}
     {{-- TODO[mr]: add error styling and messages (18.11.20 mr) --}}
-    {{-- TODO[mr]: add allergies (18.11.20 mr) --}}
-
     <div class="shadow sm:rounded-md sm:overflow-hidden">
         <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
             <div class="grid grid-cols-4 gap-6">
@@ -50,7 +48,8 @@
                     </select>
                 </div>
                 <div class="col-span-4 sm:col-span-2">
-                    <label for="school_grade" class="block text-sm font-medium leading-5 text-gray-700">School grade</label>
+                    <label for="school_grade" class="block text-sm font-medium leading-5 text-gray-700">School
+                        grade</label>
                     <input
                         class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                         id="school_grade"
@@ -67,7 +66,9 @@
                     <div class="mt-6">
                         <div class="relative flex items-start">
                             <div class="flex items-center h-5">
-                                <input id="photos_allowed" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" wire:model="photos_allowed">
+                                <input id="photos_allowed" type="checkbox"
+                                       class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+                                       wire:model="photos_allowed">
                             </div>
                             <div class="ml-3 text-sm leading-5">
                                 <label for="photos_allowed" class="font-medium text-gray-700">Photos allowed</label>
@@ -84,6 +85,27 @@
                                   class="form-textarea mt-1 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                                   wire:model="note"
                         ></textarea>
+                    </div>
+                </div>
+                <div class="col-span-4">
+                    <p for="note" class="block text-sm font-medium leading-5 text-gray-700">Allergies</p>
+                    <div class="grid grid-cols-6 gap-6 mt-4">
+                        @php /** @var \App\Models\Allergy $allergy */@endphp
+                        @foreach($availableAllergies as $allergy)
+                            <div class="col-span-1">
+                                <div class="relative flex items-start">
+                                    <div class="flex items-center h-5">
+                                        <input id="allergy-{{$allergy->id}}" type="checkbox"
+                                               class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                                               wire:model="allergies.{{$allergy->id}}"
+                                        >
+                                    </div>
+                                    <div class="ml-3 text-sm">
+                                        <label for="allergy-{{$allergy->id}}" class="font-medium text-gray-700">{{$allergy->title}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
