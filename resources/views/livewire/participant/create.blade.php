@@ -1,7 +1,6 @@
 <form wire:submit.prevent="save">
     {{-- TODO[mr]: make responsive (18.11.20 mr) --}}
     {{-- TODO[mr]: add error styling and messages (18.11.20 mr) --}}
-    {{ $errors  }}
     <div class="shadow sm:rounded-md sm:overflow-hidden">
         <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
             <div class="grid grid-cols-4 gap-6">
