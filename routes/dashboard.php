@@ -13,5 +13,8 @@ Route::name('dashboard.')->prefix('dashboard')->middleware(['auth', 'verified'])
         ->name('sja');
 
     Route::get('/kind/{participant}', ['App\Http\Controllers\ParticipantController', 'edit'])
-        ->name('participant');
+        ->name('participant.edit');
+
+    Route::get('/kind', ['App\Http\Controllers\ParticipantController', 'create'])
+        ->name('participant.create');
 });

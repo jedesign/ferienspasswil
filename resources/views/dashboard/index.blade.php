@@ -38,7 +38,7 @@
                                     class="px-2 py-1 text-teal-800 text-xs leading-4 font-medium bg-red-100 rounded-full">{{$participant->photos_allowed?'':'keine '}}Fotos erlaubt</span>
                             </dd>
                         </dl>
-                        <a href="{{route('dashboard.participant', compact('participant'))}}"
+                        <a href="{{route('dashboard.participant.edit', compact('participant'))}}"
                            class="absolute top-0 right-0 w-8 h-8 mt-3 mr-3 text-gray-900 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors duration-150">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path
@@ -51,7 +51,7 @@
             @php $color =  Arr::random(['pink','teal']) @endphp
             @php $shade =  Arr::random([200,300]) @endphp
             <li class="col-span-2 flex flex-col text-center rounded-lg border-8 border-{{$color}}-{{$shade}} shadow group bg-gradient-to-br from-transparent to-transparent hover:from-{{$color}}-{{$shade}} hover:to-{{$color}}-{{$shade + 100}} hover:border-white hover:shadow-md">
-                <a href="" class="flex-1 flex flex-col relative items-center justify-center p-16">
+                <a href="{{route('dashboard.participant.create')}}" class="flex-1 flex flex-col relative items-center justify-center p-16">
                     <span class="w-24 h-24 center text-{{$color}}-{{$shade}} group-hover:text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"

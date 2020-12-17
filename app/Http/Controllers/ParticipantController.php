@@ -8,6 +8,12 @@ class ParticipantController extends Controller
 {
     public function edit(Participant $participant)
     {
-        return view('dashboard.participant', compact('participant'));
+        return view('dashboard.participant.edit', compact('participant'));
     }
+
+    public function create()
+    {
+        return view('dashboard.participant.create');
+    }
+
 }

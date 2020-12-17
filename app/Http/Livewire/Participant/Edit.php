@@ -14,7 +14,7 @@ class Edit extends Component
     public string $lastname;
     public string $birthdate;
     public string $gender;
-    public int $school_grade;
+    public string|int $school_grade;
     public bool $photos_allowed;
     public ?string $note = null;
     public array $allergies;
