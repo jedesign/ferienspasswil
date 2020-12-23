@@ -101,7 +101,8 @@
                                         >
                                     </div>
                                     <div class="ml-3 text-sm">
-                                        <label for="allergy-{{$allergy->id}}" class="font-medium text-gray-700">{{$allergy->title}}</label>
+                                        <label for="allergy-{{$allergy->id}}"
+                                               class="font-medium text-gray-700">{{$allergy->title}}</label>
                                     </div>
                                 </div>
                             </div>
@@ -115,8 +116,8 @@
                   <button type="submit"
                           class="bg-gray-800 border border-transparent rounded-md py-2 px-4 inline-flex justify-center text-sm leading-5 font-medium text-white hover:bg-gray-700 focus:outline-none focus:border-gray-900 focus:ring-gray active:bg-gray-900 transition duration-150 ease-in-out">
                     Save
-                  </button>
-                </span>
+                </button>
+            </span>
         </div>
     </div>
 </form>

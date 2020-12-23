@@ -110,13 +110,19 @@
                 </div>
             </div>
         </div>
-        <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                <span class="inline-flex rounded-md shadow-sm">
-                  <button type="submit"
-                          class="bg-gray-800 border border-transparent rounded-md py-2 px-4 inline-flex justify-center text-sm leading-5 font-medium text-white hover:bg-gray-700 focus:outline-none focus:border-gray-900 focus:ring-gray active:bg-gray-900 transition duration-150 ease-in-out">
+        <div class="px-4 py-3 bg-gray-50 sm:px-6 flex justify-between">
+            <span class="inline-flex rounded-md shadow-sm">
+                <a href="{{route('dashboard.index')}}"
+                   class="bg-gray-800 border border-transparent rounded-md py-2 px-4 inline-flex justify-center text-sm leading-5 font-medium text-white hover:bg-gray-700 focus:outline-none focus:border-gray-900 focus:ring-gray active:bg-gray-900 transition duration-150 ease-in-out">
+                    Cancel
+                </a>
+            </span>
+            <span class="inline-flex rounded-md shadow-sm">
+                <button type="submit"
+                        class="bg-gray-800 border border-transparent rounded-md py-2 px-4 inline-flex justify-center text-sm leading-5 font-medium text-white hover:bg-gray-700 focus:outline-none focus:border-gray-900 focus:ring-gray active:bg-gray-900 transition duration-150 ease-in-out">
                     Save
-                  </button>
-                </span>
+                </button>
+            </span>
         </div>
     </div>
 </form>
