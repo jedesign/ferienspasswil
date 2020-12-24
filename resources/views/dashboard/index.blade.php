@@ -26,7 +26,7 @@
                         <img class="w-28 h-28 flex-shrink-0 mx-auto bg-gray-200 rounded-full"
                              src="{{asset('img/avatar-'.$participant->gender.'.svg')}}"
                              alt="">
-                        <h3 class="mt-5 text-gray-900 text-lg leading-5 font-medium">{{$participant->firstname}} {{$participant->lastname}}</h3>
+                        <h3 class="mt-5 text-gray-900 text-lg leading-5 font-medium ">{{$participant->firstname}} {{$participant->lastname}}</h3>
                         <dl class="mt-1 flex-grow flex flex-col justify-between">
                             <dt class="sr-only">Attributes</dt>
                             <dd class="mt-3">
