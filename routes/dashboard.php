@@ -18,7 +18,6 @@ Route::name('dashboard.')->prefix('dashboard')->middleware(['auth', 'verified'])
     Route::get('/kind/{participant}', ['App\Http\Controllers\ParticipantController', 'edit'])
         ->name('participant.edit');
 
-    Route::get('/kind/loeschen/{participant}', ['App\Http\Controllers\ParticipantController', 'delete'])
+    Route::delete('/kind/{participant}', ['App\Http\Controllers\ParticipantController', 'delete'])
         ->name('participant.delete');
-
 });

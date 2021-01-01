@@ -18,7 +18,11 @@ class ParticipantController extends Controller
 
     public function delete(Participant $participant)
     {
-        return view('dashboard.participant.delete', compact('participant'));
-    }
+        $participant->allergies()->detach();
+        $participant->guardians()->detach();
+        $participant->courses()->detach();
+        $participant->delete();
 
+        return redirect(route('dashboard.index'));
+    }
 }
