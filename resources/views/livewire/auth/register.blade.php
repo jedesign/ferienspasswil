@@ -1,251 +1,114 @@
 @section('title', __('Create a new account'))
 
 <div>
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            {{ __('Create a new account') }}
-        </h2>
-        <p class="mt-2 text-center text-sm text-gray-600 max-w ">
-            {{ __('Or') }}
-            <a href="{{ route('login') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
-                {{ __('sign in to your account') }}
-            </a>
-        </p>
-    </div>
+    <h2>
+        {{ __('Create a new account') }}
+    </h2>
+    <p>
+        {{ __('Or') }}
+        <a href="{{ route('login') }}">
+            {{ __('sign in to your account') }}
+        </a>
+    </p>
 
-    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-xl">
-        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <form class="space-y-6" wire:submit.prevent="register">
-                <div class="grid grid-cols-4 gap-6">
-                    <div class="col-span-4 sm:col-span-2">
-                        <label for="email" class="block text-sm font-medium text-gray-700">
-                            Email address
-                        </label>
-                        <div class="mt-1">
-                            <input id="email" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-                    </div>
-
-                    <div class="col-span-4 sm:col-span-2">
-                        <label for="password" class="block text-sm font-medium text-gray-700">
-                            Password
-                        </label>
-                        <div class="mt-1">
-                            <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-                    </div>
-                </div>
-
-
-                <div>
-                    <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Sign in
-                    </button>
-                </div>
-            </form>
+    <form wire:submit.prevent="register">
+        <div>
+            <label for="firstname">{{ __('Firstname') }}</label>
+            <input autocomplete="given-name"
+                   autofocus
+                   id="firstname"
+                   required
+                   type="text"
+                   wire:model.lazy="firstname"/>
+            @error('firstname')<p>{{ $message }}</p>@enderror
         </div>
-    </div>
-    ---
-    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-xl">
-        <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-            <form wire:submit.prevent="register">
-                <div class="grid grid-cols-6 gap-6">
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="firstname" class="block text-sm font-medium text-gray-700 leading-5">
-                            {{ __('Firstname') }}
-                        </label>
 
-                        <div class="mt-1 rounded-md shadow-sm">
-                            <input autocomplete="given-name"
-                                   autofocus
-                                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('firstname') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror"
-                                   id="firstname"
-                                   required
-                                   type="text"
-                                   wire:model.lazy="firstname"/>
-                        </div>
-
-                        @error('firstname')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="lastname" class="block text-sm font-medium text-gray-700 leading-5">
-                            {{ __('Lastname') }}
-                        </label>
-
-                        <div class="mt-1 rounded-md shadow-sm">
-                            <input autocomplete="family-name"
-                                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('lastname') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror"
-                                   id="lastname"
-                                   required
-                                   type="text"
-                                   wire:model.lazy="lastname"/>
-                        </div>
-
-                        @error('lastname')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="col-span-6 sm:col-span-4">
-                        <label for="street" class="block text-sm font-medium text-gray-700 leading-5">
-                            {{ __('Street') }}
-                        </label>
-
-                        <div class="mt-1 rounded-md shadow-sm">
-                            <input
-                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('street') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror"
-                                id="street"
-                                required
-                                type="text"
-                                wire:model.lazy="street"/>
-                        </div>
-
-                        @error('street')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="col-span-6 sm:col-span-2">
-                        <label for="street_number" class="block text-sm font-medium text-gray-700 leading-5">
-                            {{ __('Street Number') }}
-                        </label>
-
-                        <div class="mt-1 rounded-md shadow-sm">
-                            <input
-                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('street_number') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror"
-                                id="street_number"
-                                type="text"
-                                wire:model.lazy="street_number"/>
-                        </div>
-
-                        @error('street_number')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="col-span-6 sm:col-span-2">
-                        <label for="postcode" class="block text-sm font-medium text-gray-700 leading-5">
-                            {{ __('Postcode') }}
-                        </label>
-
-                        <div class="mt-1 rounded-md shadow-sm">
-                            <input
-                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('postcode') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror"
-                                id="postcode"
-                                required
-                                type="text"
-                                wire:model.lazy="postcode"/>
-                        </div>
-
-                        @error('postcode')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="col-span-6 sm:col-span-4">
-                        <label for="city" class="block text-sm font-medium text-gray-700 leading-5">
-                            {{ __('City') }}
-                        </label>
-
-                        <div class="mt-1 rounded-md shadow-sm">
-                            <input
-                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('city') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror"
-                                id="city"
-                                required
-                                type="text"
-                                wire:model.lazy="city"/>
-                        </div>
-
-                        @error('city')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
-                            {{ __('Email address') }}
-                        </label>
-
-                        <div class="mt-1 rounded-md shadow-sm">
-                            <input autocomplete="email"
-                                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('email') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror"
-                                   id="email"
-                                   required
-                                   type="email"
-                                   wire:model.lazy="email"/>
-                        </div>
-
-                        @error('email')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="phone" class="block text-sm font-medium text-gray-700 leading-5">
-                            {{ __('Phone') }}
-                        </label>
-
-                        <div class="mt-1 rounded-md shadow-sm">
-                            <input
-                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('phone') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror"
-                                id="phone"
-                                required
-                                type="text"
-                                wire:model.lazy="phone"/>
-                        </div>
-
-                        @error('phone')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="password" class="block text-sm font-medium text-gray-700 leading-5">
-                            {{ __('Password') }}
-                        </label>
-
-                        <div class="mt-1 rounded-md shadow-sm">
-                            <input autocomplete="new-password"
-                                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('password') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red @enderror"
-                                   id="password"
-                                   required
-                                   type="password"
-                                   wire:model.lazy="password"/>
-                        </div>
-
-                        @error('password')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700 leading-5">
-                            {{ __('Confirm Password') }}
-                        </label>
-
-                        <div class="mt-1 rounded-md shadow-sm">
-                            <input autocomplete="new-password"
-                                   class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 appearance-none rounded-md focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                                   id="password_confirmation"
-                                   required
-                                   type="password"
-                                   wire:model.lazy="password_confirmation"/>
-                        </div>
-                    </div>
-
-                    <div class="col-span-6">
-                    <span class="block w-full rounded-md shadow-sm">
-                        <button type="submit"
-                                class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:ring-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                            {{ __('Register') }}
-                        </button>
-                    </span>
-                    </div>
-                </div>
-            </form>
+        <div>
+            <label for="lastname">{{ __('Lastname') }}</label>
+            <input autocomplete="family-name"
+                   id="lastname"
+                   required
+                   type="text"
+                   wire:model.lazy="lastname"/>
+            @error('lastname')<p>{{ $message }}</p>@enderror
         </div>
-    </div>
+
+        <div>
+            <label for="street">{{ __('Street') }}</label>
+            <input id="street"
+                   required
+                   type="text"
+                   wire:model.lazy="street"/>
+            @error('street')<p>{{ $message }}</p>@enderror
+        </div>
+
+        <div>
+            <label for="street_number">{{ __('Street Number') }}</label>
+            <input id="street_number"
+                   type="text"
+                   wire:model.lazy="street_number"/>
+            @error('street_number')<p>{{ $message }}</p>@enderror
+        </div>
+
+        <div>
+            <label for="postcode">{{ __('Postcode') }}</label>
+            <input id="postcode"
+                   required
+                   type="text"
+                   wire:model.lazy="postcode"/>
+            @error('postcode') <p>{{ $message }}</p> @enderror
+        </div>
+
+        <div>
+            <label for="city">{{ __('City') }}</label>
+            <input id="city"
+                   required
+                   type="text"
+                   wire:model.lazy="city"/>
+            @error('city')<p>{{ $message }}</p>@enderror
+        </div>
+
+        <div>
+            <label for="email">{{ __('Email address') }}</label>
+            <input autocomplete="email"
+                   id="email"
+                   required
+                   type="email"
+                   wire:model.lazy="email"/>
+            @error('email') <p>{{ $message }}</p> @enderror
+        </div>
+
+        <div>
+            <label for="phone">{{ __('Phone') }}</label>
+            <input id="phone"
+                   required
+                   type="text"
+                   wire:model.lazy="phone"/>
+            @error('phone') <p>{{ $message }}</p> @enderror
+        </div>
+
+        <div>
+            <label for="password">{{ __('Password') }}</label>
+
+            <input autocomplete="new-password"
+                   id="password"
+                   required
+                   type="password"
+                   wire:model.lazy="password"/>
+            @error('password') <p>{{ $message }}</p> @enderror
+        </div>
+
+        <div>
+            <label for="password_confirmation">{{ __('Confirm Password') }}</label>
+            <input autocomplete="new-password"
+                   id="password_confirmation"
+                   required
+                   type="password"
+                   wire:model.lazy="password_confirmation"/>
+        </div>
+
+        <div>
+            <button type="submit">{{ __('Register') }}</button>
+        </div>
+    </form>
 </div>
