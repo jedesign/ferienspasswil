@@ -16,6 +16,13 @@
     </div>
     <div class="col-span-6 lg:col-span-2 order-0 lg:order-1">
         <h2 class="text-2xl font-bold leading-tight text-gray-700 mb-6">{{__('Your Data')}}</h2>
-        <x-guardian.card :guardian="$guardian"/>
+        <x-card.user :user="$guardian">
+            {{$guardian->street}} {{$guardian->street_number}} <br>
+            {{$guardian->postcode}} {{$guardian->city}} <br>
+            {{$guardian->phone}} <br>
+            {{$guardian->email}}
+            <x-card.button-edit href="{{route('dashboard.profile')}}"/>
+        </x-card.user>
+{{--        <x-guardian.card :guardian="$guardian"/>--}}
     </div>
 @endsection
