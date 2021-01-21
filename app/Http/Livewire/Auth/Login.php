@@ -30,7 +30,15 @@ class Login extends Component
             return;
         }
 
-        return redirect()->intended(route('dashboard.index'));
+        $user = auth()->user();
+
+        if ($user->is_guardian) {
+            return redirect()->intended(route('dashboard.index'));
+        }
+
+        if ($user->is_employee) {
+            return redirect()->intended(route('admin.index'));
+        }
     }
 
     public function render()
