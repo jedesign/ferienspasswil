@@ -12,100 +12,71 @@
     </p>
 
     <form wire:submit.prevent="register">
-        <div>
-            <label for="firstname">{{ __('Firstname') }}</label>
-            <input autocomplete="given-name"
-                   autofocus
-                   id="firstname"
-                   required
-                   type="text"
-                   wire:model.lazy="firstname"/>
-            @error('firstname')<p>{{ $message }}</p>@enderror
-        </div>
-
-        <div>
-            <label for="lastname">{{ __('Lastname') }}</label>
-            <input autocomplete="family-name"
-                   id="lastname"
-                   required
-                   type="text"
-                   wire:model.lazy="lastname"/>
-            @error('lastname')<p>{{ $message }}</p>@enderror
-        </div>
-
-        <div>
-            <label for="street">{{ __('Street') }}</label>
-            <input id="street"
-                   required
-                   type="text"
-                   wire:model.lazy="street"/>
-            @error('street')<p>{{ $message }}</p>@enderror
-        </div>
-
-        <div>
-            <label for="street_number">{{ __('Street Number') }}</label>
-            <input id="street_number"
-                   type="text"
-                   wire:model.lazy="street_number"/>
-            @error('street_number')<p>{{ $message }}</p>@enderror
-        </div>
-
-        <div>
-            <label for="postcode">{{ __('Postcode') }}</label>
-            <input id="postcode"
-                   required
-                   type="text"
-                   wire:model.lazy="postcode"/>
-            @error('postcode') <p>{{ $message }}</p> @enderror
-        </div>
-
-        <div>
-            <label for="city">{{ __('City') }}</label>
-            <input id="city"
-                   required
-                   type="text"
-                   wire:model.lazy="city"/>
-            @error('city')<p>{{ $message }}</p>@enderror
-        </div>
-
-        <div>
-            <label for="email">{{ __('Email address') }}</label>
-            <input autocomplete="email"
-                   id="email"
-                   required
-                   type="email"
-                   wire:model.lazy="email"/>
-            @error('email') <p>{{ $message }}</p> @enderror
-        </div>
-
-        <div>
-            <label for="phone">{{ __('Phone') }}</label>
-            <input id="phone"
-                   required
-                   type="text"
-                   wire:model.lazy="phone"/>
-            @error('phone') <p>{{ $message }}</p> @enderror
-        </div>
-
-        <div>
-            <label for="password">{{ __('Password') }}</label>
-
-            <input autocomplete="new-password"
-                   id="password"
-                   required
-                   type="password"
-                   wire:model.lazy="password"/>
-            @error('password') <p>{{ $message }}</p> @enderror
-        </div>
-
-        <div>
-            <label for="password_confirmation">{{ __('Confirm Password') }}</label>
-            <input autocomplete="new-password"
-                   id="password_confirmation"
-                   required
-                   type="password"
-                   wire:model.lazy="password_confirmation"/>
-        </div>
+        <x-form.input
+            :autofocus="true"
+            :required="true"
+            autocomplete="given-name"
+            label="{{ __('Firstname') }}"
+            type="text"
+            wire:model.lazy="firstname"
+        />
+        <x-form.input
+            :required="true"
+            autocomplete="family-name"
+            label="{{ __('Lastname') }}"
+            type="text"
+            wire:model.lazy="lastname"
+        />
+        <x-form.input
+            :required="true"
+            label="{{ __('Street') }}"
+            type="text"
+            wire:model.lazy="street"
+        />
+        <x-form.input
+            label="{{ __('Street Number') }}"
+            type="text"
+            wire:model.lazy="street_number"
+        />
+        <x-form.input
+            :required="true"
+            label="{{ __('Postcode') }}"
+            type="text"
+            wire:model.lazy="postcode"
+        />
+        <x-form.input
+            :required="true"
+            label="{{ __('City') }}"
+            type="text"
+            wire:model.lazy="city"
+        />
+        <x-form.input
+            :required="true"
+            autocomplete="email"
+            label="{{ __('Email address') }}"
+            type="email"
+            wire:model.lazy="email"
+        />
+        <x-form.input
+            :required="true"
+            label="{{ __('Phone') }}"
+            type="text"
+            wire:model.lazy="phone"
+        />
+        <x-form.input
+            :required="true"
+            autocomplete="new-password"
+            label="{{ __('Password') }}"
+            type="password"
+            wire:model.lazy="password"
+        />
+        <x-form.input
+            :required="true"
+            autocomplete="new-password"
+            label="{{ __('Confirm Password') }}"
+            type="password"
+            wire:model.lazy="password_confirmation"
+        />
 
         <div>
             <button type="submit">{{ __('Register') }}</button>
