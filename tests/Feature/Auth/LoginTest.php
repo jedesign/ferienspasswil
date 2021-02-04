@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\Employee;
+use App\Models\Guardian;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
@@ -46,15 +48,29 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function is_redirected_to_the_dashboard_after_login()
+    public function guardian_is_redirected_to_the_dashboard_after_login()
     {
-        $user = User::factory()->create(['password' => Hash::make('password')]);
+        $guardian = Guardian::factory()->create();
+        $guardian->user()->create(User::factory()->raw(['password' => Hash::make('password')]));
 
         Livewire::test('auth.login')
-            ->set('email', $user->email)
+            ->set('email', $guardian->email)
             ->set('password', 'password')
             ->call('authenticate')
             ->assertRedirect(route('dashboard.index'));
+    }
+
+    /** @test */
+    public function employee_is_redirected_to_the_admin_page_after_login()
+    {
+        $employee = Employee::factory()->create();
+        $employee->user()->create(User::factory()->raw(['password' => Hash::make('password')]));
+
+        Livewire::test('auth.login')
+            ->set('email', $employee->email)
+            ->set('password', 'password')
+            ->call('authenticate')
+            ->assertRedirect(route('admin.index'));
     }
 
     /** @test */
