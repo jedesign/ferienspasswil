@@ -24,14 +24,29 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function is_redirected_if_already_logged_in()
+    public function a_guardian_is_redirected_if_already_logged_in()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->for(
+            Guardian::factory(), 'role'
+        )->create();
 
         $this->be($user);
 
         $this->get(route('login'))
             ->assertRedirect(route('dashboard.index'));
+    }
+
+    /** @test */
+    public function an_employee_is_redirected_if_already_logged_in()
+    {
+        $user = User::factory()->for(
+            Employee::factory(), 'role'
+        )->create();
+
+        $this->be($user);
+
+        $this->get(route('login'))
+            ->assertRedirect(route('admin.index'));
     }
 
     /** @test */
