@@ -69,7 +69,7 @@ class VisitorRegistersAsGuardianTest extends TestCase
         Event::assertDispatched(Registered::class);
     }
 
-    /** @see GuardianRegisterFormTest */
+    /** @see GuardianRegisterFormTest for all form elements */
 
     /** @test */
     public function unverified_guardian_can_view_verification_page()
@@ -128,4 +128,6 @@ class VisitorRegistersAsGuardianTest extends TestCase
 
         self::assertTrue($user->hasVerifiedEmail());
     }
+
+    /** @see VerifiedGuardianLogsInTest */
 }
