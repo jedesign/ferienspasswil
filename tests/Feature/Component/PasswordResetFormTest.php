@@ -1,69 +1,15 @@
 <?php
 
-namespace Tests\Feature\Auth\Passwords;
+namespace Tests\Feature\Component;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-class ResetTest extends TestCase
+class PasswordResetFormTest extends TestCase
 {
     use RefreshDatabase;
-
-    /** @test */
-    public function can_view_password_reset_page()
-    {
-        $user = User::factory()->create();
-
-        $token = Str::random(16);
-
-        DB::table('password_resets')->insert([
-            'email' => $user->email,
-            'token' => Hash::make($token),
-            'created_at' => Carbon::now(),
-        ]);
-
-        $this->get(route('password.reset', [
-            'email' => $user->email,
-            'token' => $token,
-        ]))
-            ->assertSuccessful()
-            ->assertSee($user->email)
-            ->assertSeeLivewire('auth.passwords.reset');
-    }
-
-    /** @test */
-    public function can_reset_password()
-    {
-        $user = User::factory()->create();
-
-        $token = Str::random(16);
-
-        DB::table('password_resets')->insert([
-            'email' => $user->email,
-            'token' => Hash::make($token),
-            'created_at' => Carbon::now(),
-        ]);
-
-        Livewire::test('auth.passwords.reset', [
-            'token' => $token,
-        ])
-            ->set('email', $user->email)
-            ->set('password', 'new-password')
-            ->set('password_confirmation', 'new-password')
-            ->call('resetPassword');
-
-        $this->assertTrue(Auth::attempt([
-            'email' => $user->email,
-            'password' => 'new-password',
-        ]));
-    }
 
     /** @test */
     public function token_is_required()

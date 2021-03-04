@@ -1,21 +1,22 @@
 <?php
 
-namespace Tests\Feature\Auth;
+namespace Tests\Feature\Story;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
-class LogoutTest extends TestCase
+class UserLogsOutTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function an_authenticated_user_can_log_out()
+    public function user_can_log_out()
     {
-        $user = User::factory()->create();
-        $this->be($user);
+        Auth::login(User::factory()->create());
+
+        $this->get(route('home'))->assertSee(route('logout'));
 
         $this->post(route('logout'))
             ->assertRedirect(route('home'));
@@ -24,8 +25,10 @@ class LogoutTest extends TestCase
     }
 
     /** @test */
-    public function an_unauthenticated_user_can_not_log_out()
+    public function visitor_can_not_log_out()
     {
+        $this->get(route('home'))->assertDontSee(route('logout'));
+
         $this->post(route('logout'))
             ->assertRedirect(route('login'));
 

@@ -5,6 +5,7 @@ namespace Tests\Feature\Story;
 use App\Models\Guardian;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,6 @@ class VisitorRegistersAsGuardianTest extends TestCase
     function registration_page_contains_livewire_component()
     {
         $this->get(route('register'))
-            ->assertSuccessful()
             ->assertSeeLivewire('auth.register');
     }
 
@@ -106,6 +106,7 @@ class VisitorRegistersAsGuardianTest extends TestCase
     /** @test */
     public function unverified_guardian_can_verify_email()
     {
+        Event::fake();
         $user = User::factory()->for(
             Guardian::factory(), 'role'
         )->create([
@@ -123,11 +124,33 @@ class VisitorRegistersAsGuardianTest extends TestCase
             ]
         );
 
-        $this->get($url)
-            ->assertRedirect(route('dashboard.index'));
+        $this->get($url)->assertRedirect(route('login'));
 
+        Event::assertDispatched(Verified::class);
         self::assertTrue($user->hasVerifiedEmail());
     }
 
-    /** @see VerifiedGuardianLogsInTest */
+    /** @test */
+    public function guardian_can_not_verify_email_again()
+    {
+        Event::fake();
+
+        $user = User::factory()->for(
+            Guardian::factory(), 'role'
+        )->create();
+
+        Auth::login($user);
+
+        $url = URL::temporarySignedRoute(
+            'verification.verify',
+            Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),
+            [
+                'id' => $user->getKey(),
+                'hash' => sha1($user->getEmailForVerification()),
+            ]
+        );
+
+        $this->get($url)->assertRedirect(route('login'));
+        Event::assertNotDispatched(Verified::class);
+    }
 }
