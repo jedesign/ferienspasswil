@@ -42,14 +42,3 @@
         @endif
     </div>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
