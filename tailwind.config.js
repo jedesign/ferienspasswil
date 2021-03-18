@@ -2,14 +2,10 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-    purge: {
-        content: [
-            './app/**/*.php',
-            './resources/**/*.html',
-            './resources/**/*.js',
-            './resources/**/*.php',
-        ],
-    },
+    purge: [
+        './app/**/*.php',
+        './resources/**/*.{html,js,php}',
+    ],
     darkMode: false,
     theme: {
         extend: {
