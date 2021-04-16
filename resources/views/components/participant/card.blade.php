@@ -1,3 +1,5 @@
+{{-- from-pink-200 from-pink-300 to-pink-300 to-pink-400 --}}
+{{-- from-teal-200 from-teal-300 to-teal-300 to-teal-400 --}}
 @php $color =  Arr::random(['pink','teal']) @endphp
 @php $shade =  Arr::random([200,300]) @endphp
 <li class="col-span-2 flex flex-col text-center bg-gradient-to-br from-{{$color}}-{{$shade}} to-{{$color}}-{{$shade +100}} rounded-lg shadow hover:shadow-md">
