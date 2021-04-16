@@ -22,6 +22,7 @@ class CreateCoursesTable extends Migration
             $table->string('canceled_due_to_other_reason')->nullable();
             $table->dateTime('beginning');
             $table->dateTime('end');
+            $table->enum('day_span', \App\Enums\DaySpan::getConstants());
             $table->unsignedInteger('min_participants')->default(5);
             $table->unsignedInteger('max_participants');
             $table->boolean('weather_sensitive')->default(false);

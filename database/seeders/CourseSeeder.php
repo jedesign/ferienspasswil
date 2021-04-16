@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Enums\DaySpan;
 use App\Models\Course;
+use Carbon\Carbon;
+use Carbon\Traits\Creator;
 use Illuminate\Database\Seeder;
 
 class CourseSeeder extends Seeder
@@ -15,9 +18,8 @@ class CourseSeeder extends Seeder
     public function run()
     {
         // Recreate the status from 2020
-
-        // Woche 1: Montag 06.07.2020
-        Course::factory()->createMany([
+        $courses = [
+            // Woche 1: Montag 06.07.2020
             [
                 'title' => 'Fitness im Freien',
                 'description' => 'Um fit zu bleiben, muss man nicht viel Geld bezahlen. Dies geht auch ganz einfach auf der Strasse oder zu Hause. Dabei brauchen wir nichts, ausser unseren Körper. Wir zeigen dir, wie das geht. Falls du selbst Ideen hast, nimm diese einfach mit.',
@@ -85,11 +87,8 @@ class CourseSeeder extends Seeder
                 'clothes' => 'Sportkleidung',
                 'bring_alongs' => 'Getränk, Zwischenverpflegung',
                 'price' => 12
-            ]
-        ]);
-
-        // Woche 1: Dienstag 07.07.2020
-        Course::factory()->createMany([
+            ],
+            // Woche 1: Dienstag 07.07.2020
             [
                 'title' => 'Abstrakte Kunst',
                 'description' => 'Abstrakte Kunst ist eine Sammelbezeichnung für eine eigene Kunstrichtungen des 20. Jahrhunderts. Gemeinsam entfernen wir uns von der realen Welt und erschaffen ein einzigartiges Kunstwerk mit Hilfe von verschiedenen Maltechniken.',
@@ -158,10 +157,7 @@ class CourseSeeder extends Seeder
                 'bring_alongs' => 'Haushaltspapierrolle',
                 'price' => 8
             ],
-        ]);
-
-        // Woche 1: Mittwoch 08.07.2020
-        Course::factory()->createMany([
+            // Woche 1: Mittwoch 08.07.2020
             [
                 'title' => 'Auf in den Untergrund!',
                 'description' => 'Was hat es eigentlich unter den Strassen von Wil? Weisst du schon von den Tunneln die unsere Stadt sauber halten? Du hast mit uns die einmalige Chance unter fachkundiger Führung in die Kanäle hinabzusteigen und spannende Orte zu entdecken.',
@@ -230,10 +226,7 @@ class CourseSeeder extends Seeder
                 'bring_alongs' => 'Getränk, Zwischenverpflegung',
                 'price' => 12
             ],
-        ]);
-
-        // Woche 1: Donnerstag 09.07.2020
-        Course::factory()->createMany([
+            // Woche 1: Donnerstag 09.07.2020
             [
                 'title' => 'Besuch im Tierheim',
                 'description' => 'Wir wagen es und stellen Papier für einmal selber her. Natürlich vergessen wir dabei auch die Umwelt nicht. Wir recyclen altes Papier und stellen daraus "neues" und schön verziertes (Brief-) Papier her. Sei dabei und staune, wie einfach man aus Altpapier Neues entstehen lassen kann.',
@@ -319,10 +312,7 @@ class CourseSeeder extends Seeder
                 'bring_alongs' => 'Zwischenverpflegung, Getränk',
                 'price' => 8
             ],
-        ]);
-
-        // Woche 1: Freiatg 10.07.2020
-        Course::factory()->createMany([
+            // Woche 1: Freiatg 10.07.2020
             [
                 'title' => 'Technorama',
                 'description' => 'Wir entdecken gemeinsam die faszinierende Welt im Technorama in Winterthur. Dabei begegnen uns Magnetizität, Licht, Wasser, klingendes Holz, Elektrizität und vieles mehr. Lass uns experimentieren.',
@@ -374,10 +364,7 @@ class CourseSeeder extends Seeder
                 'bring_alongs' => 'Zwischenverpflegung, Getränk',
                 'price' => 12
             ],
-        ]);
-
-        // Woche 2: Montag 13.07.2020
-        Course::factory()->createMany([
+            // Woche 2: Montag 13.07.2020
             [
                 'title' => 'Comic zeichnen',
                 'description' => 'Comics prägen seit vielen Jahren junge und erwachsene Menschen. Es gibt sie in Büchern, Zeitschriften oder Zeitungen. Hast du Lust in die Comicwelt einzutauchen und zu lernen, wie man diese zeichnet? Dann bist du hier genau richtig!\n\nDies ist ein ganztägiges Kursangebot ohne Mittagsbetreuung, 09:00 Uhr bis 12:00 Uhr und 14:00 Uhr bis 17:00 Uhr.',
@@ -480,10 +467,7 @@ class CourseSeeder extends Seeder
                 'bring_alongs' => 'Getränk, Zwischenverpflegung, Gegenstände in gutem und sauberem Zustand für einen fairen Flohmarkttausch, Wolldecke oder Tuch',
                 'price' => 5
             ],
-        ]);
-
-        // Woche 2: Dienstag 14.07.2020
-        Course::factory()->createMany([
+            // Woche 2: Dienstag 14.07.2020
             [
                 'title' => 'Halter aus Stein und Draht',
                 'description' => 'Selbstgemachte Kartenhalter aus Steinen & Draht sind eine hübsche Geschenkidee, dienen als individuelle Bilderhalter für Fotos oder sind als Tischkartenhalter ein Blickfang auf dem gedeckten Tisch. Mit etwas Acrylfarbe, Draht und bunten Perlen machen wir daraus hübsche Kartenhalter. Im Anschluss dürft ihr mit einer Sofortbildkamera noch ein paar Bilder schiessen, um die Halter einzuweihen.',
@@ -552,10 +536,7 @@ class CourseSeeder extends Seeder
                 'bring_alongs' => '',
                 'price' => 5
             ],
-        ]);
-
-        // Woche 2: Mittwoch 15.07.2020
-        Course::factory()->createMany([
+            // Woche 2: Mittwoch 15.07.2020
             [
                 'title' => 'Bubblesoccer - Fussball mal anders',
                 'description' => 'Bubblesoccer ist eine Mischung aus Wrestling und Fussball mit höchstem Spassfaktor. Hier befindest du dich bis zur Hälfte in einer überdimensionalen luftgefüllten „Bubble“. Anders als beim Fussball ist beim Bubblesoccer foulen erlaubt, da durch die Bubble niemand verletzt werden kann. Du wirst es lieben!\n\nDurchführung nur bei gutem Wetter.\nWetter-Hotline ab 18:00 Uhr am Vortag auf www.ferienspasswil.ch',
@@ -641,10 +622,7 @@ class CourseSeeder extends Seeder
                 'bring_alongs' => '',
                 'price' => 8
             ],
-        ]);
-
-        // Woche 2: Donnerstag 16.07.2020
-        Course::factory()->createMany([
+            // Woche 2: Donnerstag 16.07.2020
             [
                 'title' => 'Claude Monets Seerosen',
                 'description' => 'Claude Monet war ein bedeutender französischer Maler, dessen Stilrichtung dem Impressionismus zugeordnet wird. Ein beliebtes und bekanntes Motiv sind seine Seerosen. An dieses Motiv werden wir uns heranwagen und einen eigenen Claude Monet zaubern.',
@@ -696,10 +674,7 @@ class CourseSeeder extends Seeder
                 'bring_alongs' => 'Getränk, Zwischenverpflegung, Ergänzung zum Mittagsangebot',
                 'price' => 0
             ],
-        ]);
-
-        // Woche 2: Freitag 17.07.2020
-        Course::factory()->createMany([
+            // Woche 2: Freitag 17.07.2020
             [
                 'title' => 'Auf Rollen',
                 'description' => 'Ob Skates, BMX oder Scooter. Im Skillspark in Winterthur kannst du dich auf Rollen austoben. Um dabei zu sein, brauchst du keine Vorkenntnisse. Wenn auch du Lust hast, dich im Skillspark auszuleben, dann melde dich an!',
@@ -717,6 +692,10 @@ class CourseSeeder extends Seeder
                 'bring_alongs' => 'Getränk, Zwischenverpflegung, Velohelm, Scooter oder Skates, Antirutschsocken',
                 'price' => 20
             ],
-        ]);
+        ];
+
+        foreach ($courses as $course) {
+            Course::factory()->create(array_merge($course, ['day_span'=> DaySpan::determineSpan(new Carbon($course['beginning']), new Carbon($course['end']))]));
+        }
     }
 }
