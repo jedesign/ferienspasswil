@@ -5,6 +5,31 @@ The visitor visits the homepage.
 
 The visitor sees the weather information on the homepage.
 
+The visitor sees some individual information on the homepage.
+
+The visitor visits the gallery page ...
+... and sees the images of the current year by course
+... and sees an archive of images of the previous years by year and course
+
+The visitor visits the team page ...
+... and sees information about the team.
+
+The visitor visits the faq page ...
+... and sees several questions and answers.
+
+The visitor sees the branding in the footer.
+
+### contact
+The visitor visits the contact page ...
+... and sees the contact information.
+... and sees the contact form.
+
+The visitor inserts her/his contact information and submits the form.
+
+The visitor gets a notification mail.
+
+The admin gets a contact mail.
+
 ## the booker
 The booker visits the homepage ...
 ... and navigates to the course shop.
@@ -35,6 +60,7 @@ The checkout is blocked because ...
 ## the Guardian
 The to-be-guardian visits the homepage ...
 ... and registers for a guardian.
+... and gets a mail notification for the account creation.
 The new guardian needs to confirm his email address.
 
 After that, the guardian logs in.
@@ -129,7 +155,7 @@ The employee views all courses, which are weather sensitive.
 
 There the employee can initiate ...
 ... the cancellation of a weather sensitive course.
-... the aproval of a weather sensitive course.
+... the approval of a weather sensitive course.
 
 ### overviews
 The employee navigates to an overview for...
