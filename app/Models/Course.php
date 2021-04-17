@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\CourseSpanCalculated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -18,6 +19,10 @@ class Course extends Model
     protected $casts = [
         'beginning' => 'datetime',
         'end' => 'datetime',
+    ];
+
+    protected $dispatchesEvents = [
+        'saving' => CourseSpanCalculated::class
     ];
 
     public function allergies(): BelongsToMany

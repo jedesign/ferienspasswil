@@ -2,10 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\DaySpan;
 use App\Models\Course;
-use Carbon\Carbon;
-use Carbon\Traits\Creator;
 use Illuminate\Database\Seeder;
 
 class CourseSeeder extends Seeder
@@ -15,10 +12,10 @@ class CourseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         // Recreate the status from 2020
-        $courses = [
+        Course::factory()->createMany([
             // Woche 1: Montag 06.07.2020
             [
                 'title' => 'Fitness im Freien',
@@ -692,10 +689,6 @@ class CourseSeeder extends Seeder
                 'bring_alongs' => 'Getränk, Zwischenverpflegung, Velohelm, Scooter oder Skates, Antirutschsocken',
                 'price' => 20
             ],
-        ];
-
-        foreach ($courses as $course) {
-            Course::factory()->create(array_merge($course, ['day_span'=> DaySpan::determineSpan(new Carbon($course['beginning']), new Carbon($course['end']))]));
-        }
+        ]);
     }
 }
