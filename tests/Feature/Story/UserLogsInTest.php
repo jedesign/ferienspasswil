@@ -3,6 +3,7 @@
 namespace Tests\Feature\Story;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\Component\LoginFormTest;
 use Tests\Feature\HomeTest;
 use Tests\TestCase;
 
@@ -30,6 +31,8 @@ class UserLogsInTest extends TestCase
         $this->get(route('login'))
             ->assertSeeLivewire('auth.login');
     }
+
+    /** @see LoginFormTest for all form elements */
 
     /** @see GuardianLogsInTest */
     /** @see EmployeeLogsInTest */

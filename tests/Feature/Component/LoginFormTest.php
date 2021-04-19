@@ -40,6 +40,8 @@ class LoginFormTest extends TestCase
             ->assertHasErrors(['password' => 'required']);
     }
 
+    /** @see PasswordConfirmFormTest */
+
     /** @test */
     public function bad_login_attempt_shows_message()
     {

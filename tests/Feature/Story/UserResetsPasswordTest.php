@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Livewire\Livewire;
+use Tests\Feature\Component\PasswordRequestFormTest;
 use Tests\TestCase;
 
 class UserResetsPasswordTest extends TestCase
@@ -26,6 +27,7 @@ class UserResetsPasswordTest extends TestCase
             ->assertSeeLivewire('auth.passwords.email');
     }
 
+    /** @see PasswordRequestFormTest */
 
     /** @test */
     public function user_enters_a_valid_email_address_and_gets_an_email_for_password_reset()
