@@ -56,6 +56,8 @@ The checkout is blocked because ...
 ... one participant is assigned to several courses, which take place at overlapping times.
 ... one participant's grade is not matching with the condition of a course.
 
+The booker checks out and gets an email with all booked courses.
+Also does the admin.
 
 ## the Guardian
 The to-be-guardian visits the homepage ...
@@ -65,13 +67,15 @@ The new guardian needs to confirm his email address.
 
 After that, the guardian logs in.
 
-Now the guardian visits the dashboard ...
+Now the guardian visits the dashboard and ...
 ... sees her profile.
 ... sees some space for participants and their courses.
 ... can navigate to cost overview.
 ... can navigate to packing list.
 ... can navigate to compact participant-and-course overview.
 ... sees some customized information.
+
+If the guardian logs in the first time this year, her/he will be asked, if he/she wants to increase the participants grade by 1.
 
 ### profile
 In her/his profile the guardian is able to edit ...
@@ -93,6 +97,9 @@ The guardian organizes participants data by ...
 The guardian views booked courses attached to the participants.
 
 The guardian is able to cancel booked courses.
+
+The guardian gets an email, after he canceled a booked course.
+Also does the admin.
 
 ### overviews
 The guardian ...
@@ -140,6 +147,11 @@ For support purposes the employee is able to...
 ... edit the guardians' profiles.
 ... view all participants.
 ... edit the participants' data.
+... view all the bookings.
+... edit the bookings' data.
+
+The employee sees a duplicate-warning, if there are duplicated participants.
+The employee can merge duplicates of participants.
 
 ### courses
 Further more the employee manages courses by ...
@@ -183,3 +195,12 @@ The employee defines the time of ...
 
 ### farewell
 Finally, the employee logs out.
+
+## system
+At the registration start, the admin gets notified by an email.
+
+At the registration end, the admin gets notified by an email.
+
+After the registration end, all guardians receive an email with an overview of all their bookings.
+
+The day before the course, the guardian receives an email notification with all important information.
