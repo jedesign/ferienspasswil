@@ -91,7 +91,7 @@
 
 ### course page
 
-- [ ] The visitor navigates to the course shop.
+- [x] The visitor navigates to the course shop.
     - [ ] The visitor sees a course overview with weather status at weather sensitive courses.
     - [ ] The visitor navigates to a course.
         - [ ] The visitor sees the course information.
