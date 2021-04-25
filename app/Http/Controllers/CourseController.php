@@ -16,7 +16,6 @@ class CourseController extends Controller
     public function index(): Factory|View|Application
     {
         $coursesPerDay = [];
-        $courses = Course::orderBy('beginning')->get();
         $courses = Course::where('state', '!=', CourseState::DRAFT)->orderBy('beginning')->get();
         // TODO[mr]: filter only used cols (25.04.21 mr)
 //        $courses = Course::orderBy('beginning')->get(['title', 'beginning', 'end', 'day_span']);
