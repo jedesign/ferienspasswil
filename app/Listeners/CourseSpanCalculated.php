@@ -10,6 +10,9 @@ class CourseSpanCalculated
 {
     public function handle(CourseSpanCalculatedEvent $event): void
     {
-        $event->course->day_span = DaySpan::determineSpan(new Carbon($event->course->beginning), new Carbon($event->course->end));
+        $event->course->day_span = DaySpan::determineSpan(
+            new Carbon($event->course->beginning),
+            new Carbon($event->course->end)
+        );
     }
 }

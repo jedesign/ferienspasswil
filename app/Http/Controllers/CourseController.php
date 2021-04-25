@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\DaySpan;
 use App\Models\Course;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
@@ -27,14 +28,16 @@ class CourseController extends Controller
 
         foreach ($period as $day) {
             if ($day->isWeekday()) {
-                $coursesPerDay[$day->format('Ymd')] = ['day' => $day, 'courses' => []];
+                $coursesPerDay[$day->format('Ymd')] = ['day' => $day];
+                foreach (DaySpan::getConstants() as $span) {
+                    $coursesPerDay[$day->format('Ymd')][$span] = [];
+                }
             }
         }
 
         /** @var Course $course */
         foreach ($courses as $course) {
-            // TODO[mr]: sort courses in separate arrays inside day following the dayspan logic (16.04.21 mr)
-            $coursesPerDay[$course->beginning->format('Ymd')]['courses'][] = $course;
+            $coursesPerDay[$course->beginning->format('Ymd')][$course->day_span][] = $course;
         }
 
         return view('course.index', compact('coursesPerDay'));
