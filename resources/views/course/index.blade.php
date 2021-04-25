@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    {{-- TODO[mr]: maybe this: https://codepen.io/chriscoyier/pen/pMRgwW (25.04.21 mr) --}}
     <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 px-2 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-4 ">
             @foreach($coursesPerDay as $day)
