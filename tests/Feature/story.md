@@ -34,32 +34,6 @@
         - [ ] The visitor gets a notification mail.
         - [ ] The admin gets a contact mail.
 
-### course page
-
-- [ ] The visitor navigates to the course shop.
-    - [ ] The visitor sees a course overview with weather status at weather sensitive courses.
-    - [ ] The visitor navigates to a course.
-        - [ ] The visitor sees the course information.
-        - [ ] The visitor sees the weather status at weather sensitive courses.
-
-#### booking
-
-- [ ] The visitor tries to book a course by clicking on the book-button.
-- [ ] The visitor gets an explanations, how she/he needs to proceed.
-    - [ ] The visitor is able to log in.
-    - [ ] The visitor is able to redirect to the Register Page.
-    - As soon as the visitor is logged in as a guardian, ...
-        - [ ] she/he adds a booking to the shopping chart.
-        - [ ] she/he adds another participant to the same booking.
-        - [ ] she/he removes a participant from the same booking.
-        - [ ] she/he removes a booking from the shopping chart.
-    - The checkout is blocked because ...
-        - [ ] one participant is assigned to several courses, which take place at overlapping times.
-        - [ ] one participant's grade is not matching with the condition of a course.
-    - [ ] The guardian checks out.
-        - [ ] The guardian gets an email with all booked courses.
-        - [ ] Also does the admin.
-
 ### register
 
 > <sub>VisitorRegistersAsGuardianTest<sub>
@@ -114,6 +88,32 @@
 > <sub>UserLogsOutTest::visitor_can_not_log_out<sub>
 
 - [x] The user can not log out.
+
+### course page
+
+- [ ] The visitor navigates to the course shop.
+    - [ ] The visitor sees a course overview with weather status at weather sensitive courses.
+    - [ ] The visitor navigates to a course.
+        - [ ] The visitor sees the course information.
+        - [ ] The visitor sees the weather status at weather sensitive courses.
+
+#### booking
+
+- [ ] The visitor tries to book a course by clicking on the book-button.
+- [ ] The visitor gets an explanations, how she/he needs to proceed.
+    - [ ] The visitor is able to log in.
+    - [ ] The visitor is able to redirect to the Register Page.
+    - As soon as the visitor is logged in as a guardian, ...
+        - [ ] she/he adds a booking to the shopping chart.
+        - [ ] she/he adds another participant to the same booking.
+        - [ ] she/he removes a participant from the same booking.
+        - [ ] she/he removes a booking from the shopping chart.
+    - The checkout is blocked because ...
+        - [ ] one participant is assigned to several courses, which take place at overlapping times.
+        - [ ] one participant's grade is not matching with the condition of a course.
+    - [ ] The guardian checks out.
+        - [ ] The guardian gets an email with all booked courses.
+        - [ ] Also does the admin.
 
 ## the Guardian
 
