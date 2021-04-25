@@ -40,4 +40,9 @@ class Course extends Model
     {
         return $this->state === CourseState::CANCELED;
     }
+
+    public function getTentativeAttribute(): bool
+    {
+        return $this->state === CourseState::TENTATIVE;
+    }
 }
