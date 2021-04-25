@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Enums\CourseState;
 use App\Enums\GradeGroup;
 use App\Models\Allergy;
 use App\Models\Course;
@@ -40,30 +41,22 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_can_be_canceled_due_to_weather()
+    public function it_has_a_state()
     {
         /** @var Course $course */
         $course = Course::factory()->create();
-        $this->assertIsBool($course->canceled_due_to_weather);
+        $this->assertContains($course->state, CourseState::getConstants());
     }
 
     /** @test */
-    public function it_can_be_canceled_due_to_min_participants()
+    public function it_has_a_state_message()
     {
         /** @var Course $course */
-        $course = Course::factory()->create();
-        $this->assertIsBool($course->canceled_due_to_min_participants);
-    }
+        $course = Course::factory(['state_message' => null])->create();
+        $this->assertNull($course->state_message);
 
-    /** @test */
-    public function it_can_be_canceled_due_to_other_reason()
-    {
-        /** @var Course $course */
-        $course = Course::factory(['canceled_due_to_other_reason' => null])->create();
-        $this->assertNull($course->canceled_due_to_other_reason);
-
-        $course = Course::factory(['canceled_due_to_other_reason' => 'Corona'])->create();
-        $this->assertIsString($course->canceled_due_to_other_reason);
+        $course = Course::factory(['state_message' => 'Corona'])->create();
+        $this->assertIsString($course->state_message);
     }
 
     /** @test */
@@ -96,14 +89,6 @@ class CourseTest extends TestCase
         /** @var Course $course */
         $course = Course::factory()->create();
         $this->assertIsInt($course->max_participants);
-    }
-
-    /** @test */
-    public function it_can_be_weather_sensitive()
-    {
-        /** @var Course $course */
-        $course = Course::factory()->create();
-        $this->assertIsBool($course->weather_sensitive);
     }
 
     /** @test */

@@ -17,15 +17,13 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->boolean('canceled_due_to_weather')->default(false);
-            $table->boolean('canceled_due_to_min_participants')->default(false);
-            $table->string('canceled_due_to_other_reason')->nullable();
+            $table->enum('state', \App\Enums\CourseState::getConstants())->default('draft');
+            $table->string('state_message')->nullable();
             $table->dateTime('beginning');
             $table->dateTime('end');
             $table->enum('day_span', \App\Enums\DaySpan::getConstants());
             $table->unsignedInteger('min_participants')->default(5);
             $table->unsignedInteger('max_participants');
-            $table->boolean('weather_sensitive')->default(false);
             $table->enum('grade_group', \App\Enums\GradeGroup::getConstants())
                 ->default('all')
                 ->comment('lower => 1. – 3. grade, intermediate => 4. – 6. grade, all => no limitation');
