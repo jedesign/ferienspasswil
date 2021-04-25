@@ -15,7 +15,7 @@ class CourseController extends Controller
     public function index(): Factory|View|Application
     {
         $coursesPerDay = [];
-        $courses = Course::orderBy('beginning')->get(['title', 'beginning', 'end']);
+        $courses = Course::orderBy('beginning')->get(['title', 'beginning', 'end', 'day_span']);
 
         if (!$courses) {
             return view('course.index', compact('coursesPerDay'));
