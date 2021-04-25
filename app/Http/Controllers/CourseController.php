@@ -19,8 +19,7 @@ class CourseController extends Controller
         $courses = Course::where('state', '!=', CourseState::DRAFT)->orderBy('beginning')->get();
         // TODO[mr]: filter only used cols (25.04.21 mr)
 //        $courses = Course::orderBy('beginning')->get(['title', 'beginning', 'end', 'day_span']);
-
-        if (!$courses) {
+        if ($courses->isEmpty()) {
             return view('course.index', compact('coursesPerDay'));
         }
 
