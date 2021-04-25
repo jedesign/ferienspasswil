@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CourseState;
 use App\Events\CourseSpanCalculated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -33,5 +34,10 @@ class Course extends Model
     public function participants(): BelongsToMany
     {
         return $this->belongsToMany(Participant::class);
+    }
+
+    public function getCanceledAttribute(): bool
+    {
+        return $this->state === CourseState::CANCELED;
     }
 }
