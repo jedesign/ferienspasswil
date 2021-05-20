@@ -1,4 +1,4 @@
-<div class="w-full flex-shrink-0 scroll-snap-align-start md:w-auto md:scroll-snap-align-none">
+<div class="w-full flex-shrink-0 scroll-snap-align-start md:w-auto md:scroll-snap-align-none" id="{{$day['day']->format('d-m-Y')}}">
     <div class="font-bold text-center mb-2">{{$day['day']->translatedFormat('l, d. F Y')}}</div>
 
     <div class="relative p-2">

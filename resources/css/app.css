@@ -23,6 +23,13 @@
             scroll-snap-type: x mandatory;
         }
 
+        .scroll-behavior-smooth {
+            scroll-behavior: smooth;
+        }
+
+        .scroll-behavior-auto {
+            scroll-behavior: auto;
+        }
     }
 }
 [x-cloak] {

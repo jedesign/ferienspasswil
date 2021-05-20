@@ -7,6 +7,8 @@ use App\Events\CourseSpanCalculated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * @mixin IdeHelperCourse
@@ -14,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Course extends Model
 {
     use HasFactory;
+    use HasSlug;
 
     protected $fillable = ['title'];
 
@@ -36,13 +39,10 @@ class Course extends Model
         return $this->belongsToMany(Participant::class);
     }
 
-    public function getCanceledAttribute(): bool
+    public function getSlugOptions(): SlugOptions
     {
-        return $this->state === CourseState::CANCELED;
-    }
-
-    public function getTentativeAttribute(): bool
-    {
-        return $this->state === CourseState::TENTATIVE;
+        return SlugOptions::create()
+            ->generateSlugsFrom(fn($model) => "{$model->title} {$model->beginning->format('Y')}")
+            ->saveSlugsTo('slug');
     }
 }

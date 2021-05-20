@@ -6,6 +6,7 @@ use App\Enums\CourseState;
 use App\Enums\GradeGroup;
 use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class CourseFactory extends Factory
 {
@@ -24,8 +25,9 @@ class CourseFactory extends Factory
     public function definition()
     {
         $minParticipants = $this->faker->numberBetween(1, 5);
+        $title = $this->faker->sentence(4);
         return [
-            'title' => $this->faker->sentence(4),
+            'title' => $title,
             'description' => $this->faker->paragraph(),
             'state' => $this->faker->randomElement(CourseState::getConstants()),
             'state_message' => $this->faker->boolean ? $this->faker->words(3, true) : null,
