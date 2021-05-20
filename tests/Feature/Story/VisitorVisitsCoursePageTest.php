@@ -25,4 +25,20 @@ class VisitorVisitsCoursePageTest extends TestCase
         $this->get(route('course.index'))->assertSuccessful();
     }
 
+    /** @test */
+    // TODO[rw]: 🏋️‍ (20.05.21 rw)
+    public function visitor_can_view_course_overview(): void
+    {
+        self::markTestSkipped();
+        $this->get(route('course.index'))->assertSeeLivewire();
+    }
+
+    /** @test */
+    // TODO[rw]: 🏋️‍ (20.05.21 rw)
+    public function visitor_can_view_weather_status_of_weather_sensitive_course(): void
+    {
+        self::markTestSkipped();
+        $this->get(route('course.index'))->assertSee();
+    }
+
 }
