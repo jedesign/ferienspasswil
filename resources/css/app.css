@@ -5,6 +5,25 @@
     .writing-mode-vertical-lr {
         writing-mode: vertical-lr;
     }
+
+    @variants responsive {
+        .scroll-snap-align-start {
+            scroll-snap-align: start;
+        }
+
+        .scroll-snap-align-none {
+            scroll-snap-align: none;
+        }
+
+        .scroll-snap-none {
+            scroll-snap-type: none;
+        }
+
+        .scroll-snap-mandatory-x {
+            scroll-snap-type: x mandatory;
+        }
+
+    }
 }
 [x-cloak] {
     display: none;

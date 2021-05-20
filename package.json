@@ -1,7 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "postinstall": "rm -fr node_modules/@tailwindcss/typography/demo",
+        "postinstall": "rm -fr node_modules/@tailwindcss/typography/demo node_modules/tailwindcss/jit/tests",
         "development": "mix",
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
