@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\CourseState;
 use App\Enums\DaySpan;
 use App\Models\Course;
 use Carbon\Carbon;
@@ -16,9 +15,7 @@ class CourseController extends Controller
     public function index(): Factory|View|Application
     {
         $coursesPerDay = [];
-        $courses = Course::where('state', '!=', CourseState::DRAFT)->orderBy('beginning')->get();
-        // TODO[mr]: filter only used cols (25.04.21 mr)
-//        $courses = Course::orderBy('beginning')->get(['title', 'beginning', 'end', 'day_span']);
+        $courses = Course::orderBy('beginning')->get(['title', 'beginning', 'end', 'day_span', 'slug', 'state']);
         if ($courses->isEmpty()) {
             return view('course.index', compact('coursesPerDay'));
         }
@@ -43,5 +40,10 @@ class CourseController extends Controller
         }
 
         return view('course.index', compact('coursesPerDay'));
+    }
+
+    public function show(Course $course): Factory|View|Application
+    {
+        return view('course.show', compact('course'));
     }
 }

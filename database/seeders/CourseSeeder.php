@@ -569,7 +569,7 @@ class CourseSeeder extends Seeder
                 'title' => 'Kletterspass im Seilpark',
                 'description' => 'Kletterst du gerne über Stock und Stein? Wolltest du schon immer einmal wie ein Äffchen von Baum zu Baum schwingen und die Aussicht aus atemberaubender Höhe bestaunen?\nDann bist du bei diesem Kurs goldrichtig! Wir werden gemeinsam den Seilpark Gründenmoos unsicher machen und uns ausgiebig auf allen Parcouren austoben! Weil so viel Action ganz schön Hunger macht, gönnen wir uns zum Zmittag einen Spaghettiplausch.\n\nDies ist ein ganztägiges Angebot mit Mittagsverpflegung.\nDurchführung nur bei gutem Wetter.\nWetter-Hotline ab 18:00 Uhr am Vortag auf www.ferienspasswil.ch',
                 'state' => 'active',
-                'state_message' => '🧗‍ let\'s go',
+                'state_message' => '🧗 let\'s go',
                 'beginning' => '2020-07-16 08:35:00',
                 'end' => '2020-07-16 15:42:00',
                 'min_participants' => 5,

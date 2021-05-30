@@ -16,6 +16,7 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('description');
             $table->enum('state', \App\Enums\CourseState::getConstants())->default('draft');
             $table->string('state_message')->nullable();
