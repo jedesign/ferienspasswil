@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Enums\CourseState;
+use App\Enums\DaySpan;
 use App\Enums\GradeGroup;
 use App\Models\Allergy;
 use App\Models\Course;
@@ -73,6 +74,14 @@ class CourseTest extends TestCase
         /** @var Course $course */
         $course = Course::factory()->create();
         $this->assertInstanceOf(Carbon::class, $course->end);
+    }
+
+    /** @test */
+    public function it_has_a_day_span()
+    {
+        /** @var Course $course */
+        $course = Course::factory()->create();
+        self::assertContains($course->day_span, DaySpan::getConstants());
     }
 
     /** @test */
