@@ -1,4 +1,4 @@
-/*! tailwindcss v2.1.2 | MIT License | https://tailwindcss.com *//*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
+/*! tailwindcss v2.1.1 | MIT License | https://tailwindcss.com *//*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
 /*
 Document
@@ -888,11 +888,14 @@ body::after {
 	margin-left: 0px;
 	margin-right: 0px;
 }
-.mt-5 {
-	margin-top: 1.25rem;
+.mb-5 {
+	margin-bottom: 1.25rem;
 }
 .mt-3 {
 	margin-top: 0.75rem;
+}
+.mt-5 {
+	margin-top: 1.25rem;
 }
 .mb-6 {
 	margin-bottom: 1.5rem;
@@ -1202,13 +1205,13 @@ body::after {
 	--tw-bg-opacity: 1;
 	background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
 }
-.bg-indigo-600 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
-}
 .bg-white {
 	--tw-bg-opacity: 1;
 	background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+}
+.bg-indigo-600 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
 }
 .bg-red-300 {
 	--tw-bg-opacity: 1;
@@ -1397,13 +1400,13 @@ body::after {
 .align-bottom {
 	vertical-align: bottom;
 }
-.text-4xl {
-	font-size: 2.25rem;
-	line-height: 2.5rem;
-}
 .text-base {
 	font-size: 1rem;
 	line-height: 1.5rem;
+}
+.text-4xl {
+	font-size: 2.25rem;
+	line-height: 2.5rem;
 }
 .text-2xl {
 	font-size: 1.5rem;
@@ -1425,11 +1428,11 @@ body::after {
 	font-size: 0.75rem;
 	line-height: 1rem;
 }
-.font-extrabold {
-	font-weight: 800;
-}
 .font-medium {
 	font-weight: 500;
+}
+.font-extrabold {
+	font-weight: 800;
 }
 .font-bold {
 	font-weight: 700;
@@ -1449,6 +1452,10 @@ body::after {
 .tracking-tight {
 	letter-spacing: -0.025em;
 }
+.text-indigo-600 {
+	--tw-text-opacity: 1;
+	color: rgba(79, 70, 229, var(--tw-text-opacity));
+}
 .text-gray-900 {
 	--tw-text-opacity: 1;
 	color: rgba(17, 24, 39, var(--tw-text-opacity));
@@ -1456,10 +1463,6 @@ body::after {
 .text-white {
 	--tw-text-opacity: 1;
 	color: rgba(255, 255, 255, var(--tw-text-opacity));
-}
-.text-indigo-600 {
-	--tw-text-opacity: 1;
-	color: rgba(79, 70, 229, var(--tw-text-opacity));
 }
 .text-gray-700 {
 	--tw-text-opacity: 1;
@@ -1589,13 +1592,13 @@ body::after {
 	--tw-border-opacity: 1;
 	border-color: rgba(253, 224, 71, var(--tw-border-opacity));
 }
-.hover\:bg-indigo-700:hover {
-	--tw-bg-opacity: 1;
-	background-color: rgba(67, 56, 202, var(--tw-bg-opacity));
-}
 .hover\:bg-gray-50:hover {
 	--tw-bg-opacity: 1;
 	background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+}
+.hover\:bg-indigo-700:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(67, 56, 202, var(--tw-bg-opacity));
 }
 .hover\:bg-red-300:hover {
 	--tw-bg-opacity: 1;
@@ -1912,6 +1915,10 @@ body::after {
 }
 @media (min-width: 768px) {
 
+	.md\:mb-8 {
+		margin-bottom: 2rem;
+	}
+
 	.md\:mt-8 {
 		margin-top: 2rem;
 	}
@@ -1952,14 +1959,14 @@ body::after {
 		padding-right: 2.5rem;
 	}
 
-	.md\:text-6xl {
-		font-size: 3.75rem;
-		line-height: 1;
-	}
-
 	.md\:text-lg {
 		font-size: 1.125rem;
 		line-height: 1.75rem;
+	}
+
+	.md\:text-6xl {
+		font-size: 3.75rem;
+		line-height: 1;
 	}
 
         .md\:scroll-snap-align-none {
