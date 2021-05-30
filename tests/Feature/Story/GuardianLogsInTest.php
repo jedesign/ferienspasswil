@@ -17,7 +17,7 @@ class GuardianLogsInTest extends TestCase
     /** @see UserLogsInTest */
 
     /** @test */
-    public function guardian_can_log_in()
+    public function guardian_can_log_in(): void
     {
         $user = User::factory()->for(
             Guardian::factory(), 'role'
@@ -34,37 +34,31 @@ class GuardianLogsInTest extends TestCase
             ->assertRedirect(route('dashboard.index'));
 
         $this->assertAuthenticatedAs($user);
-        $this->assertNotNull(Auth::user()->remember_token);
+        self::assertNotNull(Auth::user()->remember_token);
     }
 
 
     /** @test */
-    public function guardian_can_view_dashboard()
+    public function guardian_can_view_dashboard(): void
     {
-        Auth::login(User::factory()->for(
-            Guardian::factory(), 'role'
-        )->create());
+        $this->signInGuardian();
 
         $this->get(route('dashboard.index'))->assertSuccessful();
     }
 
     /** @test */
-    public function guardian_can_not_view_admin_area()
+    public function guardian_can_not_view_admin_area(): void
     {
-        Auth::login(User::factory()->for(
-            Guardian::factory(), 'role'
-        )->create());
+        $this->signInGuardian();
 
         $this->get(route('admin.index'))
             ->assertRedirect(route('login'));
     }
 
     /** @test */
-    public function guardian_is_redirected_if_already_logged_in()
+    public function guardian_is_redirected_if_already_logged_in(): void
     {
-        Auth::login(User::factory()->for(
-            Guardian::factory(), 'role'
-        )->create());
+        $this->signInGuardian();
 
         $this->get(route('login'))
             ->assertRedirect(route('dashboard.index'));

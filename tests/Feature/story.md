@@ -128,7 +128,8 @@
 
 - [ ] Now the guardian visits the dashboard.
     - [ ] The guardian sees her profile.
-    - [ ] The guardian sees some space for participants and their courses.
+    - [x] The guardian sees some space for participants.
+    - [ ] The guardian sees some space for participants' courses.
     - [ ] The guardian can navigate to cost overview.
     - [ ] The guardian can navigate to packing list.
     - [ ] The guardian can navigate to compact participant-and-course overview.
@@ -147,7 +148,7 @@
 #### participants
 
 - The guardian organizes participants data by ...
-    - [ ] creating.
+    - [x] creating.
     - [ ] editing.
     - [ ] deleting.
 

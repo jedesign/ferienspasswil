@@ -2,12 +2,21 @@
 
 namespace Tests;
 
+use App\Models\Guardian;
+use App\Models\User;
 use Illuminate\Foundation\Mix;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
+
+    protected function signInGuardian(): TestCase
+    {
+        return $this->actingAs(User::factory()->for(
+            Guardian::factory(), 'role'
+        )->create());
+    }
 
     protected function setUp(): void
     {

@@ -17,43 +17,43 @@ class ParticipantTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_has_an_id()
+    public function it_has_an_id(): void
     {
         /** @var Participant $participant */
         $participant = Participant::factory()->create();
-        $this->assertIsInt($participant->id);
+        self::assertIsInt($participant->id);
     }
 
     /** @test */
-    public function it_has_a_firstname()
+    public function it_has_a_firstname(): void
     {
         /** @var Participant $participant */
         $participant = Participant::factory()->create();
-        $this->assertIsString($participant->firstname);
+        self::assertIsString($participant->firstname);
     }
 
     /** @test */
-    public function it_has_a_lastname()
+    public function it_has_a_lastname(): void
     {
         /** @var Participant $participant */
         $participant = Participant::factory()->create();
-        $this->assertIsString($participant->lastname);
+        self::assertIsString($participant->lastname);
     }
 
     /** @test */
-    public function it_has_a_birthdate()
+    public function it_has_a_birthdate(): void
     {
         /** @var Participant $participant */
         $participant = Participant::factory()->create();
-        $this->assertInstanceOf(Carbon::class, $participant->birthdate);
+        self::assertInstanceOf(Carbon::class, $participant->birthdate);
     }
 
     /** @test */
-    public function it_has_a_gender()
+    public function it_has_a_gender(): void
     {
         /** @var Participant $participant */
         $participant = Participant::factory()->create();
-        $this->assertTrue(in_array($participant->gender, Gender::getConstants()));
+        self::assertContains($participant->gender, Gender::getConstants());
 
         $exceptionThrown = false;
 
@@ -61,72 +61,72 @@ class ParticipantTest extends TestCase
             Participant::factory(['gender' => 'non-existing-value'])->create();
         } catch (QueryException $exception) {
             $exceptionThrown = true;
-            $this->assertStringContainsString('Integrity constraint violation', $exception->getMessage());
+            self::assertStringContainsString('Integrity constraint violation', $exception->getMessage());
         }
-        $this->assertTrue($exceptionThrown);
+        self::assertTrue($exceptionThrown);
     }
 
     /** @test */
-    public function it_has_a_school_grade()
+    public function it_has_a_school_grade(): void
     {
         /** @var Participant $participant */
         $participant = Participant::factory()->create();
-        $this->assertIsInt($participant->school_grade);
+        self::assertIsInt($participant->school_grade);
     }
 
 
     /** @test */
-    public function it_can_have_photos_allowed()
+    public function it_can_have_photos_allowed(): void
     {
         /** @var Participant $participant */
         $participant = Participant::factory()->create();
-        $this->assertIsBool($participant->photos_allowed);
+        self::assertIsBool($participant->photos_allowed);
     }
 
     /** @test */
-    public function it_can_have_a_note()
+    public function it_can_have_a_note(): void
     {
         /** @var Participant $participant */
         $participant = Participant::factory(['note' => null])->create();
-        $this->assertNull($participant->note);
+        self::assertNull($participant->note);
 
         $participant = Participant::factory(['note' => \Str::random(20)])->create();
-        $this->assertIsString($participant->note);
+        self::assertIsString($participant->note);
     }
 
     /** @test */
-    public function it_belongs_to_allergies()
+    public function it_belongs_to_allergies(): void
     {
         /** @var Participant $participant */
         $participant = Participant::factory()->create();
-        $this->assertCount(0, $participant->allergies);
+        self::assertCount(0, $participant->allergies);
 
         $participant->allergies()->save(Allergy::factory()->create());
         $participant->load('allergies');
-        $this->assertCount(1, $participant->allergies);
+        self::assertCount(1, $participant->allergies);
     }
 
     /** @test */
-    public function it_belongs_to_guardians()
+    public function it_belongs_to_guardians(): void
     {
         /** @var Participant $participant */
         $participant = Participant::factory()->create();
-        $this->assertCount(0, $participant->guardians);
+        self::assertCount(0, $participant->guardians);
 
         $participant->guardians()->save(Guardian::factory()->create());
         $participant->load('guardians');
-        $this->assertCount(1, $participant->guardians);
+        self::assertCount(1, $participant->guardians);
     }
 
     /** @test */
-    public function it_belongs_to_courses()
+    public function it_belongs_to_courses(): void
     {
         /** @var Participant $participant */
         $participant = Participant::factory()->create();
-        $this->assertCount(0, $participant->courses);
+        self::assertCount(0, $participant->courses);
 
         $participant->courses()->save(Course::factory()->create());
         $participant->load('courses');
-        $this->assertCount(1, $participant->courses);
+        self::assertCount(1, $participant->courses);
     }
 }
