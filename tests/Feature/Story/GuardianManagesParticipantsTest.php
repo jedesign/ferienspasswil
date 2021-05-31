@@ -40,6 +40,13 @@ class GuardianManagesParticipantsTest extends TestCase
 
     /** @see ParticipantCreateFormTest */
 
+    private function guardian_creates_participant(array $attributes = []): Participant
+    {
+        $participant = Participant::factory()->create($attributes);
+        $participant->guardians()->attach(auth()->user()->guardian->id);
+        return $participant;
+    }
+
     /** @test */
     public function guardian_can_view_participants_firstname(): void
     {
@@ -48,13 +55,6 @@ class GuardianManagesParticipantsTest extends TestCase
 
         $this->get(route('dashboard.index'))
             ->assertSee($participant->firstname);
-    }
-
-    private function guardian_creates_participant(array $attributes = []): Participant
-    {
-        $participant = Participant::factory()->create($attributes);
-        $participant->guardians()->attach(auth()->user()->guardian->id);
-        return $participant;
     }
 
     /** @test */
@@ -98,7 +98,6 @@ class GuardianManagesParticipantsTest extends TestCase
             ->assertDontSee('keine Fotos erlaubt');
     }
 
-
     /** @test */
     public function guardian_can_view_participants_photo_not_allowed_information(): void
     {
@@ -112,4 +111,5 @@ class GuardianManagesParticipantsTest extends TestCase
     // TODO[rw]: edit_participant tests (30.05.21 rw)
 
     // TODO[rw]: delete_participant tests (30.05.21 rw)
+
 }

@@ -12,7 +12,7 @@ class GuardianRegisterFormTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function firstname_is_required()
+    public function firstname_is_required(): void
     {
         Livewire::test('auth.register')
             ->set('firstname', '')
@@ -21,7 +21,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function lastname_is_required()
+    public function lastname_is_required(): void
     {
         Livewire::test('auth.register')
             ->set('lastname', '')
@@ -30,7 +30,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function street_is_required()
+    public function street_is_required(): void
     {
         Livewire::test('auth.register')
             ->set('street', '')
@@ -39,7 +39,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function street_number_is_optional()
+    public function street_number_is_optional(): void
     {
         Livewire::test('auth.register')
             ->set('street_number', '')
@@ -48,7 +48,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function postcode_is_required()
+    public function postcode_is_required(): void
     {
         Livewire::test('auth.register')
             ->set('postcode', '')
@@ -57,7 +57,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function postcode_is_4_digits()
+    public function postcode_is_4_digits(): void
     {
         Livewire::test('auth.register')
             ->set('postcode', '123')
@@ -76,7 +76,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function city_is_required()
+    public function city_is_required(): void
     {
         Livewire::test('auth.register')
             ->set('city', '')
@@ -85,7 +85,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function phone_is_required()
+    public function phone_is_required(): void
     {
         Livewire::test('auth.register')
             ->set('phone', '')
@@ -94,7 +94,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function email_is_required()
+    public function email_is_required(): void
     {
         Livewire::test('auth.register')
             ->set('email', '')
@@ -103,7 +103,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function email_is_valid_email()
+    public function email_is_valid_email(): void
     {
         Livewire::test('auth.register')
             ->set('email', 'tallstack')
@@ -112,7 +112,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function email_hasnt_been_taken_already()
+    public function email_has_not_been_taken_already(): void
     {
         User::factory()->create(['email' => 'tallstack@example.com']);
 
@@ -123,7 +123,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function see_email_hasnt_already_been_taken_validation_message_as_user_types()
+    public function see_email_has_not_already_been_taken_validation_message_as_user_types(): void
     {
         User::factory()->create(['email' => 'tallstack@example.com']);
 
@@ -136,7 +136,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function password_is_required()
+    public function password_is_required(): void
     {
         Livewire::test('auth.register')
             ->set('password', '')
@@ -146,7 +146,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function password_is_minimum_of_eight_characters()
+    public function password_is_minimum_of_eight_characters(): void
     {
         Livewire::test('auth.register')
             ->set('password', 'secret')
@@ -156,7 +156,7 @@ class GuardianRegisterFormTest extends TestCase
     }
 
     /** @test */
-    function password_matches_password_confirmation()
+    public function password_matches_password_confirmation(): void
     {
         Livewire::test('auth.register')
             ->set('email', 'tallstack@example.com')

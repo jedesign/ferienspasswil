@@ -184,7 +184,7 @@ _EmployeeLogsInTest_
     - [ ] The employee can merge duplicates of participants.
 
 #### courses
-- Furthermore the employee manages courses by ...
+- Furthermore, the employee manages courses by ...
     - [ ] creating one in draft mode.
     - [ ] publish one to published mode.
     - [ ] editing.
