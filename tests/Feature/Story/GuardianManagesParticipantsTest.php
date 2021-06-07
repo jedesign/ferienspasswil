@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Story;
 
+use App\Models\Participant;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Component\ParticipantFormTest;
 use Tests\TestCase;
@@ -96,6 +97,17 @@ class GuardianManagesParticipantsTest extends TestCase
     }
 
     /** @test */
+    public function guardian_cannot_view_participant_of_other_guardian(): void
+    {
+        $this->signInUserAsGuardian();
+
+        $participant = Participant::factory()->create();
+
+        $this->get(route('dashboard.index'))
+            ->assertDontSee($participant->path());
+    }
+
+    /** @test */
     public function guardian_can_view_participant_edit_route(): void
     {
         $user = $this->signInUserAsGuardianWithParticipant();
@@ -119,6 +131,17 @@ class GuardianManagesParticipantsTest extends TestCase
     /** @see ParticipantFormTest */
 
     /** @test */
+    public function guardian_cannot_edit_participant_of_other_guardian(): void
+    {
+        $this->signInUserAsGuardian();
+
+        $participant = Participant::factory()->create();
+
+        $this->get($participant->path())
+            ->assertStatus(404);
+    }
+
+    /** @test */
     public function guardian_can_view_participant_delete_route(): void
     {
         $user = $this->signInUserAsGuardianWithParticipant();
@@ -131,7 +154,7 @@ class GuardianManagesParticipantsTest extends TestCase
     public function guardian_can_delete_participant() : void
     {
         $this->markTestSkipped();
-        
+
         $user = $this->signInUserAsGuardianWithParticipant();
         $participant = $user->guardian->participants->first();
 
@@ -144,4 +167,14 @@ class GuardianManagesParticipantsTest extends TestCase
         );
     }
 
+    /** @test */
+    public function guardian_cannot_delete_participant_of_other_guardian(): void
+    {
+        $this->signInUserAsGuardian();
+
+        $participant = Participant::factory()->create();
+
+        $this->delete($participant->path())
+            ->assertStatus(404);
+    }
 }
