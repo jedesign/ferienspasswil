@@ -103,7 +103,7 @@ _GuardianLogsInTest_
 
 ### dashboard
 - [ ] Now the guardian visits the dashboard.
-    - [ ] The guardian sees her profile.
+    - [x] The guardian sees her profile.
     - [x] The guardian sees some space for participants.
     - [ ] The guardian sees some space for participants' courses.
     - [ ] The guardian can navigate to cost overview.
