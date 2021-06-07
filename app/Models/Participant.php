@@ -37,6 +37,6 @@ class Participant extends Model
 
     public function path(): string
     {
-        return "/kind/$this->id";
+        return "/dashboard/kind/$this->id";
     }
 }

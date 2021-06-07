@@ -38,4 +38,14 @@ class Guardian extends Model
     {
         return $this->street . ' ' . $this->street_number . ', ' . $this->postcode . ' ' . $this->city;
     }
+
+    public function streetAndNumber(): string
+    {
+        return "$this->street $this->street_number";
+    }
+
+    public function postcodeAndCity(): string
+    {
+        return "$this->postcode $this->city";
+    }
 }

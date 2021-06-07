@@ -119,7 +119,12 @@ class GuardianManagesParticipantsTest extends TestCase
     /** @test */
     public function guardian_can_edit_participant(): void
     {
+        $this->withoutExceptionHandling();
+
         $user = $this->signInUserAsGuardianWithParticipant();
+
+        $this->get($user->guardian->participants->first()->path())
+            ->assertSeeLivewire('participant.edit');
 
         $user->guardian->participants->first()->update(['firstname' => 'Newish']);
 
@@ -138,7 +143,7 @@ class GuardianManagesParticipantsTest extends TestCase
         $participant = Participant::factory()->create();
 
         $this->get($participant->path())
-            ->assertStatus(404);
+            ->assertStatus(403);
     }
 
     /** @test */
@@ -153,12 +158,9 @@ class GuardianManagesParticipantsTest extends TestCase
     /** @test */
     public function guardian_can_delete_participant(): void
     {
-        $this->markTestSkipped();
-
         $user = $this->signInUserAsGuardianWithParticipant();
         $participant = $user->guardian->participants->first();
 
-        // TODO[mr&rw]: warum läuft das nicht??? (07.06.21 rw)
         $this->delete($participant->path())
             ->assertRedirect(route('dashboard.index'));
 
@@ -176,6 +178,6 @@ class GuardianManagesParticipantsTest extends TestCase
         $participant = Participant::factory()->create();
 
         $this->delete($participant->path())
-            ->assertStatus(404);
+            ->assertStatus(403);
     }
 }

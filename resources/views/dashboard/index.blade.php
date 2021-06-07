@@ -17,8 +17,8 @@
     <div class="col-span-6 lg:col-span-2 order-0 lg:order-1">
         <h2 class="text-2xl font-bold leading-tight text-gray-700 mb-6">{{__('Your Data')}}</h2>
         <x-card.user :user="$guardian">
-            {{$guardian->street}} {{$guardian->street_number}} <br>
-            {{$guardian->postcode}} {{$guardian->city}} <br>
+            {{$guardian->streetAndNumber()}} <br>
+            {{$guardian->postcodeAndCity()}} <br>
             {{$guardian->phone}} <br>
             {{$guardian->email}}
             <x-card.button-edit href="{{route('dashboard.profile')}}"/>

@@ -13,11 +13,14 @@ class ParticipantController extends Controller
 
     public function edit(Participant $participant)
     {
+        $this->authorize('update', $participant);
         return view('dashboard.participant.edit', compact('participant'));
     }
 
     public function delete(Participant $participant)
     {
+        $this->authorize('update', $participant);
+
         $participant->allergies()->detach();
         $participant->guardians()->detach();
         $participant->courses()->detach();
