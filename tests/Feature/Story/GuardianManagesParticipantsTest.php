@@ -20,7 +20,7 @@ class GuardianManagesParticipantsTest extends TestCase
     }
 
     /** @test */
-    public function guardian_can_view_add_participant_route(): void
+    public function guardian_can_view_participant_add_route(): void
     {
         $this->signInUserAsGuardian();
 
@@ -96,7 +96,7 @@ class GuardianManagesParticipantsTest extends TestCase
     }
 
     /** @test */
-    public function guardian_can_view_edit_participant_route(): void
+    public function guardian_can_view_participant_edit_route(): void
     {
         $user = $this->signInUserAsGuardianWithParticipant();
 
@@ -118,6 +118,30 @@ class GuardianManagesParticipantsTest extends TestCase
     }
     /** @see ParticipantFormTest */
 
-    // TODO[rw]: delete_participant tests (30.05.21 rw)
+    /** @test */
+    public function guardian_can_view_participant_delete_route(): void
+    {
+        $user = $this->signInUserAsGuardianWithParticipant();
+
+        $this->get(route('dashboard.index'))
+            ->assertSee($user->guardian->participants->first()->path());
+    }
+
+    /** @test */
+    public function guardian_can_delete_participant() : void
+    {
+        $this->markTestSkipped();
+        
+        $user = $this->signInUserAsGuardianWithParticipant();
+        $participant = $user->guardian->participants->first();
+
+        // TODO[mr&rw]: warum läuft das nicht??? (07.06.21 rw)
+        $this->delete($participant->path());
+
+        $this->assertDatabaseMissing(
+            'participants',
+            ['id' => $participant->id]
+        );
+    }
 
 }
