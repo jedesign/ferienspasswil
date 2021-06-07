@@ -151,7 +151,7 @@ class GuardianManagesParticipantsTest extends TestCase
     }
 
     /** @test */
-    public function guardian_can_delete_participant() : void
+    public function guardian_can_delete_participant(): void
     {
         $this->markTestSkipped();
 
@@ -160,7 +160,7 @@ class GuardianManagesParticipantsTest extends TestCase
 
         // TODO[mr&rw]: warum läuft das nicht??? (07.06.21 rw)
         $this->delete($participant->path())
-        ->assertRedirect(route('dashboard.index'));
+            ->assertRedirect(route('dashboard.index'));
 
         $this->assertDatabaseMissing(
             'participants',
