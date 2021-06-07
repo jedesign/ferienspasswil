@@ -121,12 +121,11 @@ _GuardianLogsInTest_
 - [ ] Furthermore, the guardian is able to register for an SJA-state, if the wants to.
 
 #### participants
-_GuardianManagesParticipantsTest_
+_GuardianManagesParticipantsTest_ / _ParticipantFormTest_
 - The guardian organizes participants data by ...
     - [x] creating.
-      - _ParticipantCreateFormTest_
-    - [ ] editing.
-    - [ ] deleting.
+    - [x] editing.
+    - [x] deleting.
 
 #### courses
 - [ ] The guardian views booked courses attached to the participants.
