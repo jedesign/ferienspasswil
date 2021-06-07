@@ -3,7 +3,7 @@
 namespace Tests\Feature\Story;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\Feature\Component\ParticipantCreateFormTest;
+use Tests\Feature\Component\ParticipantFormTest;
 use Tests\TestCase;
 
 class GuardianManagesParticipantsTest extends TestCase
@@ -20,7 +20,7 @@ class GuardianManagesParticipantsTest extends TestCase
     }
 
     /** @test */
-    public function guardian_can_view_add_participant_button(): void
+    public function guardian_can_view_add_participant_route(): void
     {
         $this->signInUserAsGuardian();
 
@@ -31,12 +31,14 @@ class GuardianManagesParticipantsTest extends TestCase
     /** @test */
     public function guardian_can_add_participant(): void
     {
+        $user = $this->signInUserAsGuardianWithParticipant();
+
         $this->assertDatabaseHas(
             'participants',
-            ['id' => $this->signInUserAsGuardianWithParticipant()->guardian->participants->first()->id]
+            ['id' => $user->guardian->participants->first()->id]
         );
     }
-    /** @see ParticipantCreateFormTest */
+    /** @see ParticipantFormTest */
 
     /** @test */
     public function guardian_can_view_participants_firstname(): void
@@ -93,9 +95,28 @@ class GuardianManagesParticipantsTest extends TestCase
             ->assertSee('keine Fotos erlaubt');
     }
 
+    /** @test */
+    public function guardian_can_view_edit_participant_route(): void
+    {
+        $user = $this->signInUserAsGuardianWithParticipant();
 
+        $this->get(route('dashboard.index'))
+            ->assertSee($user->guardian->participants->first()->path());
+    }
 
-    // TODO[rw]: edit_participant tests (30.05.21 rw)
+    /** @test */
+    public function guardian_can_edit_participant(): void
+    {
+        $user = $this->signInUserAsGuardianWithParticipant();
+
+        $user->guardian->participants->first()->update(['firstname' => 'Newish']);
+
+        $this->assertDatabaseHas(
+            'participants',
+            ['firstname' => 'Newish']
+        );
+    }
+    /** @see ParticipantFormTest */
 
     // TODO[rw]: delete_participant tests (30.05.21 rw)
 

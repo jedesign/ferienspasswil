@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-class ParticipantCreateFormTest extends TestCase
+class ParticipantFormTest extends TestCase
 {
     use RefreshDatabase;
 

@@ -34,4 +34,9 @@ class Participant extends Model
     {
         return $this->belongsToMany(Course::class);
     }
+
+    public function path(): string
+    {
+        return "/kind/$this->id";
+    }
 }
