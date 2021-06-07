@@ -159,7 +159,8 @@ class GuardianManagesParticipantsTest extends TestCase
         $participant = $user->guardian->participants->first();
 
         // TODO[mr&rw]: warum läuft das nicht??? (07.06.21 rw)
-        $this->delete($participant->path());
+        $this->delete($participant->path())
+        ->assertRedirect(route('dashboard.index'));
 
         $this->assertDatabaseMissing(
             'participants',
