@@ -14,7 +14,7 @@ class ParticipantCreateFormTest extends TestCase
     /** @test */
     public function firstname_is_required(): void
     {
-        $this->signInGuardian();
+        $this->signInUserAsGuardian();
 
         Livewire::test('participant.create')
             ->set('firstname', '')
@@ -25,7 +25,7 @@ class ParticipantCreateFormTest extends TestCase
     /** @test */
     public function lastname_is_required(): void
     {
-        $this->signInGuardian();
+        $this->signInUserAsGuardian();
 
         Livewire::test('participant.create')
             ->set('lastname', '')
@@ -36,7 +36,7 @@ class ParticipantCreateFormTest extends TestCase
     /** @test */
     public function birthdate_is_required(): void
     {
-        $this->signInGuardian();
+        $this->signInUserAsGuardian();
 
         Livewire::test('participant.create')
             ->set('birthdate', '')
@@ -47,7 +47,7 @@ class ParticipantCreateFormTest extends TestCase
     /** @test */
     public function gender_is_required(): void
     {
-        $this->signInGuardian();
+        $this->signInUserAsGuardian();
 
         Livewire::test('participant.create')
             ->set('gender', '')
@@ -58,7 +58,7 @@ class ParticipantCreateFormTest extends TestCase
     /** @test */
     public function school_grade_is_required(): void
     {
-        $this->signInGuardian();
+        $this->signInUserAsGuardian();
 
         Livewire::test('participant.create')
             ->set('school_grade', '')
@@ -69,7 +69,7 @@ class ParticipantCreateFormTest extends TestCase
     /** @test */
     public function photos_allowed_is_optional(): void
     {
-        $this->signInGuardian();
+        $this->signInUserAsGuardian();
 
         Livewire::test('participant.create')
             ->set('photos_allowed', false)
@@ -80,7 +80,7 @@ class ParticipantCreateFormTest extends TestCase
     /** @test */
     public function note_is_optional(): void
     {
-        $this->signInGuardian();
+        $this->signInUserAsGuardian();
 
         Livewire::test('participant.create')
             ->set('note', '')
@@ -91,7 +91,7 @@ class ParticipantCreateFormTest extends TestCase
     /** @test */
     public function allergies_are_optional(): void
     {
-        $this->signInGuardian();
+        $this->signInUserAsGuardian();
 
         Livewire::test('participant.create')
             ->set('allergies', [])
@@ -102,7 +102,7 @@ class ParticipantCreateFormTest extends TestCase
     /** @test */
     public function is_redirected_after_creating_participant(): void
     {
-        $this->signInGuardian();
+        $this->signInUserAsGuardian();
 
         Livewire::test(Create::class)
             ->set('firstname', 'Karl')

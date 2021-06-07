@@ -41,7 +41,7 @@ class GuardianLogsInTest extends TestCase
     /** @test */
     public function guardian_can_view_dashboard(): void
     {
-        $this->signInGuardian();
+        $this->signInUserAsGuardian();
 
         $this->get(route('dashboard.index'))->assertSuccessful();
     }
@@ -49,7 +49,7 @@ class GuardianLogsInTest extends TestCase
     /** @test */
     public function guardian_can_not_view_admin_area(): void
     {
-        $this->signInGuardian();
+        $this->signInUserAsGuardian();
 
         $this->get(route('admin.index'))
             ->assertRedirect(route('login'));
@@ -58,7 +58,7 @@ class GuardianLogsInTest extends TestCase
     /** @test */
     public function guardian_is_redirected_if_already_logged_in(): void
     {
-        $this->signInGuardian();
+        $this->signInUserAsGuardian();
 
         $this->get(route('login'))
             ->assertRedirect(route('dashboard.index'));
