@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-class ParticipantFormTest extends TestCase
+class ParticipantCreateFormTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -16,10 +16,7 @@ class ParticipantFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        Livewire::test('participant.create')
-            ->set('firstname', '')
-            ->call('save')
-            ->assertHasErrors(['firstname' => 'required']);
+        FormTest::field_is_required('participant.create', 'firstname', 'save');
     }
 
     /** @test */
@@ -27,10 +24,7 @@ class ParticipantFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        Livewire::test('participant.create')
-            ->set('lastname', '')
-            ->call('save')
-            ->assertHasErrors(['lastname' => 'required']);
+        FormTest::field_is_required('participant.create', 'lastname', 'save');
     }
 
     /** @test */
@@ -38,10 +32,7 @@ class ParticipantFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        Livewire::test('participant.create')
-            ->set('birthdate', '')
-            ->call('save')
-            ->assertHasErrors(['birthdate' => 'required']);
+        FormTest::field_is_required('participant.create', 'birthdate', 'save');
     }
 
     /** @test */
@@ -49,10 +40,7 @@ class ParticipantFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        Livewire::test('participant.create')
-            ->set('gender', '')
-            ->call('save')
-            ->assertHasErrors(['gender' => 'required']);
+        FormTest::field_is_required('participant.create', 'gender', 'save');
     }
 
     /** @test */
@@ -60,10 +48,7 @@ class ParticipantFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        Livewire::test('participant.create')
-            ->set('school_grade', '')
-            ->call('save')
-            ->assertHasErrors(['school_grade' => 'required']);
+        FormTest::field_is_required('participant.create', 'school_grade', 'save');
     }
 
     /** @test */
@@ -71,10 +56,7 @@ class ParticipantFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        Livewire::test('participant.create')
-            ->set('photos_allowed', false)
-            ->call('save')
-            ->assertHasNoErrors(['photos_allowed' => 'required']);
+        FormTest::field_is_optional('participant.create', 'photos_allowed', 'save');
     }
 
     /** @test */
@@ -82,10 +64,7 @@ class ParticipantFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        Livewire::test('participant.create')
-            ->set('note', '')
-            ->call('save')
-            ->assertHasNoErrors(['note' => 'required']);
+        FormTest::field_is_optional('participant.create', 'note', 'save');
     }
 
     /** @test */

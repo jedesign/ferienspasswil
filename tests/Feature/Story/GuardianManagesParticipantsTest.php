@@ -4,7 +4,7 @@ namespace Tests\Feature\Story;
 
 use App\Models\Participant;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\Feature\Component\ParticipantFormTest;
+use Tests\Feature\Component\ParticipantCreateFormTest;
 use Tests\TestCase;
 
 class GuardianManagesParticipantsTest extends TestCase
@@ -30,7 +30,7 @@ class GuardianManagesParticipantsTest extends TestCase
     }
 
     /** @test */
-    public function guardian_can_add_participant(): void
+    public function guardian_can_create_participant(): void
     {
         $user = $this->signInUserAsGuardianWithParticipant();
 
@@ -39,7 +39,7 @@ class GuardianManagesParticipantsTest extends TestCase
             ['id' => $user->guardian->participants->first()->id]
         );
     }
-    /** @see ParticipantFormTest */
+    /** @see ParticipantCreateFormTest */
 
     /** @test */
     public function guardian_can_view_participants_firstname(): void
@@ -133,7 +133,7 @@ class GuardianManagesParticipantsTest extends TestCase
             ['firstname' => 'Newish']
         );
     }
-    /** @see ParticipantFormTest */
+    /** @see ParticipantEditFormTest */
 
     /** @test */
     public function guardian_cannot_edit_participant_of_other_guardian(): void

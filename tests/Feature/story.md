@@ -112,19 +112,22 @@ _GuardianLogsInTest_
     - [ ] The guardian sees some customized information.
 
 #### profile
+_GuardianManagesProfileTest_ / _GuardianProfileFormTest_
 - In her/his profile the guardian is able to edit ...
-    - [ ] her/his Firstname and Lastname.
-    - [ ] her/his postal address.
-    - [ ] her/his email address.
-    - [ ] her/his phone.
+    - [x] her/his Firstname and Lastname.
+    - [x] her/his postal address.
+    - [x] her/his email address.
+    - [x] her/his phone.
     - [ ] her/his password.
 - [ ] Furthermore, the guardian is able to register for an SJA-state, if the wants to.
 
 #### participants
-_GuardianManagesParticipantsTest_ / _ParticipantFormTest_
+_GuardianManagesParticipantsTest_
 - The guardian organizes participants data by ...
     - [x] creating.
-    - [x] editing.
+      - _ParticipantCreateFormTest_
+    - [ ] editing.
+      - _ParticipantEditFormTest_
     - [x] deleting.
 
 #### courses
