@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Component;
 
-use App\Http\Livewire\Participant\Create;
+use App\Http\Livewire\Participant\Edit;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
@@ -14,95 +14,111 @@ class ParticipantEditFormTest extends TestCase
     /** @test */
     public function firstname_is_required(): void
     {
-        self::markTestSkipped();
         $user = $this->signInUserAsGuardianWithParticipant();
-        // TODO[rw/mr]: zusammen anschauen... (12.06.21 rw)˚
-        Livewire::test('participant.edit', $user->guardian->participants->toArray());
-//            ->set($fieldName, '')
-//            ->call($method)
-//            ->assertHasErrors([$fieldName => 'required']);
 
-//        FormTest::field_is_required('participant.edit', 'firstname', 'update');
+        FormTest::field_is_required(
+            'participant.edit',
+            ['participant' => $user->guardian->participants->first()],
+
+            'firstname',
+            'update');
     }
 
     /** @test */
     public function lastname_is_required(): void
     {
-        self::markTestSkipped();
+        $user = $this->signInUserAsGuardianWithParticipant();
 
-        $this->signInUserAsGuardian();
-
-        FormTest::field_is_required('participant.edit', 'lastname', 'update');
+        FormTest::field_is_required(
+            'participant.edit',
+            ['participant' => $user->guardian->participants->first()],
+            'lastname',
+            'update'
+        );
     }
 
     /** @test */
     public function birthdate_is_required(): void
     {
-        self::markTestSkipped();
+        $user = $this->signInUserAsGuardianWithParticipant();
 
-        $this->signInUserAsGuardian();
-
-        FormTest::field_is_required('participant.edit', 'birthdate', 'update');
+        FormTest::field_is_required(
+            'participant.edit',
+            ['participant' => $user->guardian->participants->first()],
+            'birthdate',
+            'update'
+        );
     }
 
     /** @test */
     public function gender_is_required(): void
     {
-        self::markTestSkipped();
+        $user = $this->signInUserAsGuardianWithParticipant();
 
-        $this->signInUserAsGuardian();
-
-        FormTest::field_is_required('participant.edit', 'gender', 'update');
+        FormTest::field_is_required(
+            'participant.edit',
+            ['participant' => $user->guardian->participants->first()],
+            'gender',
+            'update'
+        );
     }
 
     /** @test */
     public function school_grade_is_required(): void
     {
-        self::markTestSkipped();
+        $user = $this->signInUserAsGuardianWithParticipant();
 
-        $this->signInUserAsGuardian();
-
-        FormTest::field_is_required('participant.edit', 'school_grade', 'update');
+        FormTest::field_is_required(
+            'participant.edit',
+            ['participant' => $user->guardian->participants->first()],
+            'school_grade',
+            'update'
+        );
     }
 
     /** @test */
     public function photos_allowed_is_optional(): void
     {
-        self::markTestSkipped();
+        $user = $this->signInUserAsGuardianWithParticipant();
 
-        $this->signInUserAsGuardian();
-
-        FormTest::field_is_optional('participant.edit', 'photos_allowed', 'update');
+        FormTest::field_is_optional(
+            'participant.edit',
+            ['participant' => $user->guardian->participants->first()],
+            'photos_allowed',
+            'update'
+        );
     }
 
     /** @test */
     public function note_is_optional(): void
     {
-        self::markTestSkipped();
+        $user = $this->signInUserAsGuardianWithParticipant();
 
-        $this->signInUserAsGuardian();
-
-        FormTest::field_is_optional('participant.edit', 'note', 'update');
+        FormTest::field_is_optional(
+            'participant.edit',
+            ['participant' => $user->guardian->participants->first()],
+            'note',
+            'update'
+        );
     }
 
     /** @test */
     public function allergies_are_optional(): void
     {
-        self::markTestSkipped();
+        $user = $this->signInUserAsGuardianWithParticipant();
 
-        $this->signInUserAsGuardian();
-
-        FormTest::field_is_optional('participant.edit', 'allergies', 'update');
+        Livewire::test('participant.edit', ['participant' => $user->guardian->participants->first()])
+            ->set('allergies', [])
+            ->call('update')
+            ->assertHasNoErrors(['allergies' => 'required']);
     }
 
     /** @test */
-    public function is_redirected_after_creating_participant(): void
+    public function is_redirected_after_editing_participant(): void
     {
-        self::markTestSkipped();
+        $user = $this->signInUserAsGuardianWithParticipant();
 
-        $this->signInUserAsGuardian();
-
-        Livewire::test(Create::class)
+        Livewire::test(Edit::class, ['participant' => $user->guardian->participants->first()])
             ->set('firstname', 'Karl')
             ->set('lastname', 'Handzahm')
             ->set('birthdate', '2000-01-01')
@@ -111,7 +127,7 @@ class ParticipantEditFormTest extends TestCase
             ->set('photos_allowed', false)
             ->set('note', 'Himenaeos amet vehicula phasellus primis habitant pharetra')
             ->set('allergies', [])
-            ->call('save')
+            ->call('update')
             ->assertRedirect(route('dashboard.index'));
     }
 

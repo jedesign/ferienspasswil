@@ -16,7 +16,7 @@ class ParticipantCreateFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_required('participant.create', 'firstname', 'save');
+        FormTest::field_is_required('participant.create', [], 'firstname', 'save');
     }
 
     /** @test */
@@ -24,7 +24,7 @@ class ParticipantCreateFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_required('participant.create', 'lastname', 'save');
+        FormTest::field_is_required('participant.create', [], 'lastname', 'save');
     }
 
     /** @test */
@@ -32,7 +32,7 @@ class ParticipantCreateFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_required('participant.create', 'birthdate', 'save');
+        FormTest::field_is_required('participant.create', [], 'birthdate', 'save');
     }
 
     /** @test */
@@ -40,7 +40,7 @@ class ParticipantCreateFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_required('participant.create', 'gender', 'save');
+        FormTest::field_is_required('participant.create', [], 'gender', 'save');
     }
 
     /** @test */
@@ -48,7 +48,7 @@ class ParticipantCreateFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_required('participant.create', 'school_grade', 'save');
+        FormTest::field_is_required('participant.create', [], 'school_grade', 'save');
     }
 
     /** @test */
@@ -56,7 +56,7 @@ class ParticipantCreateFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_optional('participant.create', 'photos_allowed', 'save');
+        FormTest::field_is_optional('participant.create', [], 'photos_allowed', 'save');
     }
 
     /** @test */
@@ -64,7 +64,7 @@ class ParticipantCreateFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_optional('participant.create', 'note', 'save');
+        FormTest::field_is_optional('participant.create', [], 'note', 'save');
     }
 
     /** @test */

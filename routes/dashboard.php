@@ -1,23 +1,26 @@
 <?php
 
+use App\Http\Controllers\GuardianController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ParticipantController;
 use Illuminate\Support\Facades\Route;
 
 Route::name('dashboard.')->prefix('dashboard')->middleware(['auth', 'verified', 'guardian'])->group(function () {
-    Route::get('/', ['App\Http\Controllers\DashboardController', 'index'])
+    Route::get('/', [DashboardController::class, 'index'])
         ->name('index');
 
-    Route::get('/profil', ['App\Http\Controllers\GuardianController', 'edit'])
+    Route::get('/profil', [GuardianController::class, 'edit'])
         ->name('profile');
 
-    Route::get('/sja', ['App\Http\Controllers\GuardianController', 'editSja'])
+    Route::get('/sja', [GuardianController::class, 'editSja'])
         ->name('sja');
 
-    Route::get('/kind', ['App\Http\Controllers\ParticipantController', 'create'])
+    Route::get('/kind', [ParticipantController::class, 'create'])
         ->name('participant.create');
 
-    Route::get('/kind/{participant}', ['App\Http\Controllers\ParticipantController', 'edit'])
+    Route::get('/kind/{participant}/bearbeiten', [ParticipantController::class, 'edit'])
         ->name('participant.edit');
 
-    Route::delete('/kind/{participant}', ['App\Http\Controllers\ParticipantController', 'delete'])
+    Route::delete('/kind/{participant}', [ParticipantController::class, 'delete'])
         ->name('participant.delete');
 });

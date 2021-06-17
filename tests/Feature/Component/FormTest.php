@@ -11,17 +11,23 @@ class FormTest extends TestCase
 {
     use RefreshDatabase;
 
-    public static function field_is_required(string $route, string $fieldName, string $method): void
+    /** @test */
+    public function alibi() : void
     {
-        Livewire::test($route)
+        self::assertTrue(true);
+    }
+
+    public static function field_is_required(string $name, array $params, string $fieldName, string $method): void
+    {
+        Livewire::test($name, $params)
             ->set($fieldName, '')
             ->call($method)
             ->assertHasErrors([$fieldName => 'required']);
     }
 
-    public static function field_is_optional(string $route, string $fieldName, string $method): void
+    public static function field_is_optional(string $name, array $params, string $fieldName, string $method): void
     {
-        Livewire::test($route)
+        Livewire::test($name, $params)
             ->set($fieldName, '')
             ->call($method)
             ->assertHasNoErrors([$fieldName => 'required']);

@@ -126,7 +126,7 @@ _GuardianManagesParticipantsTest_
 - The guardian organizes participants data by ...
     - [x] creating.
       - _ParticipantCreateFormTest_
-    - [ ] editing.
+    - [x] editing.
       - _ParticipantEditFormTest_
     - [x] deleting.
 
