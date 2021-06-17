@@ -13,31 +13,31 @@ class GuardianRegisterFormTest extends TestCase
     /** @test */
     public function firstname_is_required(): void
     {
-        FormTest::field_is_required('auth.register', 'firstname', 'register');
+        FormTest::field_is_required('auth.register', [], 'firstname', 'register');
     }
 
     /** @test */
     public function lastname_is_required(): void
     {
-        FormTest::field_is_required('auth.register', 'lastname', 'register');
+        FormTest::field_is_required('auth.register', [], 'lastname', 'register');
     }
 
     /** @test */
     public function street_is_required(): void
     {
-        FormTest::field_is_required('auth.register', 'street', 'register');
+        FormTest::field_is_required('auth.register', [], 'street', 'register');
     }
 
     /** @test */
     public function street_number_is_optional(): void
     {
-        FormTest::field_is_optional('auth.register', 'street_number', 'register');
+        FormTest::field_is_optional('auth.register', [], 'street_number', 'register');
     }
 
     /** @test */
     public function postcode_is_required(): void
     {
-        FormTest::field_is_required('auth.register', 'postcode', 'register');
+        FormTest::field_is_required('auth.register', [], 'postcode', 'register');
     }
 
     /** @test */
@@ -49,19 +49,19 @@ class GuardianRegisterFormTest extends TestCase
     /** @test */
     public function city_is_required(): void
     {
-        FormTest::field_is_required('auth.register', 'city', 'register');
+        FormTest::field_is_required('auth.register', [], 'city', 'register');
     }
 
     /** @test */
     public function phone_is_required(): void
     {
-        FormTest::field_is_required('auth.register', 'phone', 'register');
+        FormTest::field_is_required('auth.register', [], 'phone', 'register');
     }
 
     /** @test */
     public function email_is_required(): void
     {
-        FormTest::field_is_required('auth.register', 'email', 'register');
+        FormTest::field_is_required('auth.register', [], 'email', 'register');
     }
 
     /** @test */

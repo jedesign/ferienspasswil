@@ -161,7 +161,7 @@ class GuardianManagesParticipantsTest extends TestCase
         $user = $this->signInUserAsGuardianWithParticipant();
         $participant = $user->guardian->participants->first();
 
-        $this->delete($participant->path())
+        $this->delete($participant->deletePath())
             ->assertRedirect(route('dashboard.index'));
 
         $this->assertDatabaseMissing(
@@ -177,7 +177,7 @@ class GuardianManagesParticipantsTest extends TestCase
 
         $participant = Participant::factory()->create();
 
-        $this->delete($participant->path())
+        $this->delete($participant->deletePath())
             ->assertStatus(403);
     }
 }

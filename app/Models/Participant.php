@@ -37,6 +37,12 @@ class Participant extends Model
 
     public function path(): string
     {
-        return "/dashboard/kind/$this->id";
+        return route('dashboard.participant.edit', $this);
     }
+
+    public function deletePath(): string
+    {
+        return route('dashboard.participant.delete', $this);
+    }
+
 }
