@@ -16,7 +16,7 @@ class UserTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_has_an_id()
+    public function it_has_an_id(): void
     {
         /** @var User $user */
         $user = User::factory()->create();
@@ -24,7 +24,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_firstname()
+    public function it_has_a_firstname(): void
     {
         /** @var User $user */
         $user = User::factory()->create();
@@ -32,7 +32,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_lastname()
+    public function it_has_a_lastname(): void
     {
         /** @var User $user */
         $user = User::factory()->create();
@@ -40,7 +40,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function it_has_an_email()
+    public function it_has_an_email(): void
     {
         $email = 'fredy.nazgul@mordor.me';
         /** @var User $user */
@@ -59,7 +59,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function it_has_an_email_verified_timestamp()
+    public function it_has_an_email_verified_timestamp(): void
     {
         /** @var User $user */
         $user = User::factory(['email_verified_at' => null])->create();
@@ -72,7 +72,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_password()
+    public function it_has_a_password(): void
     {
         /** @var User $user */
         $user = User::factory()->create();
@@ -80,7 +80,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_remember_token()
+    public function it_has_a_remember_token(): void
     {
         /** @var User $user */
         $user = User::factory(['remember_token' => null])->create();
@@ -93,7 +93,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_phone()
+    public function it_has_a_phone(): void
     {
         /** @var User $user */
         $user = User::factory()->create();
@@ -101,7 +101,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_role()
+    public function it_has_a_role(): void
     {
         $exceptionsThrown = 0;
         try {
@@ -120,7 +120,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function it_can_be_of_role_employee()
+    public function it_can_be_of_role_employee(): void
     {
         /** @var User $user */
         $user = User::factory()->for(Employee::factory(), 'role')->create();
@@ -133,7 +133,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function it_can_be_of_role_guardian()
+    public function it_can_be_of_role_guardian(): void
     {
         /** @var User $user */
         $user = User::factory()->for(Guardian::factory(), 'role')->create();

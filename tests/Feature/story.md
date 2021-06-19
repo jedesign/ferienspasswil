@@ -119,7 +119,7 @@ _GuardianManagesProfileTest_ / _GuardianProfileFormTest_
     - [x] her/his email address.
     - [x] her/his phone.
     - [ ] her/his password.
-- [ ] Furthermore, the guardian is able to register for an SJA-state, if the wants to.
+- [ ] Furthermore, the guardian is able to register for an social-service-state, if the wants to.
 
 #### participants
 _GuardianManagesParticipantsTest_

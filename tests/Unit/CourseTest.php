@@ -18,7 +18,7 @@ class CourseTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_has_an_id()
+    public function it_has_an_id(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
@@ -26,7 +26,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_has_an_title()
+    public function it_has_an_title(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
@@ -34,7 +34,15 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_has_an_description()
+    public function it_has_a_slug(): void
+    {
+        /** @var Course $course */
+        $course = Course::factory()->create();
+        $this->assertIsString($course->slug);
+    }
+
+    /** @test */
+    public function it_has_an_description(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
@@ -42,7 +50,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_state()
+    public function it_has_a_state(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
@@ -50,7 +58,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_state_message()
+    public function it_can_have_a_state_message(): void
     {
         /** @var Course $course */
         $course = Course::factory(['state_message' => null])->create();
@@ -61,7 +69,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_beginning()
+    public function it_has_a_beginning(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
@@ -69,7 +77,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_end()
+    public function it_has_a_end(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
@@ -77,7 +85,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_day_span()
+    public function it_has_a_day_span(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
@@ -85,7 +93,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_has_min_participants()
+    public function it_has_min_participants(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
@@ -93,7 +101,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_has_max_participants()
+    public function it_has_max_participants(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
@@ -101,11 +109,11 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_grade_group()
+    public function it_has_a_grade_group(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
-        $this->assertTrue(in_array($course->grade_group, GradeGroup::getConstants()));
+        $this->assertContains($course->grade_group, GradeGroup::getConstants());
 
         $exceptionThrown = false;
 
@@ -119,7 +127,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_meeting_point()
+    public function it_has_a_meeting_point(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
@@ -127,7 +135,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_can_require_clothes()
+    public function it_can_have_clothes(): void
     {
         /** @var Course $course */
         $course = Course::factory(['clothes' => null])->create();
@@ -138,7 +146,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_can_require_bring_alongs()
+    public function it_can_have_bring_alongs(): void
     {
         /** @var Course $course */
         $course = Course::factory(['bring_alongs' => null])->create();
@@ -149,7 +157,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_price()
+    public function it_has_a_price(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
@@ -157,7 +165,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_belongs_to_allergies()
+    public function it_belongs_to_allergies(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();
@@ -169,7 +177,7 @@ class CourseTest extends TestCase
     }
 
     /** @test */
-    public function it_belongs_to_participants()
+    public function it_belongs_to_participants(): void
     {
         /** @var Course $course */
         $course = Course::factory()->create();

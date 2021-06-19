@@ -12,8 +12,8 @@ Route::name('dashboard.')->prefix('dashboard')->middleware(['auth', 'verified', 
     Route::get('/profil', [GuardianController::class, 'edit'])
         ->name('profile');
 
-    Route::get('/sja', [GuardianController::class, 'editSja'])
-        ->name('sja');
+    Route::get('/sozialedienste', [GuardianController::class, 'editSocialServiceState'])
+        ->name('socialservice');
 
     Route::get('/kind', [ParticipantController::class, 'create'])
         ->name('participant.create');

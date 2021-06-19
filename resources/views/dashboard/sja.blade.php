@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.layout')
 
 @section('heading')
-    Antrag auf SJA-Status
+    Antrag auf Soziale Dienste Status
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
                     </h3>
                     <div class="mt-2 max-w-xl text-sm text-gray-500">
                         <p>
-                            Arbeitest du in der Stadt Wil im "Departement Soziales, Jugend und Alter - SJA"?
+                            Arbeitest du in der Stadt Wil im "Departement Soziales, Jugend und Alter"?
                         </p>
                         <p>
                             Möchtest du von dir betreute Kinder an den Ferienspass anmelden und dadurch die

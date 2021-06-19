@@ -26,7 +26,7 @@ class GuardianFactory extends Factory
             'street_number' => $this->faker->buildingNumber,
             'postcode' => $this->faker->postcode,
             'city' => $this->faker->city,
-            'sja' => $this->faker->boolean,
+            'social_service' => $this->faker->boolean,
         ];
     }
 }

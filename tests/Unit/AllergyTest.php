@@ -13,15 +13,7 @@ class AllergyTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_has_a_title()
-    {
-        /** @var Allergy $allergy */
-        $allergy = Allergy::factory()->create();
-        $this->assertIsString($allergy->title);
-    }
-
-    /** @test */
-    public function it_has_an_id()
+    public function it_has_an_id(): void
     {
         /** @var Allergy $allergy */
         $allergy = Allergy::factory()->create();
@@ -29,7 +21,15 @@ class AllergyTest extends TestCase
     }
 
     /** @test */
-    public function it_belongs_to_courses()
+    public function it_has_a_title(): void
+    {
+        /** @var Allergy $allergy */
+        $allergy = Allergy::factory()->create();
+        $this->assertIsString($allergy->title);
+    }
+
+    /** @test */
+    public function it_belongs_to_courses(): void
     {
         /** @var Allergy $allergy */
         $allergy = Allergy::factory()->create();
@@ -41,7 +41,7 @@ class AllergyTest extends TestCase
     }
 
     /** @test */
-    public function it_belongs_to_participants()
+    public function it_belongs_to_participants(): void
     {
         /** @var Allergy $allergy */
         $allergy = Allergy::factory()->create();

@@ -21,7 +21,7 @@ class Guardian extends Model
 
     protected $casts = [
         'postcode' => 'integer',
-        'sja' => 'boolean'
+        'social_service' => 'boolean'
     ];
 
     public function user(): MorphOne

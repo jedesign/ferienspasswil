@@ -13,9 +13,9 @@ class GuardianController extends Controller
         ]);
     }
 
-    public function editSja()
+    public function editSocialServiceState()
     {
-        return view('dashboard.sja', [
+        return view('dashboard.socialservice', [
             'guardian' => auth()->user()->guardian,
         ]);
     }

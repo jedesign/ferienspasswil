@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Gender;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +19,7 @@ class CreateParticipantsTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->date('birthdate');
-            $table->enum('gender', \App\Enums\Gender::getConstants());
+            $table->enum('gender', Gender::getConstants());
             $table->unsignedInteger('school_grade');
             $table->boolean('photos_allowed')->default(false);
             $table->text('note')->nullable();

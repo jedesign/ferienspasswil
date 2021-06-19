@@ -22,7 +22,7 @@ class GuardianParticipantSeeder extends Seeder
             'street_number' => '12',
             'postcode' => '9500',
             'city' => 'Wil',
-            'sja' => false
+            'social_service' => false
         ]);
         $guardian->user()->create([
             'firstname' => 'Fritz',
@@ -44,7 +44,7 @@ class GuardianParticipantSeeder extends Seeder
             'street_number' => '123',
             'postcode' => '9552',
             'city' => 'Bronschhofen',
-            'sja' => true
+            'social_service' => true
         ]);
         $guardian->user()->create([
             'firstname' => 'Ron',

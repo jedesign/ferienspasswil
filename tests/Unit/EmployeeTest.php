@@ -12,7 +12,7 @@ class EmployeeTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_has_an_id()
+    public function it_has_an_id(): void
     {
         /** @var Employee $employee */
         $employee = Employee::factory()->create();
@@ -20,7 +20,7 @@ class EmployeeTest extends TestCase
     }
 
     /** @test */
-    public function it_can_have_a_public_transport_subscription()
+    public function it_can_have_a_public_transport_subscription(): void
     {
         /** @var Employee $employee */
         $employee = Employee::factory(['public_transport_subscription' => null])->create();
@@ -31,7 +31,7 @@ class EmployeeTest extends TestCase
     }
 
     /** @test */
-    public function it_belongs_to_a_user()
+    public function it_belongs_to_a_user(): void
     {
         /** @var Employee $employee */
         $employee = Employee::factory()->has(User::factory())->create();

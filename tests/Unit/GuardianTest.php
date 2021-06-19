@@ -12,7 +12,7 @@ class GuardianTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_has_an_id()
+    public function it_has_an_id(): void
     {
         /** @var Guardian $guardian */
         $guardian = Guardian::factory()->create();
@@ -20,7 +20,7 @@ class GuardianTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_street()
+    public function it_has_a_street(): void
     {
         /** @var Guardian $guardian */
         $guardian = Guardian::factory()->create();
@@ -28,7 +28,7 @@ class GuardianTest extends TestCase
     }
 
     /** @test */
-    public function it_can_have_a_street_number()
+    public function it_can_have_a_street_number(): void
     {
         /** @var Guardian $guardian */
         $guardian = Guardian::factory(['street_number' => null])->create();
@@ -39,7 +39,7 @@ class GuardianTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_postcode()
+    public function it_has_a_postcode(): void
     {
         /** @var Guardian $guardian */
         $guardian = Guardian::factory()->create();
@@ -47,7 +47,7 @@ class GuardianTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_city()
+    public function it_has_a_city(): void
     {
         /** @var Guardian $guardian */
         $guardian = Guardian::factory()->create();
@@ -55,15 +55,15 @@ class GuardianTest extends TestCase
     }
 
     /** @test */
-    public function it_can_be_a_sja()
+    public function it_can_be_social_service(): void
     {
         /** @var Guardian $guardian */
         $guardian = Guardian::factory()->create();
-        $this->assertIsBool($guardian->sja);
+        $this->assertIsBool($guardian->social_service);
     }
 
     /** @test */
-    public function it_belongs_to_a_user()
+    public function it_belongs_to_a_user(): void
     {
         /** @var Guardian $guardian */
         $guardian = Guardian::factory()->has(User::factory())->create();
