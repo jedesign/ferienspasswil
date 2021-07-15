@@ -2,7 +2,7 @@
 @props(['course'])
 @php
     $bgColor = match($course->state) {
-        \App\Enums\CourseState::CANCELED=>'bg-red-300 opacity-40',
+        \App\Enums\CourseState::CANCELED=>'bg-red-300 bg-striped opacity-40',
         \App\Enums\CourseState::TENTATIVE=>'bg-yellow-300 bg-opacity-50',
         default=>'bg-green-300 bg-opacity-50'
     };
