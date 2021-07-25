@@ -2,9 +2,11 @@
 
 namespace Tests;
 
+use App\Models\Employee;
 use App\Models\Guardian;
 use App\Models\Participant;
 use App\Models\User;
+use Database\Factories\EmployeeFactory;
 use Database\Factories\GuardianFactory;
 use Illuminate\Foundation\Mix;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
@@ -24,14 +26,27 @@ abstract class TestCase extends BaseTestCase
     protected function signInUserAsGuardian(?GuardianFactory $guardian = null): User
     {
         $user = User::factory()->for(
-            $guardian ?? Guardian::factory()
-            , 'role'
+            $guardian ?? Guardian::factory(),
+            'role'
         )->create();
 
         $this->actingAs($user);
 
         return $user;
     }
+
+    protected function signInUserAsEmployee(?EmployeeFactory $employee = null): User
+    {
+        $user = User::factory()->for(
+            $employee ?? Employee::factory(),
+            'role'
+        )->create();
+
+        $this->actingAs($user);
+
+        return $user;
+    }
+
 
     protected function setUp(): void
     {

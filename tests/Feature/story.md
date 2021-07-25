@@ -161,7 +161,8 @@ _EmployeeLogsInTest_
     - [ ] sees his/her own profile.
     - [ ] can navigate to the guardians' profiles administration.
     - [ ] can navigate to the participants' data administration.
-    - [ ] can navigate to the course administration.
+    - [x] can navigate to the course administration.
+      - _EmployeeManagesCoursesTest_
     - [ ] can navigate to weather administration.
     - [ ] can navigate to the overview section.
     - [ ] can navigate to the general setting administration.
@@ -186,6 +187,7 @@ _EmployeeLogsInTest_
     - [ ] The employee can merge duplicates of participants.
 
 #### courses
+_EmployeeManagesCoursesTest_
 - Furthermore, the employee manages courses by ...
     - [ ] creating one in draft mode.
     - [ ] publish one to published mode.

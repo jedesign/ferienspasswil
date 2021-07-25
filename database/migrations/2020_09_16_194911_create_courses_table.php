@@ -21,7 +21,7 @@ class CreateCoursesTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description');
-    $table->enum('state', CourseState::getConstants())->default('draft');
+            $table->enum('state', CourseState::getConstants())->default('draft');
             $table->string('state_message')->nullable();
             $table->dateTime('beginning');
             $table->dateTime('end');

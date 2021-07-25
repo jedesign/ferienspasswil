@@ -30,6 +30,15 @@ class GuardianManagesParticipantsTest extends TestCase
     }
 
     /** @test */
+    public function guardian_can_see_participant_creation_page(): void
+    {
+        $this->signInUserAsGuardian();
+
+        $this->get(route('dashboard.participant.create'))
+            ->assertOk();
+    }
+
+    /** @test */
     public function guardian_can_create_participant(): void
     {
         $user = $this->signInUserAsGuardianWithParticipant();

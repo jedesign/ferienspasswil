@@ -17,7 +17,7 @@ class EmployeeLogsInTest extends TestCase
     /** @see UserLogsInTest */
 
     /** @test */
-    public function employee_can_log_in()
+    public function employee_can_log_in(): void
     {
         $user = User::factory()->for(
             Employee::factory(), 'role'
@@ -39,32 +39,26 @@ class EmployeeLogsInTest extends TestCase
 
 
     /** @test */
-    public function employee_can_view_admin_area()
+    public function employee_can_view_admin_area(): void
     {
-        Auth::login(User::factory()->for(
-            Employee::factory(), 'role'
-        )->create());
+        $this->signInUserAsEmployee();
 
         $this->get(route('admin.index'))->assertSuccessful();
     }
 
     /** @test */
-    public function employee_can_not_view_dashboard()
+    public function employee_can_not_view_dashboard(): void
     {
-        Auth::login(User::factory()->for(
-            Employee::factory(), 'role'
-        )->create());
+        $this->signInUserAsEmployee();
 
         $this->get(route('dashboard.index'))
             ->assertRedirect(route('login'));
     }
 
     /** @test */
-    public function employee_is_redirected_if_already_logged_in()
+    public function employee_is_redirected_if_already_logged_in(): void
     {
-        Auth::login(User::factory()->for(
-            Employee::factory(), 'role'
-        )->create());
+        $this->signInUserAsEmployee();
 
         $this->get(route('login'))
             ->assertRedirect(route('admin.index'));

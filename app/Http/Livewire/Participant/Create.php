@@ -2,8 +2,12 @@
 
 namespace App\Http\Livewire\Participant;
 
+use App\Enums\Gender;
 use App\Models\Allergy;
 use App\Models\Participant;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -22,18 +26,18 @@ class Create extends Component
 
     public Participant $participant;
 
-    public function mount()
+    public function mount(): void
     {
         $this->availableAllergies = Allergy::orderBy('title', 'asc')->get();
     }
 
-    public function save()
+    public function save(): void
     {
         $this->validate([
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'birthdate' => ['required', 'date_format:Y-m-d'],
-            'gender' => ['required', Rule::in(\App\Enums\Gender::getConstants())],
+            'gender' => ['required', Rule::in(Gender::getConstants())],
             'school_grade' => ['required', 'integer', 'min:1', 'max:6'],
             'photos_allowed' => ['boolean'],
             'note' => ['nullable', 'string'],
@@ -63,7 +67,7 @@ class Create extends Component
         $this->redirect(route('dashboard.index'));
     }
 
-    public function render()
+    public function render(): Factory|View|Application
     {
         return view('livewire.participant.create');
     }

@@ -46,4 +46,9 @@ class CourseController extends Controller
     {
         return view('course.show', compact('course'));
     }
+
+    public function create()
+    {
+        return view('admin.course.create');
+    }
 }
