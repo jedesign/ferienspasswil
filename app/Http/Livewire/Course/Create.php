@@ -21,8 +21,8 @@ class Create extends Component
     public int $max_participants = 0;
     public string $grade_group = GradeGroup::ALL;
     public string $meeting_point = '';
-    public ?string $clothes;
-    public ?string $bring_alongs;
+    public ?string $clothes = null;
+    public ?string $bring_alongs = null;
     public float $price = 0;
 
     public function save(): void

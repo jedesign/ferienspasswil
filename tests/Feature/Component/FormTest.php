@@ -17,7 +17,7 @@ class FormTest extends TestCase
         self::assertTrue(true);
     }
 
-    public static function field_is_required(string $name, array $params, string $fieldName, string $method): void
+    public static function field_is_required_string(string $name, array $params, string $fieldName, string $method): void
     {
         Livewire::test($name, $params)
             ->set($fieldName, '')
@@ -25,10 +25,26 @@ class FormTest extends TestCase
             ->assertHasErrors([$fieldName => 'required']);
     }
 
-    public static function field_is_optional(string $name, array $params, string $fieldName, string $method): void
+    public static function field_is_greater_than_zero(string $name, array $params, string $fieldName, string $method): void
+    {
+        Livewire::test($name, $params)
+            ->set($fieldName, 0)
+            ->call($method)
+            ->assertHasErrors([$fieldName => 'min']);
+    }
+
+    public static function field_is_optional_string(string $name, array $params, string $fieldName, string $method): void
     {
         Livewire::test($name, $params)
             ->set($fieldName, '')
+            ->call($method)
+            ->assertHasNoErrors([$fieldName => 'required']);
+    }
+
+    public static function field_is_optional_number(string $name, array $params, string $fieldName, string $method): void
+    {
+        Livewire::test($name, $params)
+            ->set($fieldName, 0)
             ->call($method)
             ->assertHasNoErrors([$fieldName => 'required']);
     }

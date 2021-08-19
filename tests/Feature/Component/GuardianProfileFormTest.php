@@ -16,7 +16,7 @@ class GuardianProfileFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_required('guardian.edit', [], 'firstname', 'update');
+        FormTest::field_is_required_string('guardian.edit', [], 'firstname', 'update');
     }
 
     /** @test */
@@ -24,7 +24,7 @@ class GuardianProfileFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_required('guardian.edit', [], 'lastname', 'update');
+        FormTest::field_is_required_string('guardian.edit', [], 'lastname', 'update');
     }
 
     /** @test */
@@ -32,7 +32,7 @@ class GuardianProfileFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_required('guardian.edit', [], 'street', 'update');
+        FormTest::field_is_required_string('guardian.edit', [], 'street', 'update');
     }
 
     /** @test */
@@ -40,7 +40,7 @@ class GuardianProfileFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_optional('guardian.edit', [], 'street_number', 'update');
+        FormTest::field_is_optional_string('guardian.edit', [], 'street_number', 'update');
     }
 
     /** @test */
@@ -48,7 +48,7 @@ class GuardianProfileFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_required('guardian.edit', [], 'postcode', 'update');
+        FormTest::field_is_required_string('guardian.edit', [], 'postcode', 'update');
     }
 
     /** @test */
@@ -64,7 +64,7 @@ class GuardianProfileFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_required('guardian.edit', [], 'city', 'update');
+        FormTest::field_is_required_string('guardian.edit', [], 'city', 'update');
     }
 
     /** @test */
@@ -72,7 +72,7 @@ class GuardianProfileFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_required('guardian.edit', [], 'phone', 'update');
+        FormTest::field_is_required_string('guardian.edit', [], 'phone', 'update');
     }
 
     /** @test */
@@ -80,7 +80,7 @@ class GuardianProfileFormTest extends TestCase
     {
         $this->signInUserAsGuardian();
 
-        FormTest::field_is_required('guardian.edit', [], 'email', 'update');
+        FormTest::field_is_required_string('guardian.edit', [], 'email', 'update');
     }
 
     /** @test */

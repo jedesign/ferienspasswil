@@ -16,7 +16,7 @@ class ParticipantEditFormTest extends TestCase
     {
         $user = $this->signInUserAsGuardianWithParticipant();
 
-        FormTest::field_is_required(
+        FormTest::field_is_required_string(
             'participant.edit',
             ['participant' => $user->guardian->participants->first()],
 
@@ -29,7 +29,7 @@ class ParticipantEditFormTest extends TestCase
     {
         $user = $this->signInUserAsGuardianWithParticipant();
 
-        FormTest::field_is_required(
+        FormTest::field_is_required_string(
             'participant.edit',
             ['participant' => $user->guardian->participants->first()],
             'lastname',
@@ -42,7 +42,7 @@ class ParticipantEditFormTest extends TestCase
     {
         $user = $this->signInUserAsGuardianWithParticipant();
 
-        FormTest::field_is_required(
+        FormTest::field_is_required_string(
             'participant.edit',
             ['participant' => $user->guardian->participants->first()],
             'birthdate',
@@ -55,7 +55,7 @@ class ParticipantEditFormTest extends TestCase
     {
         $user = $this->signInUserAsGuardianWithParticipant();
 
-        FormTest::field_is_required(
+        FormTest::field_is_required_string(
             'participant.edit',
             ['participant' => $user->guardian->participants->first()],
             'gender',
@@ -68,7 +68,7 @@ class ParticipantEditFormTest extends TestCase
     {
         $user = $this->signInUserAsGuardianWithParticipant();
 
-        FormTest::field_is_required(
+        FormTest::field_is_required_string(
             'participant.edit',
             ['participant' => $user->guardian->participants->first()],
             'school_grade',
@@ -81,7 +81,7 @@ class ParticipantEditFormTest extends TestCase
     {
         $user = $this->signInUserAsGuardianWithParticipant();
 
-        FormTest::field_is_optional(
+        FormTest::field_is_optional_string(
             'participant.edit',
             ['participant' => $user->guardian->participants->first()],
             'photos_allowed',
@@ -94,7 +94,7 @@ class ParticipantEditFormTest extends TestCase
     {
         $user = $this->signInUserAsGuardianWithParticipant();
 
-        FormTest::field_is_optional(
+        FormTest::field_is_optional_string(
             'participant.edit',
             ['participant' => $user->guardian->participants->first()],
             'note',
