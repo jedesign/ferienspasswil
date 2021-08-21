@@ -54,4 +54,59 @@ class EmployeeManagesCoursesTest extends TestCase
     }
     /** @see CourseCreateFormTest */
 
+    /** @test */
+    public function employee_can_see_courses_titles(): void
+    {
+        $this->signInUserAsEmployee();
+
+        $course = Course::factory()->create();
+
+        $this->get(route('admin.courses'))
+            ->assertSee($course->title);
+    }
+
+    /** @test */
+    public function employee_can_see_courses_beginning(): void
+    {
+        $this->signInUserAsEmployee();
+
+        $course = Course::factory()->create();
+
+        $this->get(route('admin.courses'))
+            ->assertSee($course->beginning);
+    }
+
+    /** @test */
+    public function employee_can_see_courses_ends(): void
+    {
+        $this->signInUserAsEmployee();
+
+        $course = Course::factory()->create();
+
+        $this->get(route('admin.courses'))
+            ->assertSee($course->end);
+    }
+
+    /** @test */
+    public function employee_can_see_courses_states(): void
+    {
+        $this->signInUserAsEmployee();
+
+        $course = Course::factory()->create();
+
+        $this->get(route('admin.courses'))
+            ->assertSee($course->state);
+    }
+
+    /** @test */
+    public function employee_can_see_course_edit_route(): void
+    {
+        $this->signInUserAsEmployee();
+
+        $course = Course::factory()->create();
+
+        $this->get(route('admin.courses'))
+            ->assertSee($course->path());
+    }
+
 }

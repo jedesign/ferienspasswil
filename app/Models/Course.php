@@ -56,4 +56,15 @@ class Course extends Model
             ->generateSlugsFrom(fn($model) => ($model->beginning) ? "$model->title {$model->beginning->format('Y')}" : $model->title)
             ->saveSlugsTo('slug');
     }
+
+    public function path(): string
+    {
+        return route('admin.course.edit', $this);
+    }
+
+    public function deletePath(): string
+    {
+        return route('admin.course.delete', $this);
+    }
+
 }

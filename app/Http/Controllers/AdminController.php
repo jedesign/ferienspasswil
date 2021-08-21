@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Course;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -18,6 +19,8 @@ class AdminController extends Controller
 
     public function showCourses(): Factory|View|Application
     {
-        return view('admin.courses');
+        return view('admin.courses', [
+            'courses' => Course::all()
+        ]);
     }
 }

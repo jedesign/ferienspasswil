@@ -14,4 +14,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'verified', 'employe
     Route::get('/kurs', [CourseController::class, 'create'])
         ->name('course.create');
 
+    Route::get('/kurs/{course}/bearbeiten', [CourseController::class, 'edit'])
+        ->name('course.edit');
+
 });

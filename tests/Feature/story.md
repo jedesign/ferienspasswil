@@ -189,11 +189,11 @@ _EmployeeLogsInTest_
 #### courses
 _EmployeeManagesCoursesTest_
 - Furthermore, the employee manages courses by ...
-    - [ ] creating one in draft mode.
+    - [x] creating one in draft mode.
     - [ ] publish one to published mode.
     - [ ] editing.
     - [ ] deleting.
-    - [ ] review all actual courses on an overview.
+    - [x] review all actual courses on an overview.
     - [ ] review all past courses sort by years in an archive.
 
 #### weather

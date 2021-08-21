@@ -51,4 +51,11 @@ class CourseController extends Controller
     {
         return view('admin.course.create');
     }
+
+
+    public function edit(Course $course): Factory|View|Application
+    {
+        return view('admin.course.edit', compact('course'));
+    }
+
 }
