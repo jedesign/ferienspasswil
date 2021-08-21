@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Course;
 
-use App\Enums\DaySpan;
 use App\Enums\GradeGroup;
 use App\Models\Course;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -15,25 +15,29 @@ class Create extends Component
 {
     public string $title = '';
     public string $description = '';
-    public string $beginning = '';
-    public string $end = '';
-    public int $min_participants = 0;
-    public int $max_participants = 0;
+    public string $beginning_date = '';
+    public string $beginning_time = '';
+    public string $end_date = '';
+    public string $end_time = '';
+    public $min_participants = 0;
+    public $max_participants = 0;
     public string $grade_group = GradeGroup::ALL;
     public string $meeting_point = '';
     public ?string $clothes = null;
     public ?string $bring_alongs = null;
-    public float $price = 0;
+    public $price = 0.00;
 
     public function save(): void
     {
         $this->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
-            'beginning' => ['required', 'date_format:Y-m-d'],
-            'end' => ['required', 'date_format:Y-m-d'],
+            'beginning_date' => ['required', 'date_format:Y-m-d'],
+            'beginning_time' => ['required', 'date_format:h:i'],
+            'end_date' => ['required', 'date_format:Y-m-d'],
+            'end_time' => ['required', 'date_format:h:i'],
             'min_participants' => ['required', 'integer', 'min:1'],
-            'max_participants' => ['required', 'integer', 'gt:min_participants'],
+            'max_participants' => ['required', 'integer', 'min:1', 'gt:min_participants'],
             'grade_group' => ['required', Rule::in(GradeGroup::getConstants())],
             'meeting_point' => ['required', 'string'],
             'clothes' => ['nullable', 'string'],
@@ -45,9 +49,8 @@ class Create extends Component
             [
                 'title' => $this->title,
                 'description' => $this->description,
-                'beginning' => $this->beginning,
-                'end' => $this->end,
-                'day_span' => $this->day_span,
+                'beginning' => new Carbon($this->beginning_date . ' ' . $this->beginning_time),
+                'end' => new Carbon($this->end_date . ' ' . $this->end_time),
                 'min_participants' => $this->min_participants,
                 'max_participants' => $this->max_participants,
                 'grade_group' => $this->grade_group,

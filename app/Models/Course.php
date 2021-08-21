@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\CourseState;
 use App\Events\CourseSpanCalculated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,7 +17,19 @@ class Course extends Model
     use HasFactory;
     use HasSlug;
 
-    protected $fillable = ['title'];
+    protected $fillable = [
+        'title',
+        'description',
+        'beginning',
+        'end',
+        'min_participants',
+        'max_participants',
+        'grade_group',
+        'meeting_point',
+        'clothes',
+        'bring_alongs',
+        'price'
+    ];
 
     protected $casts = [
         'beginning' => 'datetime',
@@ -42,7 +53,7 @@ class Course extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom(fn($model) => "{$model->title} {$model->beginning->format('Y')}")
+            ->generateSlugsFrom(fn($model) => ($model->beginning) ? "$model->title {$model->beginning->format('Y')}" : $model->title)
             ->saveSlugsTo('slug');
     }
 }

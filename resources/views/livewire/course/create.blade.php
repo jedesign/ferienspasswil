@@ -27,31 +27,57 @@
                     </div>
                 </div>
 
-                <div class="col-span-4 sm:col-span-2">
-                    <label for="beginning" class="block text-sm font-medium leading-5 text-gray-700">Beginning</label>
+                <div class="col-span-2 sm:col-span-1">
+                    <label for="beginning_date" class="block text-sm font-medium leading-5 text-gray-700">
+                        Beginning Date
+                    </label>
                     <input
                         class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                        id="beginning"
+                        id="beginning_date"
                         required
                         type="date"
-                        wire:model="beginning"
+                        wire:model="beginning_date"
+                    >
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                    <label for="beginning_time" class="block text-sm font-medium leading-5 text-gray-700">
+                        Beginning Time
+                    </label>
+                    <input
+                        class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        id="beginning_time"
+                        required
+                        type="time"
+                        wire:model="beginning_time"
                     >
                 </div>
 
-                <div class="col-span-4 sm:col-span-2">
-                    <label for="end" class="block text-sm font-medium leading-5 text-gray-700">End</label>
+                <div class="col-span-2 sm:col-span-1">
+                    <label for="end_date" class="block text-sm font-medium leading-5 text-gray-700">End
+                        Date</label>
                     <input
                         class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                        id="end"
+                        id="end_date"
                         required
                         type="date"
-                        wire:model="end"
+                        wire:model="end_date"
+                    >
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                    <label for="end_time" class="block text-sm font-medium leading-5 text-gray-700">End Time</label>
+                    <input
+                        class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        id="end_time"
+                        required
+                        type="time"
+                        wire:model="end_time"
                     >
                 </div>
 
-                <div class="col-span-4 sm:col-span-2">
-                    <label for="min_participants" class="block text-sm font-medium leading-5 text-gray-700">Min
-                        Participants</label>
+                <div class="col-span-2 sm:col-span-1">
+                    <label for="min_participants" class="block text-sm font-medium leading-5 text-gray-700">
+                        Min Participants
+                    </label>
                     <input
                         class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                         id="min_participants"
@@ -63,9 +89,10 @@
                     >
                 </div>
 
-                <div class="col-span-4 sm:col-span-2">
-                    <label for="max_participants" class="block text-sm font-medium leading-5 text-gray-700">Max
-                        Participants</label>
+                <div class="col-span-2 sm:col-span-1">
+                    <label for="max_participants" class="block text-sm font-medium leading-5 text-gray-700">
+                        Max Participants
+                    </label>
                     <input
                         class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                         id="max_participants"
@@ -90,7 +117,58 @@
                     </select>
                 </div>
 
-                <!-- TODO[rw]: add other fields of course  (25.07.21 rw) -->
+                <div class="col-span-4 sm:col-span-2">
+                    <label for="meeting_point" class="block text-sm font-medium leading-5 text-gray-700">
+                        Meeting Point
+                    </label>
+                    <input
+                        id="meeting_point"
+                        class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        required
+                        type="text"
+                        wire:model="meeting_point"
+                    >
+                </div>
+
+                <div class="col-span-4 sm:col-span-2">
+                    <label for="clothes" class="block text-sm font-medium leading-5 text-gray-700">
+                        Clothes
+                    </label>
+                    <input
+                        id="clothes"
+                        class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        type="text"
+                        wire:model="clothes"
+                    >
+                </div>
+
+                <div class="col-span-4 sm:col-span-2">
+                    <label for="bring_alongs" class="block text-sm font-medium leading-5 text-gray-700">
+                        Bring Alongs
+                    </label>
+                    <input
+                        id="bring_alongs"
+                        class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        type="text"
+                        wire:model="bring_alongs"
+                    >
+                </div>
+
+
+                <div class="col-span-4 sm:col-span-2">
+                    <label for="price" class="block text-sm font-medium leading-5 text-gray-700">
+                        Price
+                    </label>
+                    <input
+                        class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        id="price"
+                        required
+                        type="number"
+                        min="0.00"
+                        step="0.05"
+                        wire:model="price"
+                    >
+                </div>
 
             </div>
         </div>

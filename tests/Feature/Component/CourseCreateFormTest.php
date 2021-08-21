@@ -28,19 +28,35 @@ class CourseCreateFormTest extends TestCase
     }
 
     /** @test */
-    public function beginning_is_required(): void
+    public function beginning_date_is_required(): void
     {
         $this->signInUserAsEmployee();
 
-        FormTest::field_is_required_string('course.create', [], 'beginning', 'save');
+        FormTest::field_is_required_string('course.create', [], 'beginning_date', 'save');
     }
 
     /** @test */
-    public function end_is_required(): void
+    public function beginning_time_is_required(): void
     {
         $this->signInUserAsEmployee();
 
-        FormTest::field_is_required_string('course.create', [], 'end', 'save');
+        FormTest::field_is_required_string('course.create', [], 'beginning_time', 'save');
+    }
+
+    /** @test */
+    public function end_date_is_required(): void
+    {
+        $this->signInUserAsEmployee();
+
+        FormTest::field_is_required_string('course.create', [], 'end_date', 'save');
+    }
+
+    /** @test */
+    public function end_time_is_required(): void
+    {
+        $this->signInUserAsEmployee();
+
+        FormTest::field_is_required_string('course.create', [], 'end_time', 'save');
     }
 
     /** @test */
@@ -54,9 +70,9 @@ class CourseCreateFormTest extends TestCase
     /** @test */
     public function max_participants_are_greater_than_min_participants(): void
     {
-        self::markTestSkipped();
         $this->signInUserAsEmployee();
-        // TODO[rw]: initiate min, check if max is bigger (19.08.21 rw)
+
+        FormTest::field_is_greater_than_zero('course.create', [], 'max_participants', 'save');
     }
 
     /** @test */
@@ -102,14 +118,15 @@ class CourseCreateFormTest extends TestCase
     /** @test */
     public function is_redirected_after_creating_course(): void
     {
-        self::markTestSkipped();
         $this->signInUserAsEmployee();
 
         Livewire::test(Create::class)
             ->set('title', 'Einhönrer reiten')
             ->set('description', 'Das hast du noch nie gemacht.')
-            ->set('beginning', '2021-07-19 09:00:00')
-            ->set('end', '2021-07-19 12:00:00')
+            ->set('beginning_date', '2021-07-19')
+            ->set('beginning_time', '09:00')
+            ->set('end_date', '2021-07-19')
+            ->set('end_time', '12:00')
             ->set('min_participants', 4)
             ->set('max_participants', 20)
             ->set('grade_group', 'intermediate')
