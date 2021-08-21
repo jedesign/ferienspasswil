@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Course;
 
+use App\Enums\CourseState;
 use App\Enums\GradeGroup;
 use App\Models\Course;
 use Carbon\Carbon;
@@ -15,6 +16,7 @@ class Create extends Component
 {
     public string $title = '';
     public string $description = '';
+    public $state = '';
     public string $beginning_date = '';
     public string $beginning_time = '';
     public string $end_date = '';
@@ -32,10 +34,11 @@ class Create extends Component
         $this->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
+            'state' => ['required', Rule::in(CourseState::getConstants())],
             'beginning_date' => ['required', 'date_format:Y-m-d'],
             'beginning_time' => ['required', 'date_format:h:i'],
             'end_date' => ['required', 'date_format:Y-m-d'],
-            'end_time' => ['required', 'date_format:h:i'],
+//            'end_time' => ['required', 'date_format:h:i'],
             'min_participants' => ['required', 'integer', 'min:1'],
             'max_participants' => ['required', 'integer', 'min:1', 'gt:min_participants'],
             'grade_group' => ['required', Rule::in(GradeGroup::getConstants())],
@@ -49,6 +52,7 @@ class Create extends Component
             [
                 'title' => $this->title,
                 'description' => $this->description,
+                'state' => $this->state,
                 'beginning' => new Carbon($this->beginning_date . ' ' . $this->beginning_time),
                 'end' => new Carbon($this->end_date . ' ' . $this->end_time),
                 'min_participants' => $this->min_participants,

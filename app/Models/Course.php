@@ -20,6 +20,7 @@ class Course extends Model
     protected $fillable = [
         'title',
         'description',
+        'state',
         'beginning',
         'end',
         'min_participants',

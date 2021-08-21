@@ -4,7 +4,7 @@
     <div class="shadow sm:rounded-md sm:overflow-hidden">
         <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
             <div class="grid grid-cols-4 gap-6">
-                <div class="col-span-4">
+                <div class="col-span-4 sm:col-span-2">
                     <label for="title" class="block text-sm font-medium leading-5 text-gray-700">Title</label>
                     <input autofocus
                            class="form-input mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
@@ -14,6 +14,27 @@
                            wire:model="title"
                     >
                 </div>
+
+                <div class="col-span-4 sm:col-span-2">
+                    <label for="state" class="block text-sm font-medium leading-5 text-gray-700">State</label>
+
+                    <div class="mt-4 flex justify-between">
+                        @foreach(\App\Enums\CourseState::getConstants() as $state)
+                            <div class="flex items-center">
+                                <input id="state-{{ $state }}" name="state" type="radio"
+                                       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                                       value="{{ $state }}"
+                                       {{ ($state === \App\Enums\CourseState::DRAFT) ? 'checked' : '' }}
+                                       wire:model="state"
+                                >
+                                <label for="state-{{ $state }}" class="ml-3 block text-sm font-medium text-gray-700">
+                                    {{ ucfirst($state) }}
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
 
                 <div class="col-span-4">
                     <label for="description"
@@ -63,6 +84,7 @@
                         wire:model="end_date"
                     >
                 </div>
+                <!-- TODO[rw]: here is something wrong, that stops the save (21.08.21 rw) -->
                 <div class="col-span-2 sm:col-span-1">
                     <label for="end_time" class="block text-sm font-medium leading-5 text-gray-700">End Time</label>
                     <input

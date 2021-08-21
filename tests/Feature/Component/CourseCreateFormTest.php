@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Component;
 
+use App\Enums\CourseState;
 use App\Http\Livewire\Course\Create;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -25,6 +26,14 @@ class CourseCreateFormTest extends TestCase
         $this->signInUserAsEmployee();
 
         FormTest::field_is_required_string('course.create', [], 'description', 'save');
+    }
+
+    /** @test */
+    public function state_is_required(): void
+    {
+        $this->signInUserAsEmployee();
+
+        FormTest::field_is_required_string('course.create', [], 'state', 'save');
     }
 
     /** @test */
@@ -123,6 +132,7 @@ class CourseCreateFormTest extends TestCase
         Livewire::test(Create::class)
             ->set('title', 'Einhönrer reiten')
             ->set('description', 'Das hast du noch nie gemacht.')
+            ->set('state', CourseState::CANCELED)
             ->set('beginning_date', '2021-07-19')
             ->set('beginning_time', '09:00')
             ->set('end_date', '2021-07-19')
