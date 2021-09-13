@@ -46,6 +46,10 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'statamic' => [
+            'driver' => 'session',
+            'provider' => 'statamic',
+        ]
     ],
 
     /*
@@ -70,6 +74,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+
+        'statamic' => [
+            'driver' => 'statamic'
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
